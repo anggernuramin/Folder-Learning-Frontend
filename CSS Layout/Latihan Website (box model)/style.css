@@ -1,0 +1,158 @@
+/*css reset meyer*/
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/*css syntax project1*/
+
+body {
+	font-family: arial serif ;
+	background-color: #eaeaea;
+	color: grey;
+	background-image: url(image/background.png);
+}
+
+.container {
+	margin: auto;
+	width: 800px;
+	background-color: white;
+}	
+
+.header {
+	color:  black;
+	padding: 20px;
+}
+
+.header .judul {
+	text-transform: capitalize;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+/*agar navigasi sama header jarak tidak kejauhan*/
+
+.header ul li {
+	display: inline-block;
+	margin-top: 10px;
+	padding: 2px;
+	margin-right: 8px;
+	border-right: 3px solid skyblue;
+}
+
+.header ul li:last-child {
+	border: none;
+}
+
+.header a {
+	color: salmon;
+	text-decoration: none;
+}
+
+.header a:hover {
+	color: white;
+	background-color: skyblue;
+}
+
+/*banner*/
+
+.hero {
+	height: 310px;
+	background-image: url(image/computer.jpg);
+	background: cover;
+	background-repeat: no-repeat;
+	/*untuk mengatur vertikal pada background*/
+	background-position: 0 -130px;
+
+	/*agar background full screen dari weight yg telah ditentukan */
+	background-size: 100%;
+}
+
+.conten {
+	padding: 20px;
+}
+
+.conten h2 {
+	color: black;
+	font-size: 28px;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+
+/*paragraf harus digrup*/
+.conten .penulis {
+ 	font-size: 15px;
+ 	margin-bottom: 20px;
+}
+ 	
+ 
+.conten .penulis a {
+	text-decoration: none;
+	color: red;
+}
+
+.conten .paragraf {
+	text-indent: 30px;
+	text-align: justify;
+	font-size: 17px;
+	}
+
+
+
+.footer {
+	background-color: grey;
+	padding: 20px;
+	
+}
+
+.footer .copy{
+	color: white;
+	font-size: 20px;
+	text-align: center;
+
+}

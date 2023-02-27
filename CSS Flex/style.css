@@ -1,0 +1,142 @@
+/* style default css */
+*, body, html {
+  margin: 0;
+  padding: 0;
+}
+
+/* style body */
+body {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  line-height: 1.6;
+  height: 500vh;
+  background-color: #eaeaea;
+}
+
+/* awal style layout kolom */
+.container-satu {
+  max-width: 900px;
+  margin: 50px auto;
+  background-color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+ 
+}
+
+/* ukuran agar sama dengan items satu dengan items lainnya maka menggunakan flex-grow: */
+.konten {
+  flex: 3;
+  order: 2;
+}
+.konten h1 {
+  transform: translateY(-10px);
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  -o-transform: translateY(-10px);
+}
+.konten p {
+  text-indent: 1rem;
+}
+
+.sidebar-satu {
+  flex: 1;
+  order: 1;
+}
+.sidebar-dua {
+  flex: 1;
+  order: 3;
+}
+/* akhir style layout kolom */
+
+
+/* awal style card layanan service */
+.container-dua {
+  max-width: 900px;
+  margin: 50px auto;
+}
+.layanan {
+  padding: 20px;
+  margin-bottom: 20px;
+  /* agar tidak merubah ukuran kotaknya */
+  box-sizing: border-box;
+}
+
+/* cara baca classnya adalah div yang ada clas.satu didalam class.layananan */
+.layanan.satu {
+  background-color: rgb(112, 112, 241);
+}
+.layanan.dua {
+  background-color: rgb(247, 76, 76);
+}
+.layanan.tiga {
+  background-color: rgb(33, 150, 33);
+}
+/* akhir dari style card service */
+
+/* style awal card product */
+.container-tiga {
+  max-width: 900px;
+  margin: 50px auto;
+  background-color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  width: 45%;
+  border: 1px solid rgb(121, 110, 110);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  overflow: hidden;
+  margin: 10px;
+  box-sizing: border-box;
+  
+}
+
+.card header {
+  height: 180px;
+  background-color: #999;
+}
+
+.card .content {
+  padding: 0 10px;
+  padding-bottom: 20px;
+  text-align: center;
+  box-sizing: border-box;
+  
+}
+.content .harga{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+}
+.harga span {
+  font-size: .9rem;
+  font-weight: 200;
+  font-style: italic;
+
+}
+
+/* RESPONSIVE */
+/* Dengan min width 600px keatas */
+/* cara bacanya adalah,jika medianya lebarnya lebih dari 600px maka css dibawah ini yang akan dipakai */
+@media (min-width: 600px){
+  .container-dua {
+    display: flex;
+    justify-content: space-between;
+  }
+  .container-dua .layanan {
+    width: 30%;
+  }
+  .container-tiga .card {
+    width: 28%;
+  }
+}

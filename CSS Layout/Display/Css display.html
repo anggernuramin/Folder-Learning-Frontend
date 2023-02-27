@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS DISPLAY</title>
+
+	<!-- css display 
+			adalah setiap tag html berada didalam kotak,property display pada css mengatur perilaku dari kotak tersebut -->
+	<!-- property yg dimiliki display
+	    1. inline (dibarisan)=default css
+	    	a. elemen html secara default tidak menambahkan baris baru
+	    	b. lebar dan tinggi elemennya sebesar konten yang ada 	didalamya
+	    	c. kita tidak dapat mengatur tinggi dan lebar dari elemen inline
+	    	d. margin dan padding hanya mempengaruhi elemen secara horizontal dan vertikal
+
+	    	elemen inline=b,strong,a,span,button,input,label,textarea,img
+	    	 -->
+
+	 <!-- 2. inline-block
+	 		a. tidak ada elemen secara default memiliki properti display:inline-block;
+	 		b. kita harus mengganti secara manual 
+	 		c. perilaku sama dengan elemen inline
+	 		d. perbedaanya,elemen inline-block dapat kita atur tinggi dan lebarnya
+	 		 -->
+
+	 <!-- 3. block
+	 		a. elemen html yg secara default menambahkan baris ketika dibuat
+	 		b. jika tidak diatur lebarnya,maka lebar default dari elemen block akanmemmenuhi lebar dari browser/parentnya
+	 		c. kita dapat mengatur tinggi dan lebar dari elemen block
+	 		d. didalam elemen block,kita dapat menyimpan tag dengan elemen inline,inline-block, atau bahkan elemen block lagi
+
+	 		elemen block=h2-h6,p,ol,ul,li,form,div -->
+
+
+	<style>
+		
+		/*karena class header = elemen block
+			maka bisa diatur ukuranya secara langsung*/
+		.header {
+			background: blue;
+			height: 200px;
+		}
+
+		.header h1 {
+			text-transform: capitalize;
+			font-family: gergia;
+			font-size: 40px;
+			text-align: center;
+		}
+
+		/*merubah li= block menjadi inline,agar outputnya berada disamping tidak dibawah*/
+		.navigasi li  {
+			display: inline;
+		}
+
+		.navigasi a {
+			/*dikasih display:  inline-block agar tag html a yg default (inline) agar dpt diberi style*/
+			display: inline-block;
+
+			font-size: 20px;
+			color: white;
+			font-weight: bold;
+			text-decoration: none;
+
+		}
+		.navigasi {
+			background-color: grey;
+			height: 100px;
+		}
+		.navigasi h2 {
+			display: inline;
+		}
+ 		
+		/*karena class main berada pada div(group) maka = elemen block*/
+		.main {
+			background-color: grey;
+			width: 1300px;
+
+		}
+		.main img {
+			width: 50%;
+		}
+		.main h2 {
+			background-color: blue;
+			width: 400px;
+		}
+		.main P:first-of-type {
+			text-indent: 100px;
+			background-color: blue;
+		}
+
+		.main p:last-of-type {
+			text-indent: 10px;
+			
+		}
+		
+		
+		/*membuat footer yg didalamnya ada p=elemen block*/
+		.copyright p {
+
+			background-color: grey;
+			text-align: center;
+		}
+
+		.copyright p span {
+			color: white;
+		}
+
+	</style>
+</head>
+<body>
+
+	<!-- membuat header = judul website-->
+	<div class="header">
+		<h1>Selamat Datang Di Website Kami</h1>
+	</div>
+	
+	<!-- membuat navbar / navigasi -->
+	<div class="navigasi">
+		<h2>Daftar Link</h2>
+			<ul>
+				<li><a href="#">Home </a></li>
+				<li><a href="#">Contact </a></li>
+				<li><a href="#">Abaut </a></li>
+				<li><a href="#">link</a></li>
+				<li><a href="#">Detail</a></li>
+			</ul>	
+	</div>
+	
+	<!-- kontem utama website -->
+	<div class="main">
+		<h2>Judul Artikel</h2>
+		<img src="ayam geprek.jpg">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat.</p>
+		</div>
+		
+	<!-- membuat footer -->
+	<div class="copyright">
+		<p>Copyright @ 2022. <span>Angger Nur Amin</span>
+		</p>
+
+	</div>
+	
+</body>
+</html>

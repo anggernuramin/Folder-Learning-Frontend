@@ -1,0 +1,33 @@
+.container {
+	width: 800px;
+	border: 1px solid black;
+	margin: 30px auto;
+	padding: 10px;
+}
+.colom1 {
+	width: 150px;
+	height: 600px;
+	background-color: darkgreen;
+	float: left;
+	overflow: auto;
+	box-sizing: border-box;
+	padding: 5px;
+}
+
+.colom2 {
+	width: 500px;
+	height: 600px;
+	background-color: darkgrey;
+	float: left;
+
+}
+.colom3 {
+	width: 150px;
+	height: 600px;
+	background-color: darkblue;
+	float: left;
+}
+
+.clear {
+	clear: both;
+}

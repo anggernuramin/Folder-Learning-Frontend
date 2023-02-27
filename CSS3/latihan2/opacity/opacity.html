@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS OPACITY (TRANSPARANSI)</title>
+	<!-- Css opacity
+			Digunakan untuk membuat/memberi TRANSPARANSI PADA ELEMEN HTML -->
+
+	<style>
+
+		body {
+			background-image: url(pola.png);
+		}
+		.kotak1{
+			width: 300px;
+			height: 300px;
+			top: 100px;
+			background-color: green;
+			opacity: .7;
+			/*0.7  artinya 0,7 (value dimula dari angka 0 samapai 1*/
+			 position: relative;
+
+		}
+
+		/*elemen child nya akan tetap transparan,karena elemen childnya mewarisi property dari elemen parentnya*/
+		.kotak2 {
+			width: 100px;
+			height: 100px;
+			background-color: salmon;
+
+			/*elemen child tidak bernila sepenuh nya (0 samapai 1 ),dia mengikuti value transparansi parentnya*/
+			opacity: .5;
+			position: absolute;
+			top: -50px;
+			right: -50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="kotak1">
+		<div class="kotak2"></div>
+	</div>
+
+	<!-- agar elemen parent dan child dapat dipisahkan transparansi nya ,harus menggunakan transparansi warna (RGBA & HSLA) -->
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+/*penggunaan box-sizing agar kotak tidak beruba-ubah ukuran jika dikasih properti (margin-border-padding)*/
+.group {
+	width: 600px;
+	margin: 10px auto;
+	
+	
+
+	
+	}
+	
+
+.kotak1 {
+
+	color: green;
+	background-color: black;
+
+	padding: 10px;
+	border: 3px solid red;
+}
+
+.kotak2 {
+	
+	background-color: blue;
+	
+	padding: 100px;
+	border: 30px double red;
+}

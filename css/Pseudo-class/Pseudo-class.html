@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS Psudo-class</title>
+	<!-- pseudo-class adalah kelas semu yang dimiliki oleh elemen html,yang membuat kita untuk dapat mendifinisikan style"pada keadaan tertentu"-->
+
+	<link rel="stylesheet" href="style.css">
+
+	<!--  -->
+</head>
+<body>
+	<!-- pseudo-class untuk link 
+	1. :link
+	 		untuk style default pada sebuah link
+	2. :hover
+			untu style ketika kursor mouse berada diatas sebuah link/elemen
+	3. :active
+			untuk style ketika sebuah link diklik
+	4. :visited
+			untuk style ketika sebuah link sudah pernah dikunjugi sebelumnya (menggunakan browser yg sama-->
+ 	 
+ 	 <a class="link" href="https://web.whatsapp.com/">ini adalah link</a>
+
+ 	 <!-- pseudo-class yang berhubungan dengan posisi elemen
+ 	 		(berlaku jika elemen html yg dituju berada didalam tag html yg lainnya)
+
+ 	 1. :first-child
+ 	 		untuk memilih elemen pertama dari sebuah parent (elemen pembungkus)
+ 	 2. :last-child
+ 	 		untuk memilih elemen terakhir dai sebuah parent (elemen pembungkus)
+	3.  :nth-child()
+			untuk memilih elemen ke-n dari sebuah parent
+		valunya = a. bisa langsung angka yg dituju (2)
+				  b. bilangan kelipatan (3n)
+				  c. angka ganjil (odd)
+				  d. angka genap (even)
+	-->
+
+ 	<ul>
+ 		<li><a href="#">link 1</a></li>
+ 		<li><a href="#">link 2</a></li>
+ 		<li><a href="#">link 3</a></li>
+ 		<li><a href="#">link 5</a></li>
+ 		<li><a href="#">link 6</a></li>
+ 		<li><a href="#">link 7</a></li>
+ 		<li><a href="#">link 8</a></li>
+ 		<li><a href="#">link 9</a></li>
+ 		<li><a href="#">link 10</a></li>
+ 	</ul>
+
+ 	<!-- pseudo-class untuk elemen yang tidak berada pada elemen pembungkus lainnya
+ 		1. :first-of-type
+ 				memilih elemen pertama dari sebuah jenis sebuah/paragraf/link
+ 		2. last-of-type
+ 				memilih elemen terakhir dari sebuah jenis sebuah paragraf/link-->
+
+ 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+ 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+ 	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+ 	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+ 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+ 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+ 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+ 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+ 	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+ 	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+ 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+ 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+ 	</p>
+
+ 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+ 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+ 	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+ 	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+ 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+ 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+</body>
+</html>

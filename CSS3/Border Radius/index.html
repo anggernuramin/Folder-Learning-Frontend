@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS3 BORDER RADIUS</title>
+	<!-- Adalah property css3 yg fungsinya membuat kotak yg kita punya ujungnya menjadi tumpul -->
+	<style>
+		
+		.kotak {
+			width: 100px;
+			height: 100px;
+			float: left;
+			margin: 20px;
+		}
+
+		.kotak1 {
+			border: 5px grey solid;
+			border-radius: 8px;
+		}
+
+		.kotak2 {
+			border: 5px red solid;
+			border-top-left-radius: 40px;
+			border-bottom-right-radius: 40px;
+		}
+
+		.kotak3 {
+			/*untuk membuat linkaran penuh 
+			value pada border radius setengah dari lebar dan tingginya*/
+			border: 5px darkgreen solid;
+			border-radius: 100%;
+		}
+		.kotak4 {
+			border: 5px darkblue solid;
+			/*searah jarum jam*/
+			border-radius: 100px 100px 0 0;
+			/*height nya dikurangi untuk memperoleh bentuk setengah linkgkaran*/
+			height: 50px;
+		}
+
+		.kotak5 {
+			margin-top: 80px;
+			border: 5px blue solid;
+			height: 50px;
+			border-bottom-left-radius: 100px;
+			border-bottom-right-radius: 100px;
+		}
+
+		.kotak6 {
+			border: 5px darkgoldenrod solid;
+			border-radius: 10px 100px 100px 10px;
+		}
+
+		.clear {
+			clear: left;
+		}
+
+		/*css memasukkan background img pada elemen html*/
+		.bg {
+			font-size: 30px;
+			color: white;
+			text-align: center;
+
+			/*agar tulisa berada ditengah konten,maka line-height-nya sama dengan height elemen*/
+			line-height: 300px;
+
+			width: 300px;
+			height: 300px;
+			border-radius: 50px 10px 150px 150px;
+			background-image: url(foto.JPG);
+			background-size: cover;
+			background-position: -32px 0;
+		}
+
+ 		/*memasukkan img (elemen html) pada sebuah object*/
+ 		.foto {
+ 			width: 300px;
+ 			height: 300px;
+ 			background-color: salmon;
+ 			margin-top: 10px;
+ 			border-radius: 150px;
+
+ 			/*agar elemen menyembunyikan jika ada elemen yg keluar*/
+ 			overflow: hidden;
+
+
+ 		}
+
+ 		.foto img {
+ 			/*agar masuk pada elemen parentnya maka ukuran lebar dan tingginya harus sama*/
+ 			width: 300px;
+ 			height: 300px;
+ 		}
+	</style>
+</head>
+<body>
+	<!-- artinya terdapat dua class 
+		yaitu klas .kotak dan .kotak1 dst -->
+	<div class="kotak kotak1"></div>
+	<div class="kotak kotak2"></div>
+	<div class="kotak kotak3"></div>
+	<div class="kotak kotak4"></div>
+	<div class="kotak kotak5"></div>
+	<div class="kotak kotak6"></div>
+	<div class="clear"></div>
+
+	<!-- memasukkan background image css pada elemen html,OTOMATIS FOTO AKAN BERADA DIBALIK BORDER RADIUSNYA -->
+	<div class="bg">Family Image</div>
+
+	<!-- jika memasukkan elemen img pada html,gambar akan keluar dari elemen parentnya -->
+	<div class="foto">
+		<img src="foto.JPG">
+	</div>
+</body>
+</html>

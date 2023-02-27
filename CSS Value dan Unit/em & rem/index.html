@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EM & REM</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- EM DAN REM  adalah satuan pada css yang mempunyai sifat relativ
+      ukuran default font-size padaa css adalah 16px;
+      1. EM
+        Digunakan untuk memberikan ukuran pada relativ terhadap ukuran font paretnya
+
+        Satuan EM akan fleksibel jika digunakan untuk mengatur elemen padding,margin,dll,
+        KARENA
+        A. ukuran EM jika digunakan untuk mengatur padding,margin.
+          dia tdk akan mencari font-size pada elemen parentnya,melainkan akan 
+          mencari elemen yg bersangkutan yg diberi padding itu sendiri
+        B. Akan relativ dengan ukuran font-sizenya
+        C. Jika margin ukurannya tidak ingin relative terhadap elemen yg bersangkutan maka gunakan satuan REM
+      
+      2. REM
+          Satuan REM tida akan terpengaruh dengan element parentnya,
+        REM akan bisa diakses jika pada tag <html>/:root{} diberika value
+        GUNAKAN SATUAN REM UNTUK MENGATUR UKURAN FONT-->
+</head>
+
+<body>
+  <div class="container">
+    <div class="penjelasan">
+      <h1>
+        TYPOGRAPHY
+      </h1>
+      <p>
+        TYPOGRAPHY adalah pengetahuan atau skill yang harus dimiliki oleh desainer atau front end
+        developer,karena akana sangan berguna untuk mengatur tata letak atau jenis font yang akan digunakan
+      </p>
+    </div>
+    <div class="typography">
+      <div class="em">
+        <h2>em</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error incidunt molestiae reiciendis ipsam officia
+          eveniet totam, impedit itaque quo. Unde dicta non facilis possimus reprehenderit commodi ipsam eos, voluptas
+          odit.
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime, aut. Voluptates eum quis exercitationem
+          cumque tenetur quaerat nam, fuga atque eligendi doloribus dicta! Eius ipsam ullam numquam ex dicta! Ea?
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet unde consequuntur laborum corporis
+          accusantium suscipit eius sed necessitatibus voluptate laboriosam, architecto distinctio non explicabo
+          dolores obcaecati ex sapiente. Facere, doloremque?
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde hic veritatis nulla veniam neque vero
+          similique, officiis vitae nihil, fuga officia sunt nobis tempora perspiciatis aliquam aut dignissimos maxime
+          reiciendis?
+        </p>
+        <div class="btn btn1">clickme</div>
+        <div class="btn btn2">clickme</div>
+        <div class="btn btn3">clickme</div>
+
+      </div>
+      <div class="rem">
+        <h2>rem</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem soluta eaque quas, quos
+          omnis sequi modi obcaecati officia laborum architecto dicta corrupti ipsa voluptatem ullam dignissimos
+          itaque consequuntur ut?
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quibusdam enim cupiditate animi
+          voluptatibus, vel nihil dolores eveniet porro architecto laborum earum nulla fuga deserunt dolore labore
+          placeat eaque quae.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolores vero possimus praesentium culpa,
+          atque nemo necessitatibus amet, minus dicta ducimus! Sequi voluptas ratione debitis? Officia fugit sed porro
+          totam?
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste ducimus sequi doloremque. Odio odit ex amet
+          consequatur commodi dolor praesentium tempora, magni ipsa sapiente nihil architecto delectus laudantium non
+          quam.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

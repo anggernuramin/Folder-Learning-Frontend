@@ -1,0 +1,82 @@
+	/*selector dengan menggunakan tag html*/
+h1 {
+	color: green;
+	font-family: georgia;
+	text-transform: capitalize;
+}
+
+/*selector dengan operasi pada css(separator)*/
+/*separator koma(,) artinya dan*/
+
+h2, h3 {
+	color: orangered;
+}
+
+h3 {
+	text-align: center;
+	font-size: 40px;
+	letter-spacing: 4px;
+}
+
+/*separator spasi ( ) artinya didalam,digunakan jika tag html berada pada tag yang spesifik*/
+ul li a{
+	font-family: arial;
+	color: #999999;
+}
+
+ol li a{
+	color: royalblue;
+}
+
+/*selector khusus (selector yang dibuat sendiri)*/
+/*menggunaan selector id,pemanggilan pada css menggunakan tanda kres(#)*/
+#paragraf1 {
+	color: orange;
+	text-align: justify;
+	line-height: 2em;
+	text-indent: 5em;
+}
+
+/*selector menggunakan class,pemaggilan pada css menggunakan tanda titik(.)*/
+.paragraf2 {
+	text-transform: lowercase;
+	color: purple;
+	text-indent: 5em;
+	text-align: center;
+}
+
+
+/*selector class dengan dua nama
+artinya nama class yang sama akan sama dengan isi style pada css
+*/
+.cetak-tebal {
+	font-weight: bold;
+	font-family: arial;
+	text-decoration: none;
+}
+
+/*artinya css akan mencari paragraf yang ada class cetak tebal*/
+p.cetak-tebal {
+	color: gold;
+}
+
+/*table tr td {
+	color: green;
+}
+*/
+
+
+.baris1 {
+	color: red;
+}
+
+.baris2 {
+	color: green;
+}
+
+.baris3 {
+	color: blue;
+
+}
+
+

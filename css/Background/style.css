@@ -1,0 +1,34 @@
+body{
+	/*background image = berguna untuk memberi warna pada background
+	warna dapat berupa color,hexadecimal, rgb()*/
+	background-color: white;
+
+	background-image: url(gambar/gradasi.jpg);
+	background-repeat: repeat-x;
+
+}
+
+h1	{
+	font-family: georgia;
+	font-style: italic;
+	font-size: 50px;
+	text-align: center;
+	text-transform: capitalize;
+
+	
+}
+
+
+
+p {
+	color: darkblue;
+	background-image: url(gambar/kopi.jpg);
+	
+	/*background-repeat = berfungsi untuk mengulang sebuah background*/
+	background-repeat: no-repeat;
+
+	/*background-position=digunakan untuk mengatur posisi sebuah background
+	background position dapat diakses jika background-repeat=no-repeat*/
+	background-position: bottom;
+
+}

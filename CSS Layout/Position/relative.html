@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS POSITION RELATIVE</title>
+	<!-- CSS POSITION
+			Digunakan untuk melakukan tata letak dari elemen-elemen html yg kita buat agar sesuai dengan keinginan kita
+			atau 
+			mengatur kotak/sebuah elemen tanpa mempengaruhi kotak setelahnya/disekitarnya
+		value pada css position
+		1. position static (property default) static
+
+		value non static (seolah-olah berada didimensi yg berbeda dari elemen yg lainnya)
+		1. position: relative;
+			a. ketika kita menggerakkan elemen dengan posisi relative (menggunakan property top,left,bottom,right) ruang yang ditempati oleh elemen tersebut masih ada
+
+			b. ketika kita menggerakkan elemen dengan posisi relative,elemen akan bergerak relativ terhadap posisi semulanya
+
+			c. jika kita memberi property top: 0; dan left:0; 
+				maka elemen tidak berubah posisinya
+
+			d. posisition relative biasa digunakan untuk membuat elemen maju satu dimensi/keluar dari flow normalnya -->
+
+			<style>
+
+				/*agar ketika menggeser elemen tidak mempengaruhi elemen lainnya harus menggunakan properti position. jangan menggunakan properti margin*/
+
+				.satu {
+					width: 200px;
+					height: 200px;
+					background-color: darkgrey;
+
+					/*menggunakan properti position: relative;
+					maka elemen tersebuat menjadi satu dimensi dengan elemen lainnya,dan dapat menggunakan value (left,right,top,bottom) tanpa membuat elemen sebelumnya mengikuti*/
+					position: relative;
+					top: 0;
+					right: 0;
+
+				}
+
+				.dua {
+					width: 200px;
+					height: 200px;
+					background-color: salmon;
+
+					/*sebagai elemen pemacu*/
+					position: relative;
+					top: 0;
+					left: 0;
+
+				}
+				.tiga {
+					width: 200px;
+					height: 200px;
+					background-color: darkblue;
+					position: relative;
+					bottom: 50px;
+					left: 200px;
+					right: 20px;
+				}
+			</style>
+</head>
+<body>
+	<div class="satu"></div>
+	<div class="dua"></div>
+	<div class="tiga"></div>
+
+</body>
+</html>

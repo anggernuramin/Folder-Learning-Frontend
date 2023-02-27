@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS BOX-SHADOW</title>
+	<!-- Box Shadow
+			Berguna untuk memberikan bayangan pada elemen yg telah kita buat 
+		PEMBERIAN WARNA HARUS MENGGUNAKAN RGBA () AGAR ADA EFEK TRANSPARANSI
+	 -->
+	 <style>
+	 	/*property default*/
+	 	body {
+	 		height: 12000px;
+	 		background-color: #eaeaea;
+	 	}
+
+	 	.kotak {
+	 		width: 200px;
+	 		height: 200px;
+	 		float: left;
+	 		margin: 30px;
+	 	}
+	 	.satu {
+	 		background-color: darkgreen;
+
+	 		/*value nya 
+	 		<x-offset> mengatur bayangan secara horizontal
+	 		<y-offset> mengatur bayangan secara vertikal
+	 		<blur> tingkat blur pada elemen
+	 		<color> warna (rgba) hsla)
+	 		*/
+	 		box-shadow: 5px 5px 5px black;
+	 	}
+
+	 	/*PROPERTY OPSIONAL*/
+	 	/*1. SPREAD /size
+	 			Digunakan untuk memperbesar ukuran bayangannya (bisa dibuat semacam border)*/
+	 	.dua {
+	 		background-color: darkgrey;
+	 		/* valuenya ditulis setelah value blur (no 4 dari kiri) */
+	 		box-shadow: 5px 5px 20px 5px rgb(255,0,0,.70);
+
+	 	}
+	 	/*2. Inset (sisipan didalam)
+	 		Digunakan untuk memberi bayangan didalam kotak/didalam elemennya*/
+	 	.tiga{
+	 		background-color: darkblue;
+	 		/*jika nilai (-)
+	 		1. pada sumbu <x-offset> maka akan bergerak ke kiri
+	 		2. pada sumbu <y-offset> maka aka bergerak ke bawah
+	 		3.jika SPREAD bernilai negatif maka akan berada dibelakang elemen*/
+
+	 		box-shadow: inset -10px 10px 10px 10px rgba(0, 255, 0, .7);
+
+	 	}
+
+	 	/*MULTIPLE SHADOW 
+	 		Kita bisa memberikan lebih dari satu bayangan*/
+	 	.empat {
+	 		background-color: darkorange;
+	 		/*dengan dipisahkan tanda koma*/
+	 		box-shadow: 5px 5px 3px 5px darkmagenta , -5px -5px 3px darkcyan;
+	 	}
+	 	.lima {
+	 		background-color: darkred;
+	 		box-shadow: 0 0 0 5px seagreen,0 0 0 10px grey, 0 0 0 15px blue, 0 0 0 20px gold, 0 0 0 25px red;
+	 		border-radius: 100px;
+	 		margin-right: 50px;
+
+	 	}
+
+	 	.cf:before,
+		.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+	}
+
+	.cf:after {
+    clear: both;
+	}
+
+	/**
+	 * For IE 6/7 only
+	 * Include this rule to trigger hasLayout and contain floats.
+	 */
+	.cf {
+	    *zoom: 1;
+	}
+
+	.contoh1 {
+		width: 300px;
+		height: 300px;
+		background-color: darkblue;
+		box-shadow: 0 45px 5px -40px rgba(0, 0, 0, 0.7);
+		border-radius: 30px;
+		position: relative;
+		top: 0px;
+		transition: .2s;
+
+	}
+
+	.contoh1:hover {
+		box-shadow: 0 50px 15px -35px rgba(0, 0, 0, .7);
+		top: -7px;
+		
+
+	}
+
+	.contoh2 {
+		margin: 10px auto;
+		font-weight: bold;
+		text-align: center;
+		font-size: 30px;
+		width: 400px;
+		height: 400px;
+		line-height: 400px;
+		background-color: white;
+		border: 1px solid rgba(59, 58, 58, 0.46);
+		border-radius: 20px;
+		box-shadow: -10px 5px 10px grey;
+		position: relative;
+		top: 0px;
+		transition: 0.3s;
+
+	}
+
+	.contoh2:hover {
+		top: -5px;
+	}
+
+	.contoh3 {
+		margin: 10px auto;
+		font-weight: bold;
+		text-align: center;
+		font-size: 30px;
+		width: 400px;
+		height: 400px;
+		line-height: 400px;
+		background-color: white;
+		border: 1px solid rgba(59, 58, 58, 0.46);
+		border-radius: 20px;
+		box-shadow: -10px 5px 10px grey;
+		position: relative;
+		top: 0px;
+		transition: 0.3s;
+
+	}
+
+	.contoh3:hover {
+		top: -5px;
+	}
+
+
+
+	 </style>
+</head>
+<body>
+	<div class="clear cf">
+		<div class="kotak satu"></div>
+		<div class="kotak dua"></div>
+		<div class="kotak tiga"></div>
+		<div class="kotak empat"></div>
+		<div class="kotak lima"></div>
+	</div>
+
+	<div class="contoh1"></div>
+	<div class="contoh2">HELLO WORLD</div>
+	<div class="contoh3">SAY HELLO</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+/*setiap menambahkan border maka ukuran kotak akan berganti*/
+
+.border h1{
+	text-align: center;
+	font-size: 32px;
+	margin-top: 10px;
+	font-family: georgia serif;
+	text-transform: capitalize;
+}
+
+.border-solid {
+	width: 300px;
+	color: white;
+	background-color: black;
+	padding: 10px;
+	border-top: 5px solid red;
+	margin: 30px auto;
+}
+
+.border-dotted {
+	width: 300px;
+	background-color: grey;
+	border-right: 10px dotted black;
+	margin: 30px auto;
+}
+
+.border-dashed {
+	width: 300px;
+	background-color: lightblue;
+	border-bottom: 15px dashed coral;
+	margin: 30px auto;
+}
+
+.border-double {
+	width: 300px;
+	background-color: yellow;
+	border-left: 20px double green;
+	margin: 30px auto;
+}

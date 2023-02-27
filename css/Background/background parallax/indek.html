@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dummy Website Parallax</title>
+	<style>
+		/*clear css*/
+		/*selector universal
+			html didalam body */
+		*,html,body {
+			margin: 0;
+			padding: ;
+		}
+		.parallax {
+			width: 100%;
+			height: 100vh;
+			background-color: red;
+		}
+			
+
+		}
+
+		.side1 {
+			background-image: url(bg1.jpg);
+			background-size: cover;
+
+			/*digunakan agar background saat discrol posisi gambarnya fixed (tidak akan bergerak)*/
+			background-attachment: fixed;
+		}
+
+		.side2 {
+			background-image: url(bg2.jpg);
+			background-size: cover;
+			background-attachment: fixed;
+
+		}
+
+		.side3 {
+			background-image: url(bg3.jpg);
+			background-size: cover;
+			background-attachment: fixed;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="parallax side1">
+		<p class="psatu">hello </p>
+		<p class="pdua">my name is angger</p>
+	</div>
+	<div class="parallax side2"></div>
+	<div class="parallax side3"></div>
+
+</body>
+</html>

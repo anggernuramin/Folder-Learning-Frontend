@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLEX BOX</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- FLEXBOX 
+        Digunakan untuk menyusun,mensejajarkan jarak antar item didalam sebuah container,
+      meskipun ukurannya dinamis atau bahkan kita tidak tau,hanya bisa mengatur 1dimensi
+    pada saat tertentu antar baris atau kolom,TIDA BISA MENGATUR KEDUANYA SEKALIGUS 
+  1. PROPERTY pada CONTAINER
+    A. display: flex;
+        Membuat sebuah elemen parent menjadi flex box,dan membuat elemen-elemen didalamnya bisa berprilau flex juga
+    B. flex-direction
+        Digunakan untuk mengatur arah dari urutan elemen-elemen didalamnya/mengatur arag itemsnya
+      VALUENYA
+      a. row (dari kiri ke kanan)
+      b. row-reverse (dari kanan ke kiri)
+      c. column (turun kebawah.dari atas ke bawah)
+      d. column reverse (turun kebawah.dari bawah ke atas)
+    
+    C. flex-wrap
+      Secara default,semua items didalam container akan berada pd satu baris meskipun ukurannya sudah tdk cukup,
+    WRAP memungkinkan untuk memindahkan items ke baris dibawahnya
+    VALUENYA
+      a. nowrap.
+      b. wrap
+      c. wrap reverse (urutannya dibalik,dimulai dari urutan yang terakhir)
+    
+    D. justify-content (horizontal)
+        Digunakan untuk mengatur jarak antar items(jarak elemen-elemen didalamnya)
+      VALUENYA
+      a. flex-start (rata kiri)
+      b. flex-end (rata kanan)
+      c. center
+      d. space-between
+          Elemen pertama akan rata kiri.Elemen terakhir akan rata kanan,sisanya aka dibagi spacenya
+      e. space-around
+          jaraknya setegah kiri dan setengahnya ada dikanan
+      f. space-evenly
+          jaraknya semua akan secara otomatis akan sama
+    
+    E. align-items
+      Mengatur penjajaran secara vertikal
+    a. flex-start (rata atas)
+    b. flex-end (rata bawah)
+    c.center
+    d. stretch (elemen akan tertarik memenuhu tinggi dari containernya)
+    e. baseline (sesuai denga garis dasar dari fontnya)
+
+    F. align-content
+        Fungsinya sama dengan align-items TETAPI digunakan untuk konten yang isinya lebihdari satu baris
+        VALUENYA SAMA DENGAN align-items
+
+
+    2.PROPERTY pada ITEMS
+    A.order
+      Untuk mengatur urutan dari elemen-elemen items/menukar posisinya
+      Secara default,semua elemen ordernya 0,jika valuenya diberi nilai ebih dari 0 maka (berada paling kanan)
+
+    B. flex-grow
+      Untuk mengatur ukuran dari itemsya (mengatur ukuran secara horizontal),ukurannya sama dan memenuhi containernya
+    
+    C. align-self
+      Mengatur perilaku penjajaran sebuah items (HANYA BERLAKU UNTUK SATU ITEMS) secara vertika
+    VALUENYA 
+      a. auto {ditengah}
+      b. flex-start
+      c. flex-end
+      d. center
+      e. baseline
+      f. stretch-->
+</head>
+
+<body>
+  <!-- latihan 1 | membuat layout kolom  -->
+  <div class="container-satu">
+    <div class="konten">
+      <h1>Judul Artikel</h1>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae totam sint debitis voluptatibus quis rem ipsam
+        impedit? Nam fugit facilis beatae blanditiis aliquam molestiae quas!</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos vero odio corporis. Magni eius obcaecati
+        dolore, necessitatibus rem provident odit minus culpa vel tenetur! Ducimus cum, reiciendis debitis mollitia
+        cupiditate quasi officiis repudiandae repellat repellendus, id illo animi. Rem aut provident id pariatur
+        repudiandae earum maxime minima quia at totam.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel voluptatum at sunt delectus minus praesentium,
+        velit ipsum nihil.</p>
+    </div>
+    <div class="sidebar-satu">
+      <h2>Sidebar satu</h2>
+      <ul>
+        <li><a href="">link 1</a></li>
+        <li><a href="">link 2</a></li>
+        <li><a href="">link 3</a></li>
+        <li><a href="">link 4</a></li>
+        <li><a href="">link 5</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-dua">
+      <h2>Sidebar dua</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio perspiciatis quisquam inventore laborum ratione
+        voluptates!</p>
+    </div>
+  </div>
+  <!-- akhir layout kolom -->
+
+  <!-- latihan 2 | card layanan service -->
+  <div class="container-dua">
+    <div class="layanan satu">
+      <h3>Layanan Satu</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam blanditiis dicta harum.</p>
+
+    </div>
+    <div class="layanan dua">
+      <h3>Layanan Dua</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores molestias, ducimus facilis odit quod nihil.
+      </p>
+    </div>
+    <div class="layanan tiga">
+      <h3>Layanan Tiga</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, corrupti quas consectetur est maxime quia
+        asperiores ratione voluptas?</p>
+    </div>
+  </div>
+
+  <!-- latihan 3 | Card product -->
+  <div class="container-tiga">
+    <div class="card">
+      <header>
+        <!-- isinya gambar -->
+      </header>
+      <div class="content">
+        <div class="harga">
+          <span>RP.150000</span>
+          <span>Terjual 15.00rb</span>
+        </div>
+        <div class="btn"> <button>Buy Now!</button></div>
+
+      </div>
+    </div>
+    <div class="card">
+      <header>
+        <!-- isinya gambar -->
+      </header>
+      <div class="content">
+        <div class="harga">
+          <span>RP.150000</span>
+          <span>Terjual 15.00rb</span>
+        </div>
+        <div class="btn"> <button>Buy Now!</button></div>
+
+      </div>
+    </div>
+    <div class="card">
+      <header>
+        <!-- isinya gambar -->
+      </header>
+      <div class="content">
+        <div class="harga">
+          <span>RP.150000</span>
+          <span>Terjual 15.00rb</span>
+        </div>
+        <div class="btn"> <button>Buy Now!</button></div>
+
+      </div>
+    </div>
+    <div class="card">
+      <header>
+        <!-- isinya gambar -->
+      </header>
+      <div class="content">
+        <div class="harga">
+          <span>RP.150000</span>
+          <span>Terjual 15.00rb</span>
+        </div>
+        <div class="btn"> <button>Buy Now!</button></div>
+
+      </div>
+    </div>
+    <div class="card">
+      <header>
+        <!-- isinya gambar -->
+      </header>
+      <div class="content">
+        <div class="harga">
+          <span>RP.150000</span>
+          <span>Terjual 15.00rb</span>
+        </div>
+        <div class="btn"> <button>Buy Now!</button></div>
+
+      </div>
+    </div>
+    <div class="card">
+      <header>
+        <!-- isinya gambar -->
+      </header>
+      <div class="content">
+        <div class="harga">
+          <span>RP.150000</span>
+          <span>Terjual 15.00rb</span>
+        </div>
+        <div class="btn"> <button>Buy Now!</button></div>
+
+      </div>
+    </div>
+    <div class="card">
+      <header>
+        <!-- isinya gambar -->
+      </header>
+      <div class="content">
+        <div class="harga">
+          <span>RP.150000</span>
+          <span>Terjual 15.00rb</span>
+        </div>
+        <div class="btn"> <button>Buy Now!</button></div>
+
+      </div>
+    </div>
+    <div class="card">
+      <header>
+        <!-- isinya gambar -->
+      </header>
+      <div class="content">
+        <div class="harga">
+          <span>RP.150000</span>
+          <span>Terjual 15.00rb</span>
+        </div>
+        <div class="btn"> <button>Buy Now!</button></div>
+
+      </div>
+    </div>
+    <div class="card">
+      <header>
+        <!-- isinya gambar -->
+      </header>
+      <div class="content">
+        <div class="harga">
+          <span>RP.150000</span>
+          <span>Terjual 15.00rb</span>
+        </div>
+        <div class="btn"> <button>Buy Now!</button></div>
+
+      </div>
+    </div>
+    <div class="card">
+      <header>
+        <!-- isinya gambar -->
+      </header>
+      <div class="content">
+        <div class="harga">
+          <span>RP.150000</span>
+          <span>Terjual 15.00rb</span>
+        </div>
+        <div class="btn"> <button>Buy Now!</button></div>
+
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS FILTER</title>
+	<!-- CSS FILTER
+			Property css3 yg digunakan untuk memeberi efek fisual pada GAMBAR,BACKGROUND, dan BORDER 
+		Value pada Prperty FILTER
+			1. blur()
+				untuk mengatur tingkat kebluran suatu objek
+
+			2. brightness () defaulnya value 100% / 1px
+				untuk mengatur gelap/terangnya suatu gambar
+			3. contrast () defaulnya value 100% / 1px
+				untuk mengatur contras suatu gambar
+			4. saturate ()
+				jika semakin besar valuenya maka semain besar banyak warnanya,
+			   jika valuenya kecil maka warna akan berkurang 
+
+			5. grayscale ()	defaultnya 0%/0px
+				untuk merubah gambar menjadi abu-abu
+			6. sepia ()	defaultnya 0%/0px
+				untuk merubah gambar menjadi warna kuning
+
+			7. hue-rotate (deg) valunye deg (degree) desimal
+				untuk merotasi warna/memutar warna pada suatu gambar
+
+			8. ivert ()
+				membuat foto menjadi negative film
+
+			9. opacity ()
+				mengatur kecerahan
+			10. drop-shadow (x-offset y-offset blur color) sama seperti box-shadow
+				charateristic drop-shadow
+				- akan otomatis memberi warna/shadow pada elemen
+				- jika suatu box (elemen pembungkus).didalamnya ada elemen transparan ,maka yang akan diberi warna adalah object didalamnya bukan boxnya
+		-->
+		<style>
+			body {
+				text-align: center;
+			}
+
+			img {
+				border-radius: 20px;
+				filter: blur(5px) grayscale(1);
+				width: 300px;
+				height: 400px;
+				transition: .7s;
+			}
+
+			img:hover {
+				filter: blur(0px) grayscale(1);
+			}
+			h1 {
+				filter: drop-shadow(5px 5px 5px black);
+			}
+			h1:hover {
+				color: rgb(255, 0, 0);
+			}
+			
+		</style>
+
+</head>
+<body>
+	<img src="foto1.jpg" alt="people smile">
+	<h1>ANGGER NUR AMIN</h1>
+</body>
+</html>

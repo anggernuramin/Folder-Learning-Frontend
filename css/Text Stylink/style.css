@@ -1,0 +1,26 @@
+h1 {
+	/*property color= uzztzzuzk membuat teks berwarna
+		valunya (red,#111111,rgb(123,23,12))*/
+	color: #999999;
+
+	text-align: center;
+
+
+	/*letter spacing= untuk memberi jarak pada setiap huruf*/
+	letter-spacing: 3px;
+
+
+	/*text transform= mengubah gaya teks pada textz*/
+	text-transform: uppercase;
+}
+
+p{
+	/*word spacing=berfungsi untuk memberi jarak pada setiap huruf*/
+	word-spacing: 2px;
+
+	/*text indent= berfungsi untuk mengatur paragraf pada posisi awal*/
+	 text-indent: 50px;
+
+	/*text align = untuk mengatur posisi sebuah text*/
+	text-align: justify;
+}

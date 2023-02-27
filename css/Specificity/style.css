@@ -1,0 +1,49 @@
+/*CSS SPESIFICITY*/
+/*	Setiap deklarasi css(selector) memiliki berat yang berbeda,
+	berat tersebut menentukan seberapa spesifik sebuah elemen dapat dipilih oleh selector
+	*/
+
+/*perhitungan css spesificity
+    inline	 id	   class	  element html	
+	  0	     0	     0		      0
+ */
+
+/*maka yang akan diakses adalah selector yg paling terahir,karena overwrite(menimpa)*/
+p{
+	color red
+}
+p {
+	color: green;
+}
+
+
+
+/*cara baca : css carikan saya li yang ada didalam ul yang mempunyai id(menu-sarapan)*/
+ul#menu-sarapan li {
+	color: green;
+}
+/*perhitungan css spesificity
+    inline	 id	   class	  element html	
+	  0	     1	     0		      2
+ */
+
+.favorit {
+	color: red;
+}
+/*perhitungan css spesificity
+    inline	 id	   class	  element html	
+	  0	     0	     1		      0
+
+	  maka yg akan diakses selector ul#menu-sarapan li (karena mempunya beban yg lebih berat)
+ */
+
+
+/*agar class favorit bisa diakses selector harus diberatkan dengan menambahkan*/
+
+ul#menu-sarapan li.favorit{
+	color: red;
+}
+/*perhitungan css spesificity
+    inline	 id	   class	  element html	
+	  0	     1	     1		      2
+ */

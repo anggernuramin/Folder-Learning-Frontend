@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS TRANSFORM (perubahan )</title>
+	<!-- CSS TRANSFORM ADALAH
+			Property yang memungkinkan kita dapat memanipulasi efek visual
+		Dapat berupa 2D DAN 3D
+	fUNGSI PADA TRANSFORM
+	1. scale (angka)
+		Digunakan untuk memperbesar atau memperkecil elemen yg kita punya
+			a. scaleX (angka)
+				Memperbesar atau memperkecil secara horizontal (kir-kanan)
+			b. scaleY (angka)
+			 	Memperbesar atau memperkevil secara vertikal (atas- bawah)
+
+		Dapat digunakan secara bersamaan 
+		 	transform : (2 , 0.5) dimulai dari titil horizontal
+
+		VALUENYA = ANGKA KELIPATAN DARI NILAI AWAL YG SUDAH DITENTUKAN
+
+	2. Rotate (deg) degree/derajat
+		Digunakan untuk merotasi sebuah elemen
+		misal : 
+			transform: rotate (-45deg)
+			a. rotateX (deg)
+				Merotasi secara horizontal (seperti memutar kartu)
+			(SUMBU BERADA PADA KOTAKNYA)
+			b. rotateY (deg)
+				Merotasi secara vertikal
+	3. skew (deg)
+		Digunakan untuk membuat elemen menjadi miring
+		 	a. skewX (deg ) = default saat menggunakan properti skew ini
+				membuat elemen miring ke kiri
+			b. skewY ()
+
+
+	4. translate(px)
+		Mengubah posisi dari tempat awal/elemen
+			a translateX (px)
+				mengubah posisi elemen secara horizontal (kanan-kiri)
+			b. translateY (px)
+				mengubah posisi elemen secara vertikal (atas-bawah)
+
+	SEMUA POSISI TRANSFORM DAPAT DIGUNAKAN SECARA BERSAMAAN
+	
+	Shorthand= 
+		misal:
+		 		transfrm: scale (2px) rotate (180deg)-->
+		<style>
+			.container {
+				margin: 20px auto;
+				width: 800px;
+				border: 1px solid black;
+				background-image: linear-gradient( to bottom left,red,purple,blue);
+			}
+			.scale {
+				width: 200px;
+				height: 200px;
+				background-color: darkblue;
+
+				/*Merubah ukuran suatu elemen
+					Elemen didalmnya akan stretch (tertarik)
+					Scale akan keluar dari parentnya
+					*/
+				transform: scaleX(3);
+				color: white;
+			}
+
+			.rotate {
+				margin: 30px auto;
+				width: 10px;
+				height: 100px;
+				background-color: salmon;
+				transition: 1s;
+
+			}
+
+			.container:hover .rotate {
+				/*menggunakan secara bersamaan*/
+				transform: rotate(180deg) rotateX(180deg) rotateY(180deg); 
+			}
+
+			.skew {
+				background-color: skyblue;
+				margin: 30px auto;
+				width: 300px;
+				height: 300px;
+
+				/*skewX   condong kekanan/kekiri
+				  skewY   condong kebawah/keatas
+				*/
+				transform: skewY(20deg);
+			}
+
+			.translate {
+				width: 300px;
+				height: 300px;
+				background-color: gold;
+				margin: 80px auto;
+				transition: 500ms;
+				
+			}
+
+		.translate:hover {
+			transform: translate(50px, 30px);
+			box-shadow: 5px 5px 5px white;
+		}
+
+		.multiple-transform {
+			width: 100px;
+			height: 100px;
+			background-color: white;
+			margin: 30px auto;
+			transition: 500ms;
+
+		}
+
+		.multiple-transform:hover {
+			transform: scale(2)  rotate(360deg) ;
+		}
+		</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="scale">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. 
+			</p>
+		</div>
+
+		<div class="rotate"></div>
+		<div class="skew"></div>
+		<div class="translate"></div>
+		<div class="multiple-transform"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS TRANSITION</title>
+	<!-- CSS TRANSITION
+			Properti transition memungkinkan kita dapat mengubah nilai dari property html SECARA HALUS
+		VALUE PADA TRANSITION
+		PROPERTY WAJIB
+		1.durasi (s/ms(mili second)) 
+			Artinya pada saat kita merubah merubah elemen HTML dari posos awal ke posisi akhir,mau berapa detik ?
+		(simpan property position pada posisi awal)
+
+		PROPERTY OPTIONAL
+		2. [property]
+			 	menentukan property apa saja yg akan dilakukan transisi,bisa lebih dari satu 
+			property atau hanya satu property saja.
+				jika hanya mentransisikan satu elemen saja,maka elemen lainnya aka berubah secara instan tanpa ada efek transisi nya
+			Value pada property  
+			a. all
+					Semua elemen
+			b. <nama property>
+					elemen spesifik yg akan ditransisikan
+			c. none
+					tida ada elemen yang akan ditransisikan
+
+			TIDAK SEMUA ELEMEN CSS BISA DITANSISIKAN
+
+		3. [funsi]
+				Pergerakan apa yang akan dilakukan saat menggunakan property transisi
+			mengatur cepat atau lembatnya suatu gerakan
+		    Value pada fungsi
+		    a. esae (defaultnya)
+		    b. ease-in
+		    	kecepatan awal akan melambat, jika mau ketempat akhir pergerakkan akan lebih cepat
+		    c. ease-out
+
+		    d. ease-in-out
+
+		    e. linier
+
+		    f. cubic-bezier(0,0,0,0)
+		    	saat melakukan pergerakan akan ancang-ancang terlebih dahulu/ jika melakukan pergerakan maka pergerakan awal akan mundur terlebih dahulu
+
+		 4. [delay] (s/ms)
+		 		untuk memberikan waktu/delay (tunggu) sebelum melakukan transisi
+		 	Artinya : menunggu dulu waktu delay yg ditentukan setelah itu aka melakukan transisi sesuai dengan value yang ditentukan di awal
+
+		 -->
+		 <style >
+		 		*, body, html {
+		 		margin: 0;
+		 		padding: 0;
+		 	}
+
+		 	@font-face {
+		 		font-family: 'montserrat_alternatesXLt';
+			    src: url('montserratalternates-extralight-webfont.woff') format('woff');
+			    font-weight: normal;
+			    font-style: normal;
+
+		 	}
+
+		 		.container {
+		 			margin: 30px auto;
+		 			width: 700px;
+		 			border: 3px solid black;
+		 		}
+		 		p {
+		 			font-family: 'montserrat_alternatesXLt';
+		 			text-align: center;
+		 			text-transform: capitalize;
+		 			font-weight: bolder;
+		 			font-size: 20px;
+		 			text-decoration: underline;
+		 			margin: 10px;
+		 		}
+		 		/*value wajin = durasi (s/ms)*/
+		 		.kotak {
+		 			width: 150px;
+		 			height: 150px;
+		 			margin: 20px ;
+		 			text-align: center;
+		 			line-height: 150px;
+		 			color: white;
+		 		}
+
+		 		.kotak1 {
+		 			
+		 			background-color: salmon;
+		 			transition: all 1s ease;
+		 		}
+
+		 		.container:hover .kotak1 {
+		 			margin-left:79%;
+		 			background-image: linear-gradient(to bottom left,red,yellow,salmon,orange,purple,darkblue);
+		 			
+		 		}
+
+		 		.kotak2 {
+		 			
+		 			background-color: black;
+		 			transition: all 1s;
+		 			border-radius: 50%;
+		 			margin-bottom: 100px;
+		 			
+		 		}
+
+		 		.container:hover .kotak2 {
+		 			transform: scale(.8);
+		 			border: 7px solid rgba(49, 48, 48, .46);
+		 			background-image: radial-gradient(circle,black 50%, #fff 50%);
+		 		}
+
+		 		.kotak3 {
+		 			width: 600px;
+		 			margin: 1px auto;
+		 			border: 5px solid black;
+		 			background-color: transparent;
+		 		}
+
+		 		.contoh {
+		 			width: 70px;
+		 			height: 20px;
+		 			margin: 20px ;
+		 			text-align: center;
+		 			line-height: 20px;
+		 			color: white;
+		 			background-color: green;
+
+		 		}
+		 		/*ease*/
+		 		.ease {
+		 			transition: all 2s ease;
+		 		}
+		 		.kotak3:hover .ease{
+		 			transform: translate(500px);
+		 		}
+
+		 		/*esae-in*/
+		 		.ease-in {
+		 			transition: all 2s ease-in;	
+		 		}
+		 		.kotak3:hover .ease-in{
+		 			transform: translate(500px);	
+		 		}
+
+		 		/*ease-out*/
+		 		.ease-out {
+		 			transition: all 2s ease-out;
+		 		}
+		 		.kotak3:hover .ease-out{
+		 			transform: translate(500px);		 			
+		 		}
+
+		 		/*ease-in-out*/
+		 		.ease_in-out {
+		 			transition: all 2s ease-in-out;		 			
+		 		}
+		 		.kotak3:hover .ease_in-out{
+		 			transform: translate(500px);		 			
+		 		}
+
+		 		/*ease linear*/
+		 		.ease-linear {
+		 			transition: all 2s ease-linear;	
+		 		}
+		 		.kotak3:hover .ease-linear{
+		 			transform: translate(500px);	
+		 		}
+
+		 		/*ease cubic-bezier*/
+		 		.ease_cubic-bezier {
+		 			transition: all 1s cubic-bezier(0.42, 0, 0.47, 1.89);
+		 		}
+
+		 		.kotak3:hover .ease_cubic-bezier{
+		 			transform: translate(500px) scale(3);	 
+		 		}
+		 		
+		 		.delay {
+		 			background-color: green;
+		 			border-radius: 50%;
+		 			transition: transform 1s ease-in-out, background-color 1s .5ms ; 
+		 		}
+
+		 		.container:hover .delay {
+		 			transform: rotate(0deg) scale(.5) translate(1000px);
+		 			background-color: gold;
+		 			
+		 		}
+		 </style>
+</head>
+<body>
+	<div class="container">
+			<p>property wajib</p>
+		<div class="kotak kotak1">Durasi (value wajib)</div>
+			<p>property optional </p>
+		<div class="kotak kotak2">Property</div>
+		<div class="kotak3 ">
+			<div class="contoh ease">ease</div>
+			<div class="contoh ease-in">ease-in</div>
+			<div class="contoh ease-out">ease-out</div>
+			<!-- yang sering dipakai adalah fungsi ease-in-out  -->
+			<div class="contoh ease_in-out">ease in-out</div>
+			<div class="contoh ease-linear">ease linear</div>
+			<div class="contoh ease_cubic-bezier">cubic-bezier</div>
+		</div>
+		<div class="kotak delay"></div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+/*penambahan padding dan margin akan merubah ukuran width yg sebelumnya*/
+.parent {
+	color: white;
+	width: 1100px;
+
+	/*jarak atas 30 px ,jarak kiri-kanan auto (berada ditengan parent)*/
+	margin:30px auto;
+	background-color: grey;
+	padding: 20px 40px 10px 20px;
+}
+.child {
+	color: black;
+	font-size: 35px;
+	background-color: yellow;
+
+	/*mengatur area transparan disekitar kotak*/
+	margin: auto;
+	margin-top: 100px ;
+
+	/*mengatur area transparan didalam kotak (diantara conten dan border)*/
+	padding-bottom: 30px;
+	padding-left: 70px;
+	
+}

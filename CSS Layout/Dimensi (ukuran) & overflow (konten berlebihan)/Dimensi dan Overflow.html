@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dimensi dan Overflow CSS</title>
+	<!-- Dimensi pada css berguna untuk mengatur yg kita buat
+		Property pada css hanya memiliki 2 value
+		1. width (untuk mengatur lebar)
+		2. Height (untuk mengatur tinggi) 
+		Satuan/value untuk dimensi width dan height
+		1. px (pixels)
+			Satuan yg nilainya absolute (pasti)
+
+		2. %
+			Satuan yg nilainya relative (relative terhadap element parentnya/elemen pembungkus)
+		3. in,cm,mm,pt,pc
+			Satuan didunia nyata
+	-->
+
+
+	<!-- Overflow 
+			Property css yg akan digunakan untuk elemen yg keluar dari parentmya/isi dari element lebih besar dan panjang dari width dan height yg sudah ditentukan 
+			value dari property overflow
+	1. visible (terlihat) value default overflow
+		kalau ada konten yg keluar dari parentnya,konten tetap akan diperlihatkan
+	2. auto 
+		css akan secara otomatis menambahkan scroll ketika kontrn keluar dari parentnya
+	3. hidden (sembunyi)
+		kontennya yg keluar dari parentnya akan disembunyikan
+	4. scroll
+		akan memunculkan scroll,tetapi kalau kontennya cukup,scroll tetap ditampilkan -->
+
+	<style>
+		h1 {
+			text-transform: uppercase;
+		}
+
+		/*height akan relatif dari konten paragraf2,karena pada paragraf 1 height tidak dikasih ukuran*/
+		.paragraf1 {
+			width: 500px;
+			background-color: grey;
+		}
+
+		/*paragraf 2 widthnya akan relatif/menyesuaikan dari elemen parentnya (yaitu paragraf1)*/
+		.paragraf2 {
+			width: 50%;
+			height: 275px;
+			background-color: green;
+		}
+
+		/*css overflow*/
+		h2	{
+			text-transform: capitalize;
+		}
+		.paragraf3 {
+			text-align: justify;
+			background-color: grey;
+			width: 300px;
+			height: 2 00px;
+			overflow: auto;
+
+		}
+	</style>
+
+
+
+</head>
+<body>
+
+	<!-- contoh css dimensi -->
+	<h1>judul artikel</h1>
+	<div class="paragraf1">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<div class="paragraf2">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+	</div>
+	
+	<!-- contoh css overflow -->
+	<h2>sub judul</h2>
+	<div class="paragraf3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, <hr>consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+	
+
+</body>
+</html>

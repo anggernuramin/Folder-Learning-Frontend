@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS VENDOR PREFIX</title>
+	<!-- Vendor Prefix 
+			Digunakan agar syntax css yg kita buat compatible (sesuai) disemua browser.
+		berikut kata prefix (awalan) untuk support browser
+		1. -webkit- <property css3>
+				untuk chrome,safari,opera versi terdahulu
+
+			Web kit adalah mesin layout yang didesain agar browser dapat merender/merubah halaman web
+		2. -moz-
+				untuk firefox
+		3. -ms-
+				untuk internet explorer
+		4. -o-
+				untuk opera versi terdahulu
+			 -->
+
+		<!-- salah satu contoh property css3 yg butuh vendor prefix -->
+		<!-- filter -->
+		<!-- sesuaikan dengan kasus yang ada
+			USAHAKAN COMPATIBLE (SESUAI) DENGAN SEMUA BROWSER -->
+		<style>
+			body {
+				/*walaupun isi body adalah gambar,tetapi elemen gambar berada ditengah*/
+				text-align: center;
+			}
+			img {
+				filter: blur(5px);
+				background-size: cover;
+				width: 700px;
+				height: 400px;
+			}
+		</style>
+</head>
+<body>
+	<img src="kota.jpg" alt="view city ">
+</body>
+</html>

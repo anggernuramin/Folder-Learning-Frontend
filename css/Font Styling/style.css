@@ -1,0 +1,32 @@
+h1 {
+	font-family: serif,arial;
+	/*font style = mengubah font menjadi bercetak miring*/
+
+	/*font size= mengatur ukuran font*/
+	font-size: 40px;
+	text-align: center;
+
+
+}
+
+h3 {
+	font-family: arial;
+	/*font varian = mengubah font menjadi small caps
+	  small caps adalah huruf dkapital yg berseragam*/
+	font-variant: normal;
+	font-size: 30px;
+	/*font weight= mengatur ketebalan font*/
+	font-weight: bold;
+
+
+}
+p {
+	/*line height = mengatur jarak antar baris*/
+	line-height: 30px;
+	font-family: arial;
+}
+dt {
+	font-family: arial;
+	font-variant: small-caps;
+}
+

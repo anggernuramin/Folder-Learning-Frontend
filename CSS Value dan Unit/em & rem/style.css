@@ -1,0 +1,106 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* untuk mengatur font size REM */
+html{
+  font-size: 14px;
+}
+
+.container {
+  height: 100vh;
+}
+.penjelasan {
+  text-align: center;
+  margin: 50px ;
+  
+}
+
+.penjelasan h1{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-bottom: 20px;
+}
+
+.penjelasan p {
+  font-style: italic;
+}
+
+.typography {
+  background-color: aqua;
+  color: blue;
+  text-align: center;
+}
+
+.typography .em {
+  background-color: inherit;
+  width: 600px;
+  float: left;
+  font-size: 12px;
+}
+.em h2 {
+  font-size: 3em;
+}
+.em p{
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+.typography .rem {
+  background-color: inherit;
+  width: 200px;
+  float: right;
+}
+
+.rem h2 {
+  font-size: 3rem;
+}
+.rem p{
+  font-family: 1.5rem;
+}
+/* GUNAKAN SATUAN REM UNTUK MENGATUR FONT
+  GUNAKAN SATUAN EM UNTUK MENGATUR PADDING */
+  .btn {
+    float: left;
+    font-size: 12px;
+    margin-right: 1rem;
+
+  }
+
+  .btn1{
+    text-transform: uppercase;
+    background-color: darkblue;
+    color: white;
+    font-weight: 700;
+    padding: 1em 3em;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.btn2 {
+  text-transform: uppercase;
+    background-color: darkblue;
+    color: white;
+    font-weight: 700;
+    padding: .5em .5em;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.btn3 {
+  text-transform: uppercase;
+    background-color: darkblue;
+    color: white;
+    font-weight: 700;
+    padding: 2em 2em;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}

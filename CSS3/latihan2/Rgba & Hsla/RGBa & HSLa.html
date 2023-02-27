@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS OPACITY WARNA (RGBa & HSLa)</title>
+	<!-- Digunkan untuk mMEMBERI TRANSPARANSI PADA WARNA -->
+
+	<style>
+		body {
+			background-image: url(bg1.jpg);
+		}
+			
+		.satu {
+			width: 300px;
+			height: 300px;
+			margin: 20px auto;
+			position: relative;
+
+			/*rgba() Red Green Blue alpha/transparansi warna
+				pengambilan warna diambil dari kadar warna,misal pada (photoshop,corelmoho)*/
+			background-color: rgba(110, 50, 120, .5);
+
+		}
+
+		/*Elemen child tdak secara otomatis inherit transparan,karena yg kita beri transparansi adalah warnanya bukan pada elemen html nya
+			, jadi kita bisa membuat sebuah objek berbeda transparansinya*/
+
+		.dua {
+			width: 150px;
+			height: 150px;
+			position: absolute;
+			bottom: -50px;
+			right: -50px;
+
+			/*hsla()  Hue Saturation(%) Lightnes(%) alpha (transaparansi)
+			 	diambil dari kadar warna yg akan digunakan*/
+
+			background-color: hsla(20, 100%, 70%, 1.0);
+		}
+	</style>
+
+</head>
+<body>
+	<div class="satu">
+		<div class="dua"></div>
+	</div>
+</body>
+</html>

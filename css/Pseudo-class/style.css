@@ -1,0 +1,57 @@
+/*pseudo-class link digunakan untuk style default sebuah link*/
+.link:link {
+	font-size: 30px;
+}
+
+/*pseudo-class hover digunakan untuk memberi style jika kursor mouse berada diatas link/elemen*/
+.link:hover {
+	text-decoration: none;
+	font-family: georgia;
+	font-size: 40px;
+
+}
+
+ /*pseudo-class active digunakan untuk memberi style jika link diklik*/
+.link:active {
+	color: red;
+	font-weight: bold;
+}
+
+.link:visited {
+	color:  green;
+}
+
+/*digunakan untuk memilih elemen pertama dari sebuah parent (elemen pembungkus)*/
+li:first-child a {
+	color: red;
+}
+
+/*elemen untuk memilih elemen terakhir dari parent (elemen pembungkus)*/
+li:last-child a {
+	font-size: 30px;
+}
+
+/*memilih unruk elemen ke n dari sebiah parent,elemen ditulis pada parameter()*/
+li:nth-child(even) a {
+	color: green;
+}
+
+/*kombinasi antara psudo-class link dengan elemen html yg berada pada pembungkus (parent)*/
+li:nth-child(3) a:hover{
+	font-size: 10px;
+	text-decoration: none;
+}
+
+/*memilih elemen pertama yg tidak berada pada elemen pembungkus*/
+p:first-of-type {
+	text-indent: 5em;
+	text-align: justify;
+	color: purple;
+}
+
+/*memilih elemen terakhir yg tidak berada pada elemen pembungkus/parent */
+p:last-of-type {
+	color: green;
+	line-height: 2em;
+}
+

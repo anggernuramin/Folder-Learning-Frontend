@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS RADIAL-GRADIENT</title>
+	<!-- RADIAL-GRADIENT
+			Membuat gradasi warna secara melingkar,defaultnya berbentuk eclipse (lonjong)
+		YANG BISA DILAKUKAN DENGAN RADIAL-GRADIENT
+		1. Multiple color
+			Memberikan lebih dari satu warna
+		2. stop color
+			Memberikan presentase gradasi pada warna yg bereda
+		3. sintaks lengkapnya
+			a. Tipe
+			- eclipse (defaultnya)
+			- circle (lingkaran)
+
+			b. jangkauan
+		 		Jarak pusat gradient ke sisi terluarnya
+		 VALUENYA
+		 	-closest-corner
+		 		jarak dari pusat gradient ke (sudut terdekat)
+		 	-closest-side
+		 		jarak dari pusat gradient ke (sisi terdekat)
+		 	-fasthest-corner
+		 		jarak dari pusat gradient ke (sudut terjauh)
+		 	-fasthest-side
+		 		jarak dari pusat gradient ke (sisi terjauh)
+			
+			c. posisi KEYWORDNYA (at)
+				untuk memindahkan pusat gradient
+			Valuenya
+			<posisi-y> (vertikal)
+				-top
+				-center
+				-bottom
+				px
+			<posisi-x> (horizontal)
+				-left
+				-center
+				-right
+				-px
+		 	   -->
+		<style>
+			.contoh {
+				width: 600px;
+				height: 300px;
+				margin: 20px auto;
+			}
+
+			.radial-gradient {
+				/*warna awal == sebagai titik pusa*/
+				background-image: radial-gradient(green, yellow);
+			}
+
+			.multiple-color {
+				text-transform: capitalize;
+				font-size: 3em;
+				font-family: arial;
+				font-weight: bold;
+				text-align: center;
+				line-height: 300px;
+				background-image: radial-gradient(red,green,blue,black);
+			}
+
+			.color-stop {
+				text-transform: capitalize;
+				font-size: 3em;
+				font-family: Tahoma;
+				font-weight: bold;
+				text-align: center;
+				line-height: 300px;
+				background-image: radial-gradient(red 20%,green 40%,blue 60%,black 80%);
+			}
+			h1 {
+				font-size: 4em;
+				color: white;
+				background-color: darkblue;
+				font-family: Roboto;
+				text-transform: capitalize;
+				font-style: italic;
+				text-align: center;
+				text-shadow: 5px 3px 3px black;
+			}
+			.contoh span {
+				text-transform: uppercase ;
+			}
+			.tipe1 {
+				text-transform: capitalize;
+				font-size: 3em;
+				color: white;
+				font-family: Oswald;
+				font-weight: bold;
+				text-align: center;
+				line-height: 300px;
+
+				/*sebelum warna diberi nilai tipe terlebih dahulu*/
+				background-image: radial-gradient(ellipse,grey 10%, black 30%);
+			}
+
+			.tipe2 {
+				text-transform: capitalize;
+				font-size: 3em;
+				color: white;
+				font-family: Oswald;
+				font-weight: bold;
+				text-align: center;
+				line-height: 300px;
+
+				/*sebelum warna diberi nilai tipe terlebih dahulu*/
+				background-image: radial-gradient(circle,grey 10%, black 30%);
+			}
+
+			.jangkauan {
+				text-transform: capitalize;
+				font-size: 2em;
+				color: white;
+				font-family: Nunito Sans;
+				font-weight: bold;
+				text-align: center;
+				line-height: 300px;
+
+				/*artinya kalau menggunakan farthest-corner (sudut) maka gradasinya akan menyebar 
+				jika mnenggunakan side,maka akan terdekat dari sisi kanan kiri (tergantung dari sisinya)*/
+				background-image: radial-gradient(circle farthest-corner,red,blue);
+			}
+
+			.jangkauan span {
+				text-transform: lowercase;
+			}
+			
+			.posisi {
+				text-transform: capitalize;
+				font-size: 30px;
+				color: black;
+				font-family: sans-serif;
+				font-weight: bold;
+				text-align: center;
+				line-height: 300px;
+
+				background: radial-gradient(circle farthest-corner at top right,green 20%,yellow 30%,purple 60%);
+			}
+			
+
+		</style>
+</head>
+
+<body>
+	<div class="contoh radial-gradient"></div>
+	<div class="contoh multiple-color">multiple color</div>
+	<div class="contoh color-stop">color stop</div>
+	<h1>sintaks lengkap</h1>
+	<div class="contoh tipe1"> <span>tipe</span> ellipse (default)</div>
+	<div class="contoh tipe2"> <span>tipe</span> circle</div>
+	<div class="contoh jangkauan">jangkauan <span>(jarak dari pusat gradient)</span></div>
+	<div class="contoh posisi">POSISI (untuk memindahkan pusat gradient)</div>
+
+
+</body>
+</html>

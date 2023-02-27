@@ -1,0 +1,17 @@
+/*body sebagai elemen parent
+	secara default tag a tida akan mewarisi isi dari properti yang ada pada tag body
+	*/
+
+body {
+	background-color: gold;
+	color: black;
+	font-weight: bold;
+	
+
+}
+
+/*maka harus menggunakan value="inherit",agar tag a mmengikuti dari tag parentnya*/
+a{
+	color: inherit;
+
+}

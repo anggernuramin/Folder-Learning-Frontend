@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+		CSS POSITION FIXED
+	</title>
+	<!-- position: fixed; (non static)
+		1. ketika kita menggunakan elemen fixed 
+			dengan (top.left,right,bottom) 
+		Maka mereka akan selalu bergerak terhadap window-nya (area monitor) pada browser. 
+			Tidak akan memperdulikan elemen parentnya meskipun parentnya non static
+		2. elemen akan ke lock (kekunci) pada 
+			posisi itu
+
+		3. ketika discroll elemen tersebut tetap
+			 berada diatas
+		4. biasanya digunakan untuk membuat TOP 
+			BAR
+
+		-->
+
+		<style>
+			
+
+			.container{
+				width: 400px;
+				height: 3000px;
+				border: 3px solid black;
+				margin: auto;
+			}
+
+			/*jika menggunakan positio: fixed; tanpa menggunakan (top.right,left,bottom) elemen tersebut akan tetap berada ditempat yang sama walaupun halamannya disroll dan elemen tersebut dianggap tidak ada (maju satu dimensi)*/
+			.satu {
+				width: 200px;
+				height: 300px;
+				background-color: grey;
+
+			}
+			.dua {
+				width: 400px;
+				height: 100px;
+				background-color: green;
+				/*jika*/
+				position: fixed;
+
+			}
+			.tiga {
+				width: 200px;
+				height: 300px;
+				background-color: black;
+			}
+			.empat {
+				width: 100%;
+				height: 50px;
+				background-color: gold;
+				position: fixed;
+				top: 0px;
+				left: 0px;
+
+			}
+
+
+
+		</style>
+</head>
+<body>
+	<div class="container">
+		<div class="satu"></div>
+		<div class="dua"></div>
+		<div class="tiga"></div>
+		<div class="empat"></div>
+	</div>
+</body>
+</html>
