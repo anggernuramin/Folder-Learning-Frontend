@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Worker</title>
+</head>
+<body>
+    <button onclick="showProduct()">Search product</button>
+    <script>
+        // WEB WORKER
+            // Berguna saat kita butuh mengeksekusi proses yang berat banget sehingga bisa mengganggu thread utama pada javascript
+            // - javascript adalah single thread ,artinya walaupun yang kita buat adalah kode asynchronous,tetapi tetap akan dijalanka dalam thread yang sama
+            // - web worker adalah fitur pd js yang mempunyai kemampuan untuk menjalankan proses dithread yg berbeda dibandingka dengan main thread
+            // - Keuntungan menggunakan web worker adalah jika terdapat proses yg membutuhka waktu yang lama.web kita tdk akan frezee(hang),karena proses tersebut dijalankan di thread yg berbeda dari main thread (yang biasa digunakan oleh ui)
+            // - file wob worker dipisah/diluar main thread
+
+        // membuat web worker (yg didalamnya menjalanka perintah mencetak angka 1 - 1000) dimana yg dimana jika dijalankan menggunakan js biasa akan mengalami frezee sesaat
+        const worker = new Worker('file.js')
+        // Web worker communication
+            // - Web worker akan berjalan asynchronous,da untuk berkomunikasi dengan web worker,kita akan menggunakan event listener (dengan event "message") 
+            // - Untuk mengirim data  ke web worker atau ke main thread,kita bisa menggunakan event listener
+            // - jika menggunakan web worker walaupun data belum dieksekusi sampai selesai,kita bisa nembak(mengeksekuis perintah) lagi,dan tidak akan frezee pd halaman web kita 
+
+        worker.addEventListener("message",function(event){
+            // event.data akan berisi data yang dikirim oleh web worker => pada parameter postMessage
+            console.log('Pesan yang dikirim oleh web worker => ' + event.data)
+        })
+       
+        function showProduct(){
+            console.log('start')
+            // Mengirim data ke web worker dan membawa argumen berupa data number
+            // ingat web worker berjala secara asyn,maka tidak akan menggangu program yg ada dibawahnya
+            worker.postMessage(10000)
+            console.log('finish')
+        }
+    </script>
+</body>
+</html>

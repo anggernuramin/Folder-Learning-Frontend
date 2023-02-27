@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Method pada Array</title>
+</head>
+
+<body>
+  <script>
+    {
+      // 1. looping pada array
+      const name = ['Angger', 'Nur', 'Amin']
+      name.forEach((value, index) => console.log('index ke ' + index + ' berisi ' + value))
+    }
+
+    {
+      // 2. struktur data QUEUE (ANTRIAN)
+      // Konsep ini bisa kita terapkan denga menggunakan bantua method array
+      // dimana konsep queue ini adalah,data yang pertama kali masuk akan diposisikan pada urutan kebelakang,sedangkan data yang ingin keluar maka akan diposisikan didepan (first in first out (FIFO))
+      const data = [];
+      // data masuk
+      data.push('Angger', 'Nur')
+      // data keluar
+      data.shift('Angger')
+      data.push('Vindi')
+      console.log(data);
+    }
+
+    {
+      // 3. STRUCTUR DATA STACK
+      // Konsep ini adalah kebalikan dari queue
+      // saat kita memasukkan data,kita akan memasukkan pada posisi belakang
+      // saat kita ingin mengeluarkan data,maka dataynag akan dikeluar adalah data yg paling belakang (LIFO (Last in first out) yg terakhir masuk aka pertama kali keluar )
+      const data = []
+      // data masuk
+      data.push('Vindi')
+      data.push('Aprilia')
+      data.push('Dewi')
+
+      // data keluar
+      data.pop()
+      data.pop()
+      console.log(data);
+    }
+
+    {
+      // 4. ARRAY SEARCH
+      // Method untuk mencari isi array/index array
+      const number = [1, 2, 3, 4, 1, 2, 3, 4]
+      console.info(number.find(value => value > 3)) // output 4 .Karena  find mengembalikan angka yg pertama kali ditemukan dengan kondisi value > 3
+      console.info(number.findIndex(value => value > 3)) //output 3.Karena findindex akan mengembalikan posisi dari indexnya saja,angka 4 ada diindex ke 3
+      console.info(number.includes(10)) // output false, methhod include akan mengembalikan boolean (true or false) jika data yg dicari ada maka akan true sebaliknya jika tdk ada maka false
+      console.log(number.indexOf(3)) // output 2 ,index of akan mencari urutan index angka yg dicari,angka yang pertama kali ditemukan
+      console.log(number.lastIndexOf(3)); // 6, akan mencari angka 3 tetapi angka 3 pertama akan dilewatkan da menapilkan letak indexnya
+    }
+
+    {
+      // 5.ARRAY FILTER
+      // Memfilter data array dan mengembalikan dalam array
+      const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      // menampilkan data genap saja
+      console.log(data.filter(value => value % 2 == 0));
+    }
+
+    {
+      // 6. ARRAY TRANSFORM
+      const names = "Vindi Aprilia Dewi".split(" ")
+      const result = names.map(result => result.toUpperCase()) //map akan mengembalikan array baru
+      console.log(result);
+      // reduce 
+      // melakukan transform dgn menggunakan value array dan value selanjutnya 
+      const num = [1, 2, 3, 4, 5]
+      console.info(num.reduceRight((resultBefore, before) => resultBefore + before)) // menjumlahkan semua index
+      const name = ['Angger', 'Nur', 'Amin']
+      console.info(name.reduceRight((resultBefore, value) => resultBefore + " " + value)) // hasilnya sama denga reduce() tetapi dimulai dari kanan
+
+
+
+    }
+  </script>
+</body>
+
+</html>

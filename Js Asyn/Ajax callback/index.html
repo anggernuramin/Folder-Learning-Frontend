@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAX CALLBACK</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .search {
+      margin: 40px 50px 20px 50px;
+    }
+
+    input {
+      margin: auto;
+      padding: 10px 20px;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="search">
+    <input type="text" placeholder="Search product..." id="search">
+    <input type="button" id="kirim" value="Searching">
+    <ol id="list"></ol>
+  </div>
+
+  <script>
+    // functon callback error
+    function messageError(status) {
+      const p = document.createElement('p');
+      p.textContent = `Terdapat Error dengan Status : ${status}`;
+      const list = document.querySelector('#list')
+      list.appendChild(p)
+    }
+    // 1. function untuk mengambil value dar input dan simpan kedalam url
+    function getUrl(keyword) {
+      return `https://www.blibli.com/backend/search/products?searchTerm=${keyword}`
+    }
+
+    // 2. ajax (meminta data product ke server)
+    function getProduct(keyword) {
+      const url = getUrl(keyword);
+      console.log(url);
+      // create ajax
+      const ajax = new XMLHttpRequest();
+      // proses asynchronous 
+      ajax.onload = function () {
+        const data = JSON.parse(ajax.responseText)
+        // ajax callback error
+        if (ajax.status === 200) {
+          // function callback
+          clearProduct()
+          displayData(data)
+          // displayDataImage(data)
+        } else {
+          clearProduct()
+          // pesan salah dari url kita jika tdk valid
+          // alert('Status Error ' + ajax.status)
+          messageError(ajax.status)
+        }
+
+      }
+      // request ke server
+      ajax.open("GET", url);
+      // kirim request ke server
+      ajax.send()
+    }
+
+    // 3. membuat list item untuk menampilkan response dari server
+    function displayProduct(data) {
+      const li = document.createElement('li');
+      li.textContent = data.name;
+      const list = document.getElementById('list');
+      list.appendChild(li)
+    }
+
+    // 4. membuat function untuk membersihkan list agar data sebelumnya tidak tampil lagi
+    function clearProduct() {
+      const list = document.getElementById('list');
+      list.textContent = " ";
+    }
+
+    // 5. membuat function mengambil data secara spesifik (meloop isi data)
+    function displayData(data) {
+      data.data.products.forEach(list => displayProduct(list))
+    }
+
+    // 6. tampilka dala bentuk gambar
+    function displayImage(url) {
+      const image = document.createElement('img');
+      image.setAttribute('src', url);
+
+      const list = document.getElementById('list');
+      const li = document.createElement('li');
+
+      li.appendChild(image);
+      list.appendChild(li)
+    }
+
+    // 7. display data image
+    function displayDataImage(data) {
+      data.data.products.map(value => value.images)
+        .map(img => displayImage(img));
+    }
+
+    const btnSearch = document.getElementById('kirim');
+    btnSearch.addEventListener('click', function () {
+      getProduct(document.getElementById('search').value)
+    })
+  </script>
+</body>
+
+</html>

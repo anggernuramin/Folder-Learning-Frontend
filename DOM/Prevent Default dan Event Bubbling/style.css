@@ -1,0 +1,71 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+	height: 100vh;
+	width: 100%;
+	background-color: #3333;
+}
+
+.container {
+	width: 80%;
+	margin: 50px auto;
+	padding: 5rem;
+}
+
+.card {
+	width: 370px;
+	height: min-content;
+	background-color: white;
+	border-radius: 3px;
+	border-left: 3px solid green;
+	padding: 13px 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 0 15px rgba(0, 0, 0, .5);
+	margin-bottom: 20px;
+}
+
+.card i{
+	font-size: 1rem;
+	background-color: seagreen;
+	border-radius: 50%;
+	color: white;
+	padding: 6px;
+	margin-right: 2px;
+
+}
+
+.card .deskripsi{
+	display: flex;
+	flex-direction: column;
+}
+
+.card .deskripsi .judul{
+	font-weight: 800;
+	font-size: 1.1rem;
+	color: #333;
+}
+.card .deskripsi .detail{
+	margin-top: 3px;
+	font-size: .9rem;
+	color: grey;
+	font-weight: 500;
+}
+.card .close{
+	font-size: 1.8rem;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.card:hover .close{
+	color: red;
+}
+
+.card a {
+	text-decoration: none;
+}

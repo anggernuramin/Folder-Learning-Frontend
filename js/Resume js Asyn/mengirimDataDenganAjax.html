@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Data denga Ajax</title>
+</head>
+<form>
+  <label for="username">Username
+    <input type="text" id="username" name="username">
+  </label>
+  <br>
+  <label for="password">password
+    <input type="password" id="password" name="password">
+  </label>
+  <br>
+  <input type="button" id="login" value="Login">
+</form>
+
+<body>
+  <script>
+    // -Saat kita menggunakan ajax,biasanya bukan hanya mengambil data dari server
+    // - Kadang kita juga ingin mengirim data dari client ke server,misalnya kita membaca semua data di web form,lalu mengirimkan datanya ker server menggunakan ajax
+    // - untuk melakukan ini,kita bisa menambahkan parameter data yg akan kitakirim pada method send() milik XMLHttpRequest()
+    // -jika hanya method send() maka ajax hanya meminta data ke server,tidak mengirim kan data ke server
+
+    // MENGGUNAKAN BANTUAN pipedream (https://pipedream.com/@anggern514/requestbin-p_KwCWAVZ/inspect/2L4C7x8dJNLKnTVJTZbINRX2gKt)
+    // - pipedream adalah salah satu website gratis untuk menerima data AJAX yg kita kirim
+    // - pipedream bisa digunakan untuk menerima request HTTP dan menyimpan datanya, dengan ini kita bisa menggunakan hoobin untuk melihat detail dari data AJAX yg kita kirim ke server
+
+    function Login() {
+      const ajax = new XMLHttpRequest;
+      ajax.open("POST", "https://eox3lfc8hgywx6t.m.pipedream.net");
+      // mengambil responsText dari data yg dikirim
+      ajax.onload = function () {
+        console.log(ajax.responseText);
+      }
+      // memberi tahu tipe data yang dikirim client ke server
+      ajax.setRequestHeader('Content-Type', 'application/json')
+      // kirim data json  berupa object dr value form
+      ajax.send(JSON.stringify({
+        usernamae: document.getElementById('username').value,
+        password: document.getElementById('password').value
+      }))
+    }
+
+    document.getElementById('login').onclick = Login;
+  </script>
+</body>
+
+</html>

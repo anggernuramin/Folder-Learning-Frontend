@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object || Prototype</title>
+</head>
+
+<body>
+  <script>
+    // OBJECT 
+    //   Object adalah kumpulan nilai yang memiliki nama dan tidak memiliki index
+    // MEMBUAT OBJECT
+
+    // 1. OBJECT LITERAL
+    // jika kita membutuhkan satu object maka gunakan object literal
+    // Object literal tidak efektif jika membuat object yang isinya sama,karena akana memakan memori yang cukup banyak
+    // let mahasiswa = {
+    //   nama: 'Angger',
+    //   nim: 21201087,
+    //   alamat: 'Jln Sengon kab.blitar',
+    //   ips: [30, 30, 30],
+
+    //   // function didalam object dinamakan dengan METHOD
+    //   ipk: function () {
+    //     let hasil = 0;
+
+    //     // mengakses property ips dan simpan dalam variabel baru
+    //     let ipKumulatif = this.ips;
+
+    //     // looping property ips karena valuenya  berupa data array
+    //     for (let i = 0; i < ipKumulatif.length; i++) {
+    //       hasil += ipKumulatif[i];
+    //     }
+    //     return hasil / ipKumulatif.length;
+    //   }
+    // };
+
+
+    // 2. FUNCTION DEXLARATION
+    // membuat template object terlebih dahulu
+    // function Barang(nama, item) {
+    //   // membuat object kosong
+    //   let brg = {};
+    //   brg.nama = nama;
+    //   brg.item = item;
+
+    //   // jika ingin membuat method didalam  function dexlaration,pastikan nama objectnya sudah ditulis didepan nama function(method)
+
+    //   // tetapi ini tidak efektif karena jika method ini kita tidak gunakan maka akan berjalan dibelakang layar saat kita memanggil object nya
+    //   brg.harga = function (hargaBrng) {
+    //     hargaBrng *= this.item;
+
+    //     // penggunaan string literal (yaitu menggaungkan sring dengan tanda backtick) saat memanggil variabelnya gunakan tanda dolar dan variabelnya dibungkus dengan tanda kurawal
+    //     return `harga yang harus dibayarkan Rp.${hargaBrng}.00`
+    //   }
+
+    //   // mereturn variabel objectnya
+    //   return brg;
+    // }
+
+    // let gelas = Barang('Gelas', 2);
+    // let piring = Barang('piring', 5);
+
+
+    // 3. MENGGABUNGKAN DUA BUAH OBJECT SECARA MANUAL (membuat 2 buah object secara terpisah)
+    // function pembelianBrng(nama, banyakitem) {
+    // menggunakan method object.create()
+    // artinya membuat object baru dan dapat mengisi parameternya dengan object parent / object yg sedang dituju
+    // MAKA HASILNYA OBJECT YANG ADA PADA PARENTNYA AKAN MASUK KEDALAM PROTOTYPE ELEMENT CHILDNYA
+    // let brg = Object.create(acuanPembelian);
+
+    // brg.nama = nama;
+    // brg.banyakitem = banyakitem;
+
+    // setelah kita membuat object baru maka kita perlu mendaftarkannya pada object child nya
+    // maka akan secara otomatis objectnya masuk
+    // kelemahannya adalah object yang ada pada elemen parentnya maka semua harus didaftarkan pada object childnya
+
+
+    // jika tidak ingin menambahkan secara manual,maka pada deklarasi object gunakan method object.create(),karena pada method ini kita dapat mengisi parameter dengan parent objectnya/object acuan
+    // brg.tambah = acuanPembelian.tambah;
+    // brg.kurang = acuanPembelian.kurang;
+    // brg.totalHarga = acuanPembelian.totalHarga;
+    // return brg;
+    // }
+
+    // membuat object baru untuk acuan object brng
+    // menggunakan object literal
+    // let acuanPembelian = {
+
+    //   tambah: function (item) {
+    //     this.banyakitem += item;
+    //     return `barang telah ditambahkan`;
+    //   },
+
+    //   kurang: function (item) {
+    //     this.banyakitem -= item;
+    //     return `barang telah dikurangi`;
+    //   }
+
+    // totalHarga: function (harga) {
+    //   this.banyakitem *= harga;
+    //   return `barang telah ditotal`;
+    // }
+    // }
+
+    // let brg1 = pembelianBrng('Kaos kaki', 2)
+
+
+    // 4.PROTOTYPE
+    // membuat kode object menjadi lebih efektif
+    // (Syaratnya HARUS MENGGUNAKAN CONSTRUCTOR FUNCTION (KEYWORD NEW))
+
+    // versi prototype
+    // function Player(nama, energi, point) {
+    //   // pada function constructor otomatis mempunyai prortotype
+    //   // let this = Object.create(Player.prototype)
+    //   this.nama = nama;
+    //   this.energi = energi;
+    //   this.point = point;
+    // }
+
+    // // menambahkan method dengan memanfaatkan prototype yg dimiliki oleh constructor
+    // // method untuk menambahka energi
+    // Player.prototype.menang = function (tambahEnergi) {
+    //   this.energi += tambahEnergi;
+    //   this.point += 5;
+    //   return `Halo ${this.nama},kekuatan telah ditambahkan`;
+    // }
+
+    // // method untuk menambahkan kekuatan 2 kali lipat
+    // Player.prototype.kalah = function (kurangiEnergi) {
+    //   this.energi -= kurangiEnergi;
+    //   this.point -= 5;
+    //   return `Halo ${this.nama},kekuatan telah dikurangi`;
+    // }
+
+    // let Player1 = new Player('Angger', 10, 0)
+
+
+    // versi class 
+    class Player {
+      // parameter yang ada pada constructor adalah parameter yang akan digunakan,
+      // cunstruktor adalah keyword wajib
+      // karena dibelakang layar pada konsep class ini tetap MENGGUNAKAN KONSEP PROTOTYPE,
+      // ditulis dalam class agar mudah dibaca kodenya
+      constructor(nama, energi, point) {
+        this.nama = nama;
+        this.energi = energi;
+        this.point = point;
+      }
+
+      // membuat method pada class tidak perlu menuliskan function
+      menang(tambahEnergi) {
+        this.energi += tambahEnergi;
+        this.point += 5;
+        return `Halo ${this.nama},kekuatan telah ditambahkan`;
+      }
+
+      kalah(kurangiEnergi) {
+        this.energi -= kurangiEnergi;
+        this.point -= 5;
+        return `Halo ${this.nama},kekuatan telah dikurangi`;
+      }
+    }
+
+
+    let Player1 = new Player('Vindi', 15, 0)
+
+
+  </script>
+</body>
+
+</html>

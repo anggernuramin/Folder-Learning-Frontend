@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Method Json</title>
+</head>
+
+<body>
+  <script>
+    // Json
+    // Adalah JavaScript Object Notation
+    // Json merupakan data string yang bentuknya mirip dengan javascript object
+    // Saat ini json bnyak digunakan untuk kombinasi antara server dan client
+    // Biasa saat kita membuat web komunikasi antara server dan client menggunakan via ajax ,sedangkan data (data yg dikirim ajax) yang dikirimkan adalah berupa Json
+    // Js mendukung konversi data string Json ke object begitupun sebaliknya
+    {
+      // 1. Json.stringify()
+      // Digunakan untuk melakukan konversi dari object ke string json
+      const Mhs = [
+        {
+          id: "mhs1",
+          nama: 'Angger Nur Amin',
+          nim: 21002029,
+          umur: 21,
+          alamat: {
+            kota: 'Blitar',
+            desa: 'Palulo',
+            kecamatan: 'Nglegok'
+          },
+          nilai: [90, 87, 99]
+        },
+        {
+          id: "mhs2",
+          nama: 'Vindi Aprilia Dewi',
+          nim: 262982098,
+          umur: 21,
+          alamat: {
+            kota: 'Blitar',
+            desa: 'Kedawung',
+            kecamatan: 'Nglegok'
+          },
+          nilai: [90, 87, 99]
+        },
+        {
+          id: "mhs3",
+          nama: 'Natan nur cahyo',
+          nim: 21002029,
+          umur: 22,
+          alamat: {
+            kota: 'Malang',
+            desa: 'Palulo',
+            kecamatan: 'Nglegok'
+          },
+          nilai: [90, 87, 99]
+        },
+      ]
+      const ubahObjectKeStringJson = JSON.stringify(Mhs); // maka outputnya tdk lagi berupa object,melainka kita sudah mengubah ke string json ,Dimana semua yang ada di object (property da valuenya aka berubah menjadi string)
+      console.log(ubahObjectKeStringJson);
+
+      console.log(Mhs);
+
+      // KITA BISA LANGSUNG MENGUBAH DATA OBJECT MENJADI ARRAY TERLEBIH DAHULU
+      const arrayOfObject = JSON.stringify([Mhs])
+      console.log(arrayOfObject);
+
+      // 2. JSON.parse()
+      // Digunakan untuk konversi String JSON menjadi object
+      const dataJson = JSON.parse(ubahObjectKeStringJson)
+      console.log(dataJson);
+      dataJson.map(value => console.log(value))
+
+    }
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+<!-- MEMBUAT TO DO LIST -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List APP</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+  <main>
+    <div class="box-todo">
+      <section class="wrapper-parent ">
+        <div class="title">
+          <h1>Weekly Planning</h1>
+          <input type="date">
+        </div>
+        <section class="card">
+
+
+          <section class="wrapper">
+            <h3>Monday</h3>
+            <header>
+              <label for=""></label>
+              <input type="text" id="input">
+              <button class="btn-add-monday">+</button>
+            </header>
+            <ol class="list">
+
+            </ol>
+          </section>
+          <section class="wrapper">
+            <h3>Tuesday</h3>
+            <header>
+              <label for=""></label>
+              <input type="text" id="input-tuesday">
+              <button class="btn-add-tuesday">+</button>
+            </header>
+            <ol class="list-tuesday">
+
+            </ol>
+          </section>
+          <section class="wrapper">
+            <h3>Wednesday</h3>
+            <header>
+              <label for=""></label>
+              <input type="text" id="input-Wednesday">
+              <button class="btn-add-Wednesday">+</button>
+            </header>
+            <ol class="list-Wednesday">
+
+            </ol>
+          </section>
+
+          <section class="wrapper">
+            <h3>Thursday</h3>
+            <header>
+              <label for=""></label>
+              <input type="text" id="input-Thursday">
+              <button class="btn-add-Thursday">+</button>
+            </header>
+            <ol class="list-Thursday">
+
+            </ol>
+          </section>
+
+          <section class="wrapper">
+            <h3>Friday</h3>
+            <header>
+              <label for=""></label>
+              <input type="text" id="input-Friday">
+              <button class="btn-add-Friday">+</button>
+            </header>
+            <ol class="list-Friday">
+
+            </ol>
+          </section>
+
+          <section class="wrapper">
+            <h3>Saturday</h3>
+            <header>
+              <label for=""></label>
+              <input type="text" id="input-Saturday">
+              <button class="btn-add-Saturday">+</button>
+            </header>
+            <ol class="list-Saturday">
+
+            </ol>
+          </section>
+
+
+        </section>
+
+      </section>
+    </div>
+
+    <section class="wrapper-content">
+      <div class="todo-list">
+        <img src="image/aset1.png" alt="">
+        <div class="content">
+          <h3>PRIORITY</h3>
+          <textarea name="" id="" cols="45%" rows="18%"></textarea>
+
+        </div>
+      </div>
+      <div class="todo-list">
+        <div class="content">
+          <h3>NOTED</h3>
+          <textarea name="" id="" cols="45%" rows="18%">
+
+          </textarea>
+
+        </div>
+        <img src="image/aset1.png" alt="">
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Copyright by Angger Nur Amin</p>
+  </footer>
+
+
+  <script type="module" src="script.js"></script>
+  <script type="module">
+    import { createClose, hidden, insertClose, card } from "./script.js"
+    const ulList = document.querySelector('.list')
+    const btnAdd = document.querySelector('.btn-add-monday')
+    btnAdd.addEventListener('click', function (e) {
+      const li = document.createElement('LI');
+      const input = document.querySelector('#input').value;
+      const text = document.createTextNode(input);
+      li.appendChild(text)
+
+      if (input === '') {
+        alert('Masukkan To Do List dahulu ...')
+      } else {
+        ulList.appendChild(li)
+        // const card = [];
+        // card.push(text.textContent)
+        // console.log( card);
+        // console.log(typeof ulList);
+        // const data =  Array.from(input).reduce((acc,curr) => acc + curr)
+        // console.log(data);
+        // let save = localStorage.setItem('todo',card)
+
+      }
+      console.log(input);
+      document.querySelector('#input').value = "";
+      e.preventDefault()
+      const close = createClose()
+      li.appendChild(close)
+      hidden(close)
+    })
+
+    card.addEventListener('click', function (ev) {
+      if (ev.target.tagName === 'LI') {
+        ev.target.classList.toggle('checked');
+      }
+    }, false);
+
+    const btnAddTuesday = document.querySelector('.btn-add-tuesday')
+    const ulListTuesday = document.querySelector('.list-tuesday')
+    btnAddTuesday.addEventListener('click', function (e) {
+      const li = document.createElement('LI');
+      const input = document.querySelector('#input-tuesday').value;
+      const text = document.createTextNode(input);
+      li.appendChild(text)
+
+      if (input === '') {
+        alert('Masukkan To Do List dahulu ...')
+      } else {
+        ulListTuesday.appendChild(li)
+      }
+      console.log(input);
+      document.querySelector('#input-tuesday').value = "";
+      e.preventDefault()
+      const close = createClose()
+      li.appendChild(close)
+      hidden(close)
+    })
+
+
+
+  </script>
+</body>
+
+</html>

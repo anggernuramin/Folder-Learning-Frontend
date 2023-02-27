@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRID ALIGNMENT</title>
+  <!-- Digunakan untuk memposisikan elemen-elemen child grid pada container 
+  1. justify-items
+      Mensejajarkan grid-item pada sumbu horizontal
+    valuenya:
+    a. stretch (default)
+    b. start
+    c. end
+    d. center
+  2. align-items
+    Mensejajarkan grid-items pada sumbu vertikal
+     a. stretch (default)
+      b. start
+      c. end
+      d. center
+  3. justify-content 
+      Mengatur seluruh grid pada container pada sumbu horizontal
+    INI BISA DILAKUKAN KETIKA UKURAN TOTAL GRID LEBIH KECIL DARI UKURAN 
+    CONTAINERNYA.biasaynya ketika gri-itemsnya menggunakan ukuran fixed(px)
+    valuenya :
+    a. stretch
+    b. start
+    c. end
+    d. center
+    e. space-around
+    f.space-between
+    g. space-evenly
+  4 align-content
+       Mengatur seluruh grid pada container pada sumbu vertikal
+    valuenya :
+    a. stretch
+    b. start
+    c. end
+    d. center
+    e. space-around
+    f.space-between
+    g. space-evenly
+-->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 800px;
+      height: 400px;
+      margin: 50px auto;
+      background-color: #eaeaea;
+      display: grid;
+      grid-template-columns: 200px 150px 200px;
+      grid-template-rows: 100px 80px 80px;
+      gap: 10px;
+      /* padding: 10px; */
+      border: 3px solid rgb(98, 95, 95);
+      box-sizing: border-box;
+      /* justify-items: start; */
+      /* justify-items: end; */
+      /* justify-items: stretch; */
+      /* justify-items: center; */
+      /* justify-content: space-evenly; */
+      /* justify-content: space-between; */
+      /* align-items: center; */
+      /* place-content: center ; */
+      align-content: space-between;
+    }
+
+    .item {
+      background-color: rgb(185, 30, 30);
+      color: white;
+      height: 50px;
+      width: 100px;
+
+    }
+
+    /* .item1,
+    .item4,
+    .item7 {
+      border-radius: 10px;
+      height: 30px;
+    }
+
+    .item2,
+    .item5,
+    .item8 {
+      border-radius: 5px;
+      height: 40px;
+    }
+
+    .item9,
+    .item6,
+    .item3 {
+      border-radius: 10px;
+      height: 60px;
+    } */
+  </style>
+
+</head>
+
+<body>
+  <!-- awal program -->
+  <div class="container">
+    <div class="item item1">satu</div>
+    <div class="item item2">dua</div>
+    <div class="item item3">tiga</div>
+    <div class="item item4">empat</div>
+    <div class="item item5">lima</div>
+    <div class="item item6">enam</div>
+    <div class="item item7">tujuh</div>
+    <div class="item item8">delapan</div>
+    <div class="item item9">sembilan</div>
+  </div>
+  <!-- akhir program -->
+</body>
+
+</html>

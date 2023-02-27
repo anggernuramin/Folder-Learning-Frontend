@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoisting dan Closures</title>
+</head>
+
+<body>
+
+
+  <script>
+    // berlaku untuk var ,tidak dengan let ataupun const
+
+    // Hoisting 
+    //   konsep pada hoisting ini adalah fase creation 
+    // 1. fase creation
+    //   A. creation phase pada global context
+    //      creation phase pada global cotext yang terjadi adalah
+    //     - Java script akan mengecek apakah ada variable atau function pada codingn global(codingan diluar function)
+    //     - tdk memperdulikan console.log 
+    //     - Yang pertama kali dilakuka adalah
+    //         menseetting:
+    //         var namaVaraale = undefined;
+    //           Artinya jika ada variable maka diisi dengan undefined(didaftarkan terlebih dahulu)BERLAKU UNTUK SEMUA VARIABLE YANG TELAH DIBUAT
+
+    //         nama function = fn()
+    //           Artinya jika ada function maka diisi dengan kode functionnya itu sendiri BERLAKU UNTUK SEMUA FUNCTION
+    //     - Java script mendefiniskan Object
+    //         Object yang pertama kali dibuat,walaupun belum ada codingan sama sekali pada window adalah mendefiniskan
+    //         .window => menjadi global Object
+    //         .this => menjadi object dari window
+
+    // 2. Execution AudioContext 
+    //     - melakukan execution context dari atas ke bawah
+    //     - 
+
+    // Contoh Hoisting pada GLOBAL CONTEXT
+    // ini tdk terjadi eror,tetapi hasilnya adalah undefined, karena variabel nama dihoisting, yang artinya saat file ini dibuka dan pada window terdapat variable maka melakukan hoisting,set semua variable menjadi undefined.
+
+    // Karena saat melakukan execution context , variable nama sudah dideklarasikan,tetapi saat mau diisi dengan NAMA ANGGER ,sudah diconsole.log yang artinya variable nama masih UNDEFINED;
+    var nama = 'Angger';
+    console.log(nama);
+
+
+    // Function membuat LOCAL EXECUTION CONTEXT
+    // Artinya didalamnya terdapat fase creation dan execution yg konsepnya  sama dengan global context
+    // - pada function execution context kita dapat mengakses -.window
+    //                 - arguments(nilai yang dikirim pada parameter function)
+    //                 - hoisting local
+    //                   lingkup variable yg  berada didalam function
+
+    // CONTOH LOCAL FUNCTION YANG MENGAMBIL VALUE DARI VARIABLE GLOBAL CONTEXT
+    let username = 'anggern514';
+
+    function cetakEmail(username) {
+      // console.log(arguments[0]);
+      email = "@gmail.com";
+      return username + email;
+    }
+
+    // jika ada parameter yg sama dengan variable global, maka parameter akan mengakses value dari variable global untuk dijadikan arguments pd function
+    console.log(cetakEmail(username));
+
+    // // mengirim arguments ke parameter
+    console.log(cetakEmail('vindi'));
+
+    // jika saat kita mengirim arguments dan parameternya kosong maka arguments tdk hilang,akan disimpan dalam arguments(karena saat kita mengirim arguments pada function tersebut tdk ada parameter(untuk merekam nilai argumentsnya))
+    // maka angger akan dicetak dalam return functionnya, dan vindi akan masuk dalam argumentsnya, argunents mempunyai index
+    console.log(cetakEmail('angger', 'vindi'));
+
+
+
+
+    function mhs1(mhs) {
+
+      console.log(mhs);
+      mhs = 'fajar';
+    }
+
+    function mhs2() {
+      console.log(arguments[0]);
+      mhs = 'riski';
+      console.log(mhs)
+    }
+
+    function mhs3(mhs) {
+      mhs = 'rio';
+      return (console.log(mhs))
+    }
+
+    console.log(mhs);
+    var mhs = 'dito';
+    console.log(mhs);
+    mhs1();
+    mhs2('Roy');
+    mhs3()
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise All</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .box {
+      margin: 40px 50px 20px 50px;
+    }
+
+    input {
+      margin: auto;
+      padding: 10px 20px;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <input type="text" placeholder="Search here..." id="keywoard1">
+    <input type="text" placeholder="Search here..." id="keywoard2">
+    <input type="text" placeholder="Search here..." id="keywoard3">
+    <input type="button" id="btnSearch" value="Searching Product">
+    <ol id="listProduct"></ol>
+  </div>
+  <script>
+    function getUrl(keyword) {
+      return `https://www.blibli.com/backend/search/products?searchTerm=${keyword}`
+    }
+
+    function getData(keyword) {
+      const url = getUrl(keyword);
+
+      const promise = new Promise(function (resolve, reject) {
+        const ajax = new XMLHttpRequest();
+        console.log(ajax)
+        // code asyn
+        ajax.onload = function () {
+          if (ajax.status === 200) {
+            const response = JSON.parse(ajax.responseText);
+            resolve(response)
+          } else {
+            reject(ajax.status)
+          }
+        }
+        ajax.open("GET", url);
+        ajax.send()
+
+      })
+      return promise;
+    }
+
+    function displayProduct(data) {
+      const li = document.createElement('li');
+      li.textContent = data.name;
+      const listProduct = document.getElementById('listProduct')
+      listProduct.appendChild(li)
+    }
+
+    function clearProduct() {
+      const listProduct = document.getElementById('listProduct');
+      listProduct.textContent = " "
+    }
+
+
+    const btn = document.getElementById('btnSearch');
+    btn.addEventListener('click', function (e) {
+
+      // panggil function get data (yg isinya ajax dengan promise SIMPAN KEDALAM VARIABEL)
+      const promise1 = getData(document.getElementById('keywoard1').value)
+      const promise2 = getData(document.getElementById('keywoard2').value)
+      const promise3 = getData(document.getElementById('keywoard3').value)
+      console.log('start')
+
+      const promise = Promise.all([promise1, promise2, promise3])
+      promise
+        .then(function (values) {
+          return values.map(data => data.data.products)
+        })
+        .then(function (values) {
+          clearProduct()
+          values.map(products => {
+            products.forEach(function (dtProduct) {
+              displayProduct(dtProduct)
+            })
+          })
+        })
+        .catch(function (Error) {
+          alert('Terdapat error dgn Status Error' + Error)
+        })
+        .finally(() => console.log('Proses promise selesai'))
+      console.log(promise)
+      e.preventDefault()
+    })
+  </script>
+</body>
+
+</html>

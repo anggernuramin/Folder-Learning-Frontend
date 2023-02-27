@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Literal / Template String</title>
+</head>
+
+<body>
+  <section class="wrapper-construktor"></section>
+  <section class="wrapper-barang"></section>
+  <section class="wrapper-table"></section>
+  <section class="wrapper-dataMhs"></section>
+  <script src="script.js"></script>
+  <script>
+    // TEMPLATE LITERAL
+    //   Adalah string literal yg memungkinkn adanya expression didalamnya
+    // Pada biasaya dalam javascript string ditulis dengan tanda(''), (""), (``);
+
+    //   Dengan menggunakan BACKTICK(``) maka kita dapat membuat template literal
+    // diantaranya:
+    // 1. Multi-line
+    //       Kita dapat membuat string sesuai dengan kita yang buat,misal jika kita dalam membuat string dengan tanda ('') jika kita ingin mencetak text string dibawahnya maka kita menggunakan escap \n ,tetapi jika kita menggunakan backtick kita tidak perlu menggunakan escape
+    // misal 
+    // character spasi akan direkam oleh template literal
+    console.log(`string 1
+string 2`);
+    // misal mengalikan variabel jika menggunakan 
+    let x = 10;
+    console.log(`hasil dari ${x} x 5 adalah :${x * 5}`);
+
+    // 2. Embedded Expression
+    //     Kita dapat menyimpan expression kedalam template literal secara langsung;
+    //     expression diantaranya:
+    //     a function()
+    // b.higher order function
+    //   c. operator assignment
+    // d.operator pd js(misal ternary)
+    // contoh soal pada embedded expresion ini,mencari bilangan bulat denga operator ternary yg dibuat didalm function expression
+    const cetakBilangan = (n => {
+      console.log(`bilangan ${n} adalah bilangan : ${(n % 2 == 0) ? 'Genap' : 'Ganjil'}`);
+    })
+    cetakBilangan(10);
+  </script>
+
+</body>
+
+</html>

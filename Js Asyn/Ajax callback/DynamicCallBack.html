@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Callback</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .box {
+    margin: 40px 50px 20px 50px;
+  }
+
+  input {
+    margin: auto;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+  }
+
+  .add {
+    border: 2;
+    cellspacing: 0;
+    cellpadding: 5;
+  }
+</style>
+
+
+<body>
+  <div class="box">
+    <input type="text" placeholder="Search here..." id="text">
+    <input onclick="getProduct()" type="button" id="btnSearch" value="Searching Product">
+    <ol id="listProduct"></ol>
+  </div>
+  <div id="tabel">
+
+  </div>
+  <script>
+    function getUrl(keyword) {
+      return `https://www.blibli.com/backend/search/products?searchTerm=${keyword}`
+    }
+
+    function getDataProduct(keyword, callbackSucces, callbackError) {
+      const url = getUrl(keyword);
+      const ajax = new XMLHttpRequest;
+      // code asyn
+      ajax.onload = function () {
+        if (ajax.status === 200) {
+          const response = JSON.parse(ajax.responseText)
+          callbackSucces(response)
+        } else {
+          callbackError(ajax.status)
+        }
+
+      }
+      ajax.open('GET', url);
+      ajax.send()
+    }
+
+    function showProduct(data) {
+      document.getElementById('listProduct').innerHTML
+        = data.data.products.map(product => `<li>${product.name}</li> <li>${product.id}</li>`).join('')
+    }
+
+    function showProductTable(data) {
+      const table = document.createElement('table')
+      let index = 0;
+      table.setAttribute('border', 1)
+      data.data.products.map(detail => {
+        table.insertRow(index).insertCell(0).innerHTML = detail.id
+        index++;
+      })
+
+      const boxTable = document.getElementById('tabel');
+      boxTable.appendChild(table)
+    }
+
+    function clearTable() {
+      const boxTable = document.getElementById('tabel');
+      boxTable.textContent = " "
+    }
+
+    function errorMessage(status) {
+      return document.getElementById('listProduct').innerHTML = `<h3>Terdapat error dengan status Error ${status}</h3>`
+    }
+
+
+    function getProduct(keyword) {
+      getDataProduct(document.getElementById('text').value, function (data) {
+        showProduct(data)
+
+      }, function (status) {
+        errorMessage(status)
+      })
+
+      // menampilkan dalam bentuk table
+      getDataProduct(document.getElementById('text').value, function (data) {
+        clearTable()
+        showProductTable(data)
+
+      }, function (status) {
+        errorMessage(status)
+      })
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrow Fuction</title>
+</head>
+
+<body>
+
+  <script>
+    // ARROW FUNCTION
+    // Adalah bentuk lain yg lebih ringkas dari function Expression, penulisan function pada Js mempuya 3 tipe: menggunakan function dexlaration,function Expression dan arrow function.
+
+    // syntax arrow function yg mempunyai parameter leboh dari satu
+    // const Mhs = (nama, nim) => {
+    //   return ('Nama: ' + nama + '\n' + 'nim: ' + nim);
+    // }
+    // console.log(Mhs('angger', 21201087));
+
+    // syntax arrow function yg tdk mempunyai parameter
+    // const Mhs = () => {
+    //   let nama = 'angger';
+    //   let nim = 21201087;
+    //   return ('Nama: ' + nama + '\n' + 'nim: ' + nim);
+    // }
+    // console.log(Mhs());
+
+    // 2. Contoh penggunaan arrow function
+    // a. Menghitung jumlah character yg ada pada setiap index array menggunakan method array Map dengan mengembalikan array baru
+    // let mhs = ['Angger', 'Nur', 'Amin'];
+    // // parameter e akan mengembalikan array yg ada didalam array mhs
+    // // parameter tidak harus ditulis denga e,tulis sesuai dengan nama pada array lama
+    // let hitungCharacter = mhs.map((e) => {
+    //   console.log(this)
+    //   return e.length;
+    // })
+    // console.log(hitungCharacter);
+
+    // b. Menghitung jumlah CharacterData dan menampilkan array dan mengembalikannya dengan sebagai objek
+    // let barang = ['Sandal', 'Sepatu', 'Tas'];
+    // // jika parameter nya hanya 1 dapat ditulis seperti dibawah ini,dengan menghilangkan tanda kurung pada parameternye
+    // // da jikaingin mengembalikan sebagai object maka,sebelum tada kurawal,tambahkan elemen () untuk memberi tahu pada js kita akan mengembalikan sebagai object
+
+    // let conversiBarang = barang.map(barangArray => ({
+    //   // object literal
+    //   barangArray: barangArray,
+    //   jumlahChracter: barangArray.length
+    // }));
+
+    // console.table(conversiBarang);
+
+    let Mahasiswa = ['Angger', 'Nur', 'Yayak', 'Anas', 'Bagus', 'Cece'];
+    Mahasiswa.sort();
+    let tampilCharacter = Mahasiswa.map(nama => ({
+      nama: nama,
+      jmlhCharacter: nama.length
+    }));
+
+    console.log(Mahasiswa);
+    console.table(tampilCharacter);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JAVASCRIPT OOP</title>
+</head>
+
+<body>
+  <script>
+    // kita bungkus dengan block kurawal,agar variabel ada didalam local scope
+    {
+      //1.  Membuat Constructor
+      function Person() {
+        this.firstName = '';
+        this.lastName = ''
+      }
+      const Angger = new Person();
+      // kita menambahka isi dari property yg ada
+      // Dan jugabisa menabahkan property da valuenya
+      Angger.firstName = 'Nur ';
+      Angger.middleName = 'Amin'
+      console.log(Angger);
+    }
+    {
+      // 2. METHOD DI CONSTRUCTOR FUNCTION
+      // fungsi yg ada didalam object constructor
+      function Person() {
+        this.firstName = '';
+        this.lastName = '';
+        this.sayHello = function (name) {
+          console.info(` Hello ${name}, nama saya ${this.firstName} `)
+        }
+      }
+      const Angger = new Person();
+      Angger.firstName = 'Angger'
+      Angger.sayHello('Vindi')
+    }
+
+    {
+      // 3. PARAMETER DI CONSTRUCTOR FUNCTION
+      // Kita memungkinkan parameter pada function kita buat menjadi value pd property object
+      function Person(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.sayHello = function (name) {
+          console.info(` Hello ${name}, nama saya ${this.firstName} `)
+        }
+      }
+      const Angger = new Person('Angger nur', 'Amin');
+      Angger.sayHello('Vindi')
+    }
+
+    {
+      // 4. CONSTRUCTOR INHERITANCE
+      // Jika kita membutuhkan object yg lain maka kita dapat memanggilnya objectnya
+      function Employe(firstName, lastName, salary) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.salary = salary
+        this.cetakSalary = function () {
+          let hari = 30;
+          const totalSalary = this.salary * hari;
+          console.info(` Gaji ${this.firstName} :  ${totalSalary}`);
+          return totalSalary;
+        }
+      }
+
+      const Angger = new Employe('Angger', 'Nur Amin', 10000);
+      console.log(Angger);
+      Angger.cetakSalary()
+
+      function Pajak(bpjs, firstName, lastName) {
+        // memanggil object lain => Employe 
+        // parameter harus sama dengan yg adapada object yg dituju
+        // property yg ada pada object Emplyee akan diassign ke this(object PAJAK)
+        Employe.call(this, firstName)
+        this.bpjs = bpjs;
+        this.firstName = firstName;
+        this.lastName = lastName;
+      }
+      const hitungPajak = new Pajak(10, 'Vindi', 'Aprilia')
+      console.log(hitungPajak);
+    }
+
+    {
+      // 5. PROTOTYPING PADA OBJECT
+      // ini adlah konsep javascript menggunakan constructor function
+      function Mhs() {
+        this.nama = 'Angger';
+        this.vakultas = 'FTD'
+      }
+      const mhs1 = new Mhs()
+      // menambahkn prototype,yg artinya jika kita akan menambahkan method ini,variabel yg mengakses constructor maka otomatis akan mempunyi prototype ini      Mhs.prototype.sayHello = function () {
+      console.info(`Halo ${this.nama},GOOD LUCK`);
+
+      console.log(mhs1);
+    }
+
+    {
+      // 6.SUPER METHOD
+      // Memungkinkan kita untuk mengambil class pada parent class menggunakan keyword super.
+      class Mhs {
+        nilai() {
+          this.uts = 90;
+          this.uas = 97;
+          this.hasil = this.uts + this.uas
+          console.log(this.hasil);
+        }
+        nama(firstName, lastName) {
+          this.firstName = firstName;
+          this.lastName = lastName
+          console.log(this.firstName, this.lastName);
+        }
+      }
+      class Nilai extends Mhs {
+        // jika pada class terdapat nama method yg sama ,kita bisa mengakses object parenta dengan atribut super
+        nilai() {
+          // kita bisa mengambil method yg ada pada super class seaui dgn kebutuhan
+          super.nilai()
+          super.nama('Angger', 'Amin')
+          console.log('class child');
+        }
+      }
+      const tampil = new Nilai();
+      tampil.nilai()
+    }
+
+    {
+      // 7. PUBLIC CLASS FIELD DALAM JAVASCRIPT
+      // Artinya field pada class dapat diakses diluar class
+      class Person {
+        // biasa uruitan pendeklarasian dalam class
+        // a. property
+        firstName;
+        lastName;
+        umur = 0;
+        // b. constructor
+        // dan kita bisamengisika hasil parameter pd constructor sebagai value dalam property
+        constructor(firstName, lastName, umur) {
+          this.firstName = firstName;
+          this.lastName = lastName;
+          this.umur = umur;
+        }
+        // c.method pada class
+        sayHello() {
+          return 'hallo : ' + this.firstName;
+        }
+      }
+      // kita bisa mengisi consstructor
+      const profil = new Person('Vindi', 'Aprilia', 21);
+      console.log(profil);
+    }
+
+    {
+      // 8.PRIVATE FIELD CLASS PADA JS
+      // Artinya property dalam class tdak bisa diakses diluar class
+      class Counter {
+        // syntax private class ditandai dengan tanda (#) crash
+        #counter = 0
+        increment() {
+          this.#counter++;
+        }
+        decrement() {
+          this.#counter--;
+        }
+        // mengambil nilai counter sekarang
+        get() {
+          return this.#counter;
+        }
+      }
+      const cntr = new Counter;
+      // misal kita akses dari luar class,tetapi hasilnya akan dihiraukan
+      // cntr.counter = 10;
+      cntr.increment()
+      cntr.increment()
+      cntr.increment()
+      cntr.increment()
+      cntr.decrement()
+      console.log(cntr);
+      console.log(cntr.get())
+    }
+
+    {
+      // 9. PRIVATE METHOD
+      // Cara kerjanya sama dengan field private class
+      class Nama {
+        say(name) {
+          // kondisi jika namnya ada,yg mengambil dari private method
+          if (name) {
+            this.#namaAda(name);
+          } else {
+            this.#namaKosong();
+          }
+        }
+        #namaKosong() {
+          console.log('nama tidak ada');
+        }
+        #namaAda(name) {
+          console.log('Hallo : ' + name);
+        }
+      }
+      const tampilNama = new Nama();
+      tampilNama.say('Angger')
+    }
+
+    {
+      // 10. OPERATOR INSTANCE OF 
+      // Digunakan untuk mnegecek apakah variabel tersebut menyimpan class(dan hasilnya adalah boolean)
+      class Employe {
+
+      }
+      class Manager {
+
+      }
+      const Angger = new Manager;
+      console.log(Angger instanceof Employe); //false karena Angger menyimpan class Manager
+      console.log(Angger instanceof Manager); // true
+    }
+
+    {
+      // 11. OPERATOR INSTANCEOF PADA INHERITENCE
+      class Employe {
+
+      }
+      class Manager extends Employe {
+
+      }
+      const Angger = new Manager;
+      console.log(Angger instanceof Employe); // true Karena class manager mewarisi apapun yg ada dilam class Employe
+    }
+
+    {
+      // 12. STATIC CLASS FIELD dan STATIC METHOD
+      // Artinya field yg mempunyai keywoard static tidak disimpan didalam object,melainkan disimpan langsung kedalam objectnya,DAN bersifat global,bisa get dan set diluar objectnya
+      // field maupun method akan keluar dari instance object,dan akan menjadi property langsung pd classnya
+      class DetailNama {
+        static nama = 'Angger Nur Amin'
+        static umur = 21
+        alamat = 'Kabubaten Blitar'
+
+        static tambah(...value) {
+          let total = 0
+          for (const number of value) {
+            total += number
+          }
+          console.log(total);
+          return total;
+        }
+      }
+      const profilAngger = new DetailNama();
+      console.log(profilAngger);
+      // cara memanggilnya menyebutkan nama clasnya langsung
+      DetailNama.umur = 22
+      console.log(DetailNama.nama);
+      // jika kita mengakses field nama,maka kita tdk bisa menggunakan syntax dibawah ini
+      // console.log(profilAngger.nama);
+
+      // cara mengakses method pd class karena static
+      DetailNama.tambah(10, 10, 10, 10, 10)
+    }
+
+    {
+      // 13. THROW EROR
+      // Kalimat yg akan kita tampilkan pada console jika terjadi eror pd code kita,DAN INI mengakibatkan kode yg berada dibawahnya (synchronous)akan diberhentikan oleh browser,sampai kode eror tersolving
+      // class Math {
+      //   static perkalian(...kali) {
+      //     let jumlah = 1;
+      //     for (const angka of kali) {
+      //       if (kali.length === 0) {
+      //         // eror adalah class pada js
+      //         throw new Error('Parameter tidak boleh kosong');
+      //       }
+      //       jumlah *= angka
+      //     }
+      //     console.log(jumlah);
+      //     return jumlah
+      //   }
+      // }
+      // Math.perkalian(1, 2, 3)
+      // maka pesan eror akan tampil diconsole
+      // Math.perkalian()
+    }
+
+    {
+      // 14. ERROR HANDLING & MEMBUAT CLASS ERROR SECARA MAUAL
+      class parameterError extends Error {
+        // artinya kita akan membuat class trurunan dari class =e=roor yg didalm js adalah class
+        // class error hnya berisi pesan error
+        constructor(message, field) {
+          // untuk mengambil pesan erro yg disimpan didalam class errror
+          super(message)
+          this.field = field;
+        }
+      }
+
+      // penanganan eror
+      class tambahAngka {
+        static inputAngka(...angka) {
+          if (angka.length === 0) {
+            throw new parameterError('Total parameter harus lebih besar dari 0', ' number')
+          }
+          let jumlah = 0;
+          for (const value of angka) {
+            jumlah += value
+          }
+          return jumlah;
+        }
+      }
+
+      try {
+        // masukka code didalam try,yg memungkinka kode akan terjadi eror pd saat kondisi tertentu
+        const hasil = tambahAngka.inputAngka();
+        console.log('hasil : ' + hasil);
+
+        // jika pd thp try ada codecyg  error,maka catch yg akan dijalankan
+      } catch (error) {
+        // harus bernialai true
+        if (error instanceof parameterError) {
+          console.error('terjadi error di field ' + error.field + ' dengan error ' + error.message);
+        } else {
+          console.error(error.message);
+        }
+
+      } finally {
+        // finally akan tetap berjalan setelah try da catch diekesekusi,finally tetap akan berjalan jika try dan catch diantar salah satunya ada error
+        console.log('program selesai dieksekusi');
+      }
+
+      // const Angka1 = new tambahAngka();
+      // Angka1.inputAngka()
+      console.log('Selesai');
+    }
+
+    {
+      // 14.KATA KUNCI FINALLY
+      // Bermanfaat pada suatu kondisi tertentu
+      class Counter {
+        #counter = 0;
+        tmbhCounter() {
+          // kita bisa memanfaatka finally karena finally akan tetap diseksekusi
+          try {
+            return this.#counter;
+          } finally {
+            this.#counter++;
+
+          }
+        }
+      }
+      const tmbh = new Counter()
+      console.log(tmbh.tmbhCounter());
+      console.log(tmbh.tmbhCounter());
+      console.log(tmbh.tmbhCounter());
+      console.log(tmbh.tmbhCounter());
+      console.log(tmbh.tmbhCounter());
+    }
+
+  </script>
+</body>
+
+</html>

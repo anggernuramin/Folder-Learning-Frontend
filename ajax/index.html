@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MOVIE</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col">
+        <h1>Example Movie db</h1>
+      </div>
+    </div>
+
+    <!-- input searching -->
+    <div class="row">
+      <div class="col-md-10 mt-3">
+        <div class="input-group mb-3">
+          <input id="search" type="text" class="form-control user-Searching" placeholder="Search information movie..."
+            aria-label="Recipient's username" aria-describedby="button-addon2">
+          <button class="btn btn-outline-primary button-Search" type="button" id="">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- card -->
+    <div class="row wrapper-movie">
+
+    </div>
+  </div>
+
+  <!-- Button trigger modal ditempatka padatemplate literah (show detail  )-->
+
+  <!-- Modal Box-->
+  <div class=" modal fade" id="detailInfo" tabindex="-1" aria-labelledby="detailInfoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="detailInfoLabel">Detail Info</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- syntax bootstrap agar responsive -->
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+  <!-- PASTIKAN SCRIPT JS UNTUK KITA MENULIS CODE,BERADA DIABAWAH SCIRIPT CDN JQUERY,AGAR KITA DAPAT MENGAKSESNYA,KARENA PADA JS KODE DIBACA DARI ATAS KEBAWAH -->
+  <script src="script.js"></script>
+  <!-- <script src="scriptPromise.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

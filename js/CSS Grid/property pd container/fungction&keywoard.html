@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS GRID | Function & Keywoard</title>
+  <!-- Digunakan untuk MEMBERI NILAI pada property grid
+  
+  Valuenya adalah
+1. repeat()
+      Menentukan ukuran grid track secara berulang
+2. min-content &max-content 
+      Menentukan seberapa besar ukuran grid track berdasarkan content pd sebuah item
+    a. min-content
+      konten minimum,akan relatif terhadap kata yang palig panjang (1 kata 1 kolom )
+    b. max-content
+      konten maksimum,akan menjadikan isi isi dari itemnya menjadi 1 baris
+3. auto-fill & auto-fit
+      Menentukan jumlah item untuk berada pada grik trek
+    a. auto-fill
+      Akan menyisakan satu tempat pada grid paling belakang
+    b. auto-fit
+      Grid akan berakhir pada item yang terakhir
+    
+    SAMA-SAMA JIKA UKURAN DIATAS NYA MASIH MUAT MAKA GRID AKAN SECARA OTOMATIS NAIK KEATAS
+    ,BERLAKU UNTUK grid-template-coloums:
+4. minmax
+    Menentukan ukuran maximal dan maksimum dari grid track (ukuran  track-nya)
+    -->
+
+  <style>
+    * {
+      margin: 0%;
+      padding: 0;
+
+    }
+
+    body {
+      background-color: #eaeaea;
+      height: 100vh;
+    }
+
+    hr {
+      height: 2px;
+      background-color: black;
+      border-radius: 20px;
+      width: 30rem;
+      margin: auto;
+    }
+
+    h1 {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 2rem;
+      text-align: center;
+      margin: 20px;
+
+    }
+
+    .container {
+      background-color: aqua;
+    }
+
+    .gallery {
+      margin: 50px auto;
+      width: 80%;
+      list-style: none;
+      border: 10px solid white;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, .7);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      overflow: hidden;
+      column-gap: 10px;
+      row-gap: 10px;
+      box-sizing: border-box;
+
+
+      /* li {
+      margin-top: -7px;
+    } */
+
+      .img {
+        display: block;
+        width: 100%;
+      }
+  </style>
+</head>
+
+<body>
+  <h1>GALLERY MASAK</h1>
+  <hr>
+  <div class="container">
+    <section class="eating">
+      <ul class="gallery">
+        <li><img src="../img/naruto.png" alt=""=""></li>
+        <li><img src="../img/sakura.png" alt=""=""></li>
+        <li><img src="../img/sasuke.png" alt=""=""></li>
+        <li><img src="../img/kakashi.png" alt=""=""></li>
+        <li><img src="../img/naruto.png" alt=""=""></li>
+        <li><img src="../img/sakura.png" alt=""=""></li>
+        <li><img src="../img/sasuke.png" alt=""=""></li>
+        <li><img src="../img/kakashi.png" alt=""=""></li>
+        <li><img src="../img/naruto.png" alt=""=""></li>
+        <li><img src="../img/sakura.png" alt=""=""></li>
+        <li><img src="../img/sasuke.png" alt=""=""></li>
+        <li><img src="../img/kakashi.png" alt=""=""></li>
+      </ul>
+    </section>
+
+
+  </div>
+</body>
+
+</html>

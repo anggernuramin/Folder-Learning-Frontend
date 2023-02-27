@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Method pada Object</title>
+</head>
+
+<body>
+  <script>
+    // METHOD PADA OBJECT
+    // Secara default pd object kita dapat mengubah da menghapus property dan valuenya
+    {
+      // 1. Object.freeze()
+      // Digunaka untuk mengubah object menjadi object yg tidak bisa DIHAPUS ,DIUBAH PROPERTY DAN VALUENYA
+      const name = {
+        firstame: 'Angger',
+        middlename: 'Nur',
+        lastname: 'Amin'
+      }
+      // method default kita dapat mengubah dan menghapus,tetapi jika kita mmeberi STATIC OBJECT
+      Object.freeze(name)
+      // maka kitatdk dapat Menghapus,Menabah,Mengubah property dan valuenya
+      name.firstame = 'Vindi'; //tdk aka bisa jalan
+      delete name.lastname; //tdk aka bisa jalan
+      name.alamat = 'Blitar'; //tdk aka bisa jalan
+      console.log(name);
+    }
+
+    {
+      // 2. Object.seal()
+      // sama dengan Object.freeze() TETAPI KITA MASIH BISA MENGUBAH ISI VALUENYA
+      const name = {
+        firstame: 'Angger',
+        middlename: 'Nur',
+        lastname: 'Amin'
+      }
+      Object.seal(name)
+      name.firstame = 'Vindi'; // akan jalan
+      name.middlename = 'Aprilia'; // akan jalan
+      name.lastname = 'Dewi' // akan jalan
+      name.alamat = 'kedawung' //tidak jalan
+      delete name.firstame  //tidak jalan
+      console.log(name);
+    }
+
+    {
+      // 3. Object.assign()
+      // Digunaka untuk menggabungka semua attribute dari sebuah object ke object lain
+      const mhs = {
+        nama: 'Angger',
+        nim: 21201087,
+        prodi: 'TI'
+      }
+      const alamat = {
+        kota: 'Blitar',
+        desa: 'Palulo',
+        kecamatan: 'Nglegok'
+      }
+      Object.assign(mhs, alamat) //Artinya object mhs akan menerima isi object dari alamat
+      // parameter ke 1 = object yang menerima,parameter ke 2 = object yang akan digaungkan
+      // object alamat isinya AKAN TETAP
+      // object mhs akan berisi OBJECT ALAMAT JUGA
+      console.log(mhs);
+    }
+
+    {
+      // 4. Object.values()
+      // Digunakan untuk mengambil semua value pada object DA MENGEMBALIKAN ARRAY
+      const person = {
+        firstame: 'Angger',
+        middlename: 'Nur',
+        lastname: 'Amin',
+        alamat: {
+          kota: 'Blitar',
+          desa: 'Palulo',
+          kecamatan: 'Nglegok'
+        },
+        hobby: ['coding', 'olahraga']
+      }
+      const valuePerson = Object.values(person)
+      const personAlamat = Object.values(person.alamat)
+      console.log(personAlamat); // kita bisa mengambil value object didalam objectnya dan hasilnya array
+      console.log(valuePerson); //Hasilnya array,yang menjadi array adalah value luarnya,value yang ada didalam property didalam (nested object) aka tetap menjadi object
+      console.log(person);
+    }
+
+    {
+      // 5. Object.getOwnpropertyNames()
+      // Digunakan untuk mengambil semua property yang ada didalam object DAN MENDEMBALIKAN ARRAY
+      const person = {
+        firstame: 'Angger',
+        middlename: 'Nur',
+        lastname: 'Amin',
+        alamat: {
+          kota: 'Blitar',
+          desa: 'Palulo',
+          kecamatan: 'Nglegok',
+
+          rtrw: {
+            rt: 05,
+            rw: 10
+          }
+        }
+      }
+
+      const propertyPerson = Object.getOwnPropertyNames(person) //mengambil semua property objectnya dan MENGEMBALIKAN ARRAY
+      console.log(propertyPerson);
+
+      // jika kita ingim mengambil object didalam property alamat,maka kita bisa mengakses object dalamnya
+      const alamat = Object.getOwnPropertyNames(person.alamat)
+      console.log(alamat);
+    }
+  </script>
+</body>
+
+</html>

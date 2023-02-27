@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konsep this pada Function(Arrow Function)</title>
+  <style>
+    .box {
+      width: 300px;
+      height: 300px;
+      margin: 60px auto;
+      border: 2px solid darkblue;
+
+      /*shorthand menggabungkan animation property */
+      transition: .3s width,
+        .3s height .3s,
+        .3s margin-top .3s,
+        .1s background-color;
+    }
+
+    .ubah {
+      width: 350px;
+      height: 350px;
+      /* border-radius: 50%; */
+      margin-top: 30px;
+    }
+
+    .kasihWarna {
+      background-color: aqua;
+    }
+  </style>
+</head>
+<div class="box">
+
+</div>
+
+<body>
+  <script>
+    // Konsep this pada Function
+    // 1. Saat kita membuat constructor, maka this akan mengacu pada objectnya,
+    // 2.Membuat construktor tidak bisa menggunakan arrow function;
+    // 3. Tetapi kalo untuk membuat method pada oject,bisa menggunakan arrow function;
+    // const Mahasiswa = function (nama, umur) {
+    //   this.nama = nama;
+    //   this.umur = umur;
+    //   console.log(this);
+    //   this.tambahUmur = () => {
+    //     //4. pada saat membuat arrow function maka this akan menampilkan elemen objectnya,dalam konteks ini adalah Mahasiswa,asal arrow function disimpan dalam variable
+    //     console.log(this);
+    //     return this.umur++;
+    //   }
+
+    //   //5. jika mendeklarasika function dexlarasi artinya function akan berjalan terus menerus saat object dipanggil
+    //   setInterval(function () {
+    //     //6. sedangkan jika pada construktor kita membuat function dexlaration,maka akan hoisting dulu,sehingga this akan menampilkan object window
+
+    //     //7. tetapi jika kita menggunakan arrow function,arrow function akan mencari pada lexical scopenya,karena pada arrow function tidak memiki konsep this sehingga tidak akan mencari variabel global(window)
+    //     console.log(this)
+    //     console.log(this.umur++);
+    //   }, 500);
+    // }
+    // let Angger = new Mahasiswa('Angger', 21,);
+    // console.log(Mahasiswa);
+
+    // 8. Jika kita membuat function (expression,dexlaration,arrow)Artinya tidak didalam object maka this akan memicu pada window
+    // function hitung(panjang, lebar) {
+    //   console.log(this);
+    //   return panjang * lebar;
+    // }
+    // console.log(hitung(2, 4));
+
+    // latihan soal penerapan konsep this pada event js
+    const box = document.querySelector('.box');
+    box.addEventListener('click', function () {
+      // this pada event listener,jika menggunakan function(biasa) ,this akan memicu pada lexical scope(box)
+
+      // set agar saat transisi berubah sesuai dengan urutan elemenya,background-color terlebih dahulu yag menghilangkan classnya
+
+      // simpan class dalam variable
+      let satu = 'ubah';
+      let dua = 'kasihWarna';
+      // cek dan gunakan .contains untuk mengecek ada elemen apa aja didalam elemen html
+      if (this.classList.contains(satu)) {
+        // melakukan penukaran class,
+        [satu, dua] = [dua, satu]
+      }
+
+      // jika menggunakan arrow function maka this akan memicu pada window
+      // console.log(this);
+      this.classList.toggle('ubah');
+
+
+      // jika ingin menjalankan calss kasihwarna setelah delay selama tiga detik
+      setTimeout(() => {
+        // ingat jika kita menggunakan function dexlaration pada eventlistener,object dll maka this alan memicu pada window
+
+        // gunakan arrow function agar memicu pada veriable lexical scopenya
+        // console.log(this);
+        this.classList.toggle('kasihWarna');
+      }, 600)
+    })
+
+
+  </script>
+</body>
+
+</html>

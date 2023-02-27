@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Target Value pd tag option</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      background-color: white;
+    }
+
+    main {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #target {
+      width: 400px;
+      height: 200px;
+      background-color: darkblue;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      overflow: hidden;
+    }
+
+    .content {
+      width: 310px;
+
+    }
+
+    select {
+
+      font-weight: bold;
+      width: 100%;
+      margin: 20px 0 10px 0;
+      display: block;
+      padding: 15px 20px;
+      border-radius: 5px;
+      border-color: darkblue;
+      border-width: 2px;
+      outline: none;
+      transition: .3s;
+    }
+
+    select:hover {
+      border-color: darkblue;
+      border-width: 2px;
+      outline: darkblue;
+    }
+
+    select option {
+      padding: 5px 0;
+    }
+
+    select option:hover {
+      background-color: darkblue;
+    }
+
+    label {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    input[type=text] {
+      font-weight: bold;
+      color: black;
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 5px;
+      border-color: darkblue;
+      border-width: 2px;
+      margin-bottom: 20px;
+    }
+
+    input[type=button] {
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 5px;
+      border-color: darkblue;
+      border-width: 2px;
+      margin-bottom: 20px;
+      background-color: darkblue;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #targetText {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div id="target">
+
+      ubah menjadi dinamis sesuai dengan keinginan pengguna
+
+    </div>
+    <div class="content">
+      <select name="" id="select">
+        <option value="background">Warna Latar</option>
+        <option value="color">Warna Text</option>
+        <option value="fontSize">Ukuran Text</option>
+        <option value="fontFamily">Jenis Font</option>
+        <option value="width">Lebar Konten</option>
+        <option value="height">Tinggi Konten</option>
+      </select>
+      <label for="value">value</label>
+      <br>
+      <input type="text" id="value" name="value" placeholder="Masukkan value sesuai opsi..">
+    </div>
+    <input type="button" id="btnUpdate" value="Update">
+  </main>
+  <script>
+    const btnUpdate = document.getElementById('btnUpdate');
+    btnUpdate.onclick = update;
+
+
+
+
+    function update() {
+      const target = document.getElementById('target')
+      const select = document.getElementById('select')
+      let text = document.getElementById('value').value;
+      console.log(text);
+
+      if (select.value === 'color') {
+        target.style.color = text
+      } if (select.value === "background") {
+        target.style.backgroundColor = text
+      } if (select.value === "fontSize") {
+        target.style.fontSize = text + 'px'
+      } if (select.value === "fontFamilye") {
+        target.style.fontFamily = text;
+      } if (select.value === "width") {
+        target.style.width = text + 'px'
+      } if (select.value === "height") {
+        target.style.height = text + 'px'
+      }
+
+
+      document.getElementById('value').value = " "
+
+      // switch (select) {
+      //   case select.value === 'color':
+      //     target.style.color = text
+      //     break;
+      //   case select.value === "background":
+
+      //     break;
+      //   case select.value === "fontSize":
+      //     target.style.fontSize = text + 'px'
+      //     break;
+      // }
+
+    }
+
+  </script>
+</body>
+
+</html>

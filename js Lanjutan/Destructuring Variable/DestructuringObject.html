@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destructuring variabel / Destructuring Array pada Object</title>
+</head>
+
+<body>
+  <script>
+    // Selain pada Array, Destructuring variable bisa dilakukan pada object, Artinya kita bisa membongkar isi didalam object
+
+    // 1. mengambil property pada object dan set ke variable
+    const dataMhs = {
+      nama: 'Angger',
+      nim: 21201087,
+      prodi: 'TI',
+      // email: 'angger@gmail.com'
+    }
+    // Pada Destructuring object PASTIKAN PENAMAAN PROPERTI SAMA DENGAN SAAT MEMBUAT DESCTRUCTURING VARIABLE
+    // const { nama, nim, prodi } = dataMhs;
+    // console.log(nama);
+
+    // 2. Assign ke variabel baru dan ubah nama object yang baru
+    // const { nama: namaMahasiswa, nim: nimMahasiswa, prodi: prodiMahasiswa } = dataMhs;
+    // console.log(nama);
+
+    // Arti syntax diatas adalah kita akan mengganti nama property pada object sesuai dengan kita,Teapi kita harus menseleksi nama propertu object awal terlebih dahulu,dan kita mengaksesnya dengan nama variable yang baru sesuai dengan variable yg udah kita buat
+
+    // 3. Memberikan default value
+    // const { nama, nim, prodi, email = 'default@.com ' } = dataMhs;
+    // // Karena kita belum mmebuat property pada object kita dengan nama email,maka pada console akan undifined(belum dibuat), oleh karena itu kita bisa mengisi pada saat Destructuring variable DAN INI BERJALAN JIKA PROPERTY YG DIPANGGIL TIDAK TERDAPAT PADA OBJECT
+
+    // // JIKA ADA MAKA AKAN MENAMPILKAN VALUE PADA OBJECTNYA
+    // console.log(email);
+
+    // 4. menggabungkan default value + assign variabel baru
+    const { nama: namaMahasiswa, nim: nimMahasiswa, prodi: prodiMahasiswa, email = 'email@default.com' } = dataMhs;
+    console.log(namaMahasiswa);
+
+    // 5. Mengambil field(isi) pada object,setelah dikirim sebgai parameter function
+    // dengan kasus, kita aka mengambil data student, tetapi kita mengambil id nya saja dan kita masukkan sebagai parameter function,INI BIASA TERJADI JIKA KITA MENGAMBIL DATA DARI API DN KITA MEMBUTUHKAN DATA ID NYA SAJA SEBAGAI KEY NYA
+    const Student1 = {
+      id: '001',
+      name: 'Alviano',
+      age: 18,
+      class: '2 SMK'
+    }
+    const Student2 = {
+      id: '002',
+      name: 'Zahra',
+      age: 19,
+      class: '3 SMK'
+    }
+
+    //  artinya jika kita membuat parameter dan didalmnya kita akan emngambil property pada object,kita membutuhkan tanda kurung dan disi property padaobject yang mau kita ambil.
+    // parameter bisa lebih dari 1 untuk mengambil property paaa object
+    function getId({ id }) {
+      return id;
+    }
+
+    // object student dijadikan argument (masih berupa object),
+    // akan dibongkar(Destructuring) saat menjadi parameter function
+    // dan direturn oleh functionnya
+    console.log(getId(Student1));
+
+    console.log(getId(Student2))
+
+
+
+
+    // const { id } = Student;
+    // console.log(id);
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Closures</title>
+
+</head>
+
+<body>
+  <script>
+    // CLOSURES
+    //   Merupakan kombinasi antara function dan lingkungan lexical(lexical scope(variable yang ada didalam function)) didalam function tersebut KITA DAPAT membuat function yang isinya mengembalika function yang lain
+    function init() {
+      let nama = 'angger';
+      function CetakNama() {
+        //  dinamakan CLUSER jika pada function child nya menggunakan variable yang ada didalam parent functionnya ( pada project ini , function parentnya adalah function init(){})
+        console.log(nama);
+
+      }
+      // menjalankan function Cetaknama 
+      console.dir(CetakNama);
+
+      // jika tdk ingin mendapatkan hasil undifined, maka function harus direturn
+      // syntax dibawah ini mereturn functionnya
+      // return init;
+    }
+
+    init();
+    // menympan nama di parameter function childnya
+
+    // KONSEP PADA CLOSURE
+    // function dataMhs(nama) {
+
+    //   // local variable
+    //   // yang isinya mengambil nilai dari parameter
+    //   let namaSaya = nama;
+
+    //   // INNER FUNCTION (CLOSURE)
+    //   //   adalah function yang ada didalam function
+    //   // CLOSURE adalah inner function yang mempunyai akses ke parent function
+    //   function cetakNama() {
+
+    //     // MENGAKSES ke parent variable namaSaya
+    //     console.log('nama mahasiswa ' + namaSaya);
+    //   }
+    //   // jalankan inner function
+    //   console.dir(cetakNama);
+
+    // }
+
+    // // jalanka funtion parentnya
+    // dataMhs('Angger')
+    // dataMhs('Amin')
+
+
+    // PENGGUNAN IIFE(MENJALANKAN FUNCTION SECARA OTOMOTAS SAAT FUNTION PARENTNYA DIAPNGGIL)
+    let cetakNilai = (function masukkanNilai() {
+      let nilaiSekang = 0;
+
+      // artinya jika kita mereturn function,kita akan secara langsung menjalankkan apa yg ada didalamnya
+      return function () {
+        // DIRETURN AGAR MENGHASILKAN NILAI(tdk undifined)
+        return ++nilaiSekang;
+      }
+
+      // tANDA KURUNG DIGUNAKAN UNTUK SAAT FUNCTION PARENT DIAPNGGIL,MAKA INNER FUNCTION(CLOSURE)
+      // LANGSUNG DIJALANKAN
+    })()
+
+    console.log(cetakNilai());
+    console.log(cetakNilai());
+    console.log(cetakNilai());
+    console.log(cetakNilai());
+    console.log(cetakNilai());
+
+
+    // 
+    // function cetakAngka() {
+    //   let angka = 10;
+
+    //   function angkaSekarang() {
+    //     console.log(angka);
+
+    //   }
+    //   // mengembalikan inner function(closure) tetapi belum menjalankan isinya
+    //   return angkaSekarang;
+
+    // }
+
+    // // simpan closure parent menggunakan  variable
+    // let tampil = cetakAngka();
+    // // variable dijadikan function untuk memanggil inner funtion (closure)
+    // tampil();
+
+
+    // FUNCTION FACCTORY
+    // contoh kasus function closure,yang closurnya menerima parameter dari function parentnya
+    function ucapkanWaktu(waktu) {
+
+      // membuat closure dan mengembalikan functionnya
+      return function (nama) {
+        console.log('halo ' + nama + ' selamat ' + waktu);
+      }
+
+
+    }
+    // baut variable yg digunakan untuk memanggil function parentnya dan mengisi argument
+    let malam = ucapkanWaktu('Malam');
+    // gunakan variabel yg dibuat untuk memanggil function parent,menjadi memanggil closurenya
+    malam('vindi')
+    let siang = ucapkanWaktu('siang');
+    siang('angger')
+
+
+  </script>
+</body>
+
+</html>

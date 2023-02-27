@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS GRID | PROPERTY pada Container</title>
+  <!-- Property yag mengatur baris dan kolom -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #efefee;
+    }
+
+    .container {
+      background-color: white;
+      width: 80%;
+      margin: 50px auto;
+      display: grid;
+      /* EXPLICIT
+            Keteranga jika ukuran grid baris dan kolom ditentukan secara jelas ukurannya */
+      grid-template-columns: 1fr 1.2fr 1fr;
+      grid-template-rows: 100px 30px;
+
+      /* property untuk ukuran yang implisit
+          IMPLISIT artinya ukuran yang tidak ditentukan ukuran baris dan kolom
+               */
+      grid-auto-rows: 300px;
+
+
+
+    }
+
+    .item.item2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: .8fr 1fr;
+
+      margin: 5px;
+
+
+
+    }
+
+    .child {
+      /* agar conten yang ada didalmnya berada ditengah */
+
+      display: flex;
+      justify-content: center;
+      padding: 5px;
+      border: 1px solid grey;
+    }
+
+
+    .item:nth-child(odd) {
+      background-color: aqua;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item item2">
+      <div class="child">NO</div>
+      <div class="child">1</div>
+      <div class="child">2</div>
+      <div class="child">3</div>
+      <div class="child"> </div>
+      <div class="child">Angger</div>
+      <div class="child">Nur</div>
+      <div class="child">Amin</div>
+      <div class="child"> </div>
+      <div class="child">Angger</div>
+      <div class="child">Nur</div>
+      <div class="child">Amin</div>
+
+    </div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+    <div class="item">8</div>
+    <div class="item">9</div>
+    <div class="item">10</div>
+  </div>
+</body>
+
+</html>

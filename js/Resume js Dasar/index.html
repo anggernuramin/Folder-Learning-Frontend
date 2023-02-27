@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan js</title>
+</head>
+
+<body>
+  <script>
+    // 1. POPUP
+    // const masuk = confirm('apakah anda ingin masuk = ?')
+    // // confirm menghasilka boleea (ok === true ,  cancel === false)
+    // if (masuk === true) {
+    //   const nama = prompt('masukkan nama');
+    //   alert('Halo ' + nama)
+    // } else {
+    //   alert('anda gagal masuk')
+    // }
+
+    // 2. UNDEFINED,NULL
+    // undefined
+    // adalah tipe data yg data sebelumnyabelum dikasih nilai
+    // undefined
+    // let nama;
+    // // null
+    // let nama = null;
+    // value
+    let nama = 'Angger'
+    if (nama === undefined) {
+      console.log('undefined');
+    } else if (nama === null) {
+      console.log('null');
+    } else {
+      console.log(nama);
+    }
+
+    // 3. operator in
+    // bernilai true atau false (DIGUNAKAN UNTUK OBJECT DA ARRAY)
+    const mhs = {
+      name: ' Vindi',
+      age: 21
+    }
+    if ('name' in mhs) {
+      console.log('Nama' + mhs.name + ' ada');
+    } else {
+      console.log('Property tdk ada');
+    }
+    // in akan mengecek property atau indexnya ada atau tidak,tidak akan emmeperdulikan valuenya
+
+    // 3. OPERATOR TERNARY
+    const nilai = 90;
+    const ucapan = (nilai >= 75) ? "Lulus" : "Tidak lulus";
+    console.log(ucapan);
+
+    //4. OPTIONAL CHAINING
+    // Untuk mengetahui object didalmnya ada property yg kita cari atau tidak
+    const barang = {};
+    let tampil = barang?.jenis?.harga;
+    // cara bacaya adalah,didalm object barang ada object jenis nggak ? didalam object jenis adaproperty harga ngga? kalau tidak maka akan tampil unefined
+    console.log(tampil);
+
+    // 5. falsy and truthy 
+    // mengubah data biasa ke bolean
+    let data = {};
+    if (data) {
+      console.log('TRUE');
+    } else {
+      console.log('FALSE');
+    }
+
+    // 6. OPERATOR LOGIKA NON-BOOLEAN
+    // SERING TERJADI jika kita mnemui suatu kasus dalam suatu object ,yang kita ingin mengambil misal nama,dan menampilkan nama yang bernilai truthy
+    console.log("" || 2);
+    // truthy 2
+    console.log("angger" || 2);
+    // truthy yg pertama kali diliat (angger)
+    const login = {
+      firstname: '',
+      lastname: 'Nur Amin'
+    }
+    // misal login akan dilakukan user,dan kita akan menapilkan adata yg bernilai truthy
+    const user = login.firstname || login.lastname;
+    // aka mengambil property dari lastname,karena firstname bernilai falsy
+    console.log(user);
+
+    // 7. Break and Continue
+    // Break akan memperhentika program
+    // Continue akan tetap melajutka program sampai dengan interval yg telah ditentukan
+    let counter = 1;
+    while (true) {
+      document.writeln(`<p> Cetak angka ke - ${counter}</P>`)
+      if (counter >= 10) {
+        break;
+      }
+      counter++
+    }
+    for (let angka = 0; angka < 100; angka++) {
+      if (angka % 2 == 0) {
+        continue;
+      }
+
+    }
+
+    // 8. RETURN PADA FUNCTION
+    // misal program membandingkan isi dari areay ada atau tidak data yg kita cari,jika ada maka aka mereturn true dan jika tidak maka akan mereturn false
+    function cariArray(array, search) {
+      for (const element of array) {
+        console.log(element);
+        {
+          if (element === search) {
+            return true
+            //akan mereturn data yg pertama kali ditemukan padda array
+          }
+        }
+      }
+      return false
+    }
+    const arr = [1, 10, 12, 23, 12, 12];
+    const result = cariArray(arr, 12);
+    console.log(result);
+
+    // 9. FUNCTION DEFAULT PARAMETER
+    // Memberikan nilai drfault pada parameter,aka berjalan menampilka defAult value nya jika saat pemanggila function,parameter nya tidak disi
+    function profil(userLogiter, gender = 'Default parameter') {
+      return (userLogiter + ' ' + gender)
+    }
+    const display = profil('Angger')
+    console.log(display);
+
+    // 10. REST PARAMETER DA SPREAD SYNTAX
+    // Ini aka berkaitan jika data yg kita kirim ke parameter sudah berupa array, dan parameter menerima parameter array dengan rest parameter
+    function tambah(identitas, ...data) {
+      let jumlah = 0;
+      for (let e of data) {
+        jumlah += e;
+      }
+      return ('nama :' + identitas + ', ada ' + jumlah + ' data')
+    }
+    console.log(tambah('sapu', 10, 20, 20, 20));
+    const values = [10, 20, 30, 40]
+    // ini aka terjadi eror karena data sudah berupa array,KITA BISA AKALI DENGAN SPREAD ,artinyakita mengubah data array ke rest paraameter denga bntuan spread syntax
+    // console.log(tambah('sapu', values))
+    console.log(tambah('kemeja', ...values))
+
+    // CONTOH KASUS
+    // memfilter data pada object
+    const country = [
+      { negara: 'indonesia', benua: 'Asia' },
+      { negara: 'Jerman', benua: 'Eropa' },
+      { negara: 'Spanyol', benua: 'Eropa' },
+      { negara: 'Korea', benua: 'Asia' },
+      { negara: 'Portugal', benua: 'Eropa' },
+      { negara: 'Amerika selatan', benua: 'Afrika' }
+    ];
+    function filterData(...val) {
+      const data = val.filter(e => e.benua === "Asia")
+        // const sort = data.forEach(a => console.log(a.benua))
+        .map(a => a.negara)
+
+      return data;
+    }
+    // mengubah data country ke spread operator yg sudah berupa array,agar rest parameter dapat membaca dataya
+    let index = filterData(...country)
+    console.log(index);
+    for (const mhs of index) {
+      document.writeln(`<p>negara benua Asia: ${mhs}</p>`)
+    }
+
+
+    // 11.RECURSIF
+    function cetakAngka(n) {
+      // base case
+      if (n === 10) {
+        return
+      } else {
+        console.log(n);
+        return cetakAngka(n + 1)
+      }
+    }
+    cetakAngka(1)
+
+    //12 FUNCTION GENERATOR
+    // Hanya dapat diiterasi/iterator (ditandai dengan adanya tanda * stelah function)
+    function* student() {
+      yield "Angger"
+      yield "Nur"
+      yield "Amin"
+    }
+    const siswa = student();
+    for (const names of siswa) {
+      console.log(names);
+    }
+
+    // 13. OBJECT METHOD
+    // Function yg ada didalam object,cara membuatnya adaberbagai cara
+    // 1. menulis langsung di dalam object
+    // const dosen = {
+    //   nama: 'Vindi',
+    //   sayHello: function (waktu) {
+    //     alert('hello ' + this.nama + ' Selamat ' + waktu)
+    //   }
+    // }
+    // 2.memaggil function diluar object
+    // function sayHello(waktu) {
+    //   alert('hello ' + this.nama + ' Selamat ' + waktu)
+    // }
+    // const dosen = {
+    //   nama: 'Vindi',
+    //   sayHello: sayHello
+    // }
+    // dosen.sayHello('Siang')
+
+    const dosen = {
+      nama: 'Vindi',
+
+    }
+    // 12. MENAMBAH FUNCTION PADA OBJECT
+    dosen.sayHello = function (waktu) {
+      console.log('hello ' + this.nama + ' Selamat ' + waktu)
+    }
+    dosen.sayHello('Pagi')
+
+    // 13. Getter dan Setter
+    // misal kita akan mengubah data pada object dan mengambil data object
+    const username = {
+      firstname: 'Angger',
+      lastname: 'Nur',
+      // mengambil data da menapilka (concet)
+      get fullname() {
+        console.log(this.firstname + ' ' + this.lastname)
+      },
+      // mengubah data,yang parameter value dijadikan array dan disimpan indeknya kedalam property firstname dan lastname
+      set fullname(value) {
+        const tempArray = value.split(' ')
+        console.log(tempArray);
+        this.firstname = tempArray[0]
+        this.lastname = tempArray[1]
+      }
+    }
+    username.fullname = ('Vindi Aprilia dewi')
+    console.table(username);
+
+    // 14. DESTRUCTURING PARAMETER FUNCTION
+    function kali([first, second, ...val]) {
+      return first * second
+    }
+    console.log(kali([2, 10]))
+
+    // 14. DEBUGGER
+
+
+
+
+
+  </script>
+</body>
+
+</html>

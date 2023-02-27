@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Modular</title>
+  <script src="library.js"></script>
+  <script type="module" src="script.mjs"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+
+  </div>
+  <script type="module">
+    // JavaScript Module
+    // - Merupakan fitur dimana kita bisa membuat module(kode js yg bisa digunakan ulang) untuk kode js lain
+    // Karena pd javascript sekarang penggunaannya semakin komplex dan bnyak kode dalam satu file,maka kita perlu melakukan mekanisme memotong-memotong(splice) pada kode javascript,sehingga kode pd js menjadi tdk terlalu komplex
+
+    // 2. DUA KATA KUNCI dalam Javascript Model
+    // a. export
+    // -Export merupakan kata kunci yg digunakan untuk mengeksposes kode dari sebuah module
+    //   - Export bisa ditambahkan diawal sebuah function,variable atau class yg mau kita export
+    // // b.Import
+    // -Export digunakan untuk mengekspose kode dimodule,
+    //   -jika kita ingin menggunakan kode yg sudah diexspose kita bisa menggunakan kata kunci import untuk memanggil exportnya
+    //   - module hnya bisa digunakan dimodule lain, jadi pastikan buat script kita mengganti dengan type = "module"
+    //   - saat menggunakan import,kita tdk perlu lagi menambahkan script module satu per satu karena sudah dihandle oleh browser secara otomatis ketika menggunakan module
+
+    // 3. JIKA TIDAK MENGGUNAKAN JAVASCRIPT MODULE
+    // Konteks java script yg lama,kita bisa mengakses function,variable pd script js external,ini memungkinka kita menjadi bnyak eror karena jik terjadi nam function yg sama dan variable yang sama
+    // ini akan mengakses library.js
+    sayHello('Angger')
+    goodBye('Angger')
+
+
+    // 4. JIKA MENGGUNAKAN JAVASCRIPT MODULE
+    // - biasa file berekstensi .mjs atau .js
+    //  - kita bisa lebih selektif kode mana yg ingin kita exspose
+    //  - SECARA DEFAULT ,js module tdk bisa digunakan dari luar file ,kecuali kita memintanya untuk mengekspose 
+
+    // tentukan function,variable,class yg mau kita ambil
+    import { showNama, name } from '../script.mjs'
+
+    const wrapper = document.querySelector('.wrapper')
+    const cetak = showNama('Angger', 'Nur', 'Amin')
+    wrapper.innerHTML = cetak;
+
+    console.log(name.toUpperCase());
+
+  </script>
+</body>
+
+</html>

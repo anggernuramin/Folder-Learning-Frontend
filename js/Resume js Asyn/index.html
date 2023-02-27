@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asyn</title>
+</head>
+<h1 id="showData"></h1>
+
+<body>
+  <script>
+    {
+      // AJAX 
+      // - Ajax adalah singkatan dari Asynchronous Javascript XML
+      // - Ajax biasanya digunakan untuk mengambil da mengirim data ke URL location
+      //  - Untuk membuat ajax, kita bisa mneggunakn kelas XMLHttpRequest
+      console.log('mulai');
+      // 1.membuat ajax
+      const ajax = new XMLHttpRequest(); // membuat httpRequest
+      ajax.open("GET", "api/contry.json") // open memiliki 2 parameter (HTTP METHOD, URL)
+      // ajax.open("GET", "api/ctry.json") // open memiliki 2 parameter (HTTP METHOD, URL)
+      // // maka kan muncul error 404 (not foound) url tdk ditemuka
+
+      // 2. Menerima data di ajax
+      // - Ajax biasanya digunakan untuk mengirim atau menerima data dari server
+      //   - Tiap request ajax, biasanya kita ingin mendapatkan informasi response dari server
+      //     - Kita bisa mengambil ajax, karena proses ajax asyn jadi tidak menunggu code sebelumnya selesai diekesekusi
+      //       - untuk mendapatka informasi ajax, kita menggunakan ajax callback, yg akan dieksekusi steleh ajax selesai
+      //         - Untuk mengambil datanya dari server kita bisa menggunakan property response text
+      // - untuk menabahkan  ajax callback,kita bisa tambahkan event load
+      // A. membutuhkan event
+      ajax.onload = callback;
+      // function callback() {
+      //   const json = JSON.parse(ajax.responseText) // karena ajax masih berupa json,maka parse untuk mengubah menjadi object // untuk mengambil data dari ajax maka gunakan .responseText
+      //   const response = document.getElementById('showData');
+      //   // kita bisa destructuring karena json sudah berupa object
+      //   const { kecamatan, kota } = json;
+      //   response.textContent = `kecamatan : ${kecamatan} , kota : ${kota}`;
+      // }
+      ajax.send() //Mengirim http Request ke server
+
+      // 3. Response Status di ajax
+      //   - Ajax adalah komunikasi anatara client dan ServiceWorkerRegistration
+      //     - Dalam komunikasi antar client dan server, kita tdk bisa selalu menganggap proses selalu berhasil
+      //       - Akan ada bnyak hal - hal yg menggangu proses ajax yg bisa menyebabka error, seperti: koneksi bermasalah,data daric  client bermasalah/tdk valid, error dari server dll;
+      // - maka kita butuh HTTP Status code yg sesuai dengan responsnya
+      //   - untuk mengetahui status response, kita bisa menggunakan property status
+      function callback() {
+        if (ajax.status === 200) {
+          const json = JSON.parse(ajax.responseText);
+          displayResponse(json)
+        } else {
+          displayResponse({
+            kecamatan: ` Terjadi keslahan dengan status : ${ajax.status} `
+          })
+        }
+      }
+
+      function displayResponse(json) {
+        const response = document.getElementById('showData');
+        // kita bisa destructuring karena json sudah berupa object
+        const { kecamatan, kota } = json;
+        response.textContent = `kecamatan : ${kecamatan} , kota : ${kota}`;
+      }
+
+      // 4. STATE (keadaan) di AJAX
+      // - ajax memiliki tahapan state, dimana kita bisa mendapatkan bnyak sekali state di ajax mengguka property readyState
+      //   - Propert ready state mengembalika nilai number dimanatipa number mmerepresentasikan dari statenya
+
+      // DAFTAR STATE
+      //   - value 0, state(UNSET) = client sudah membuat xml ajax reques tetapi belum dicall(dipanggil) method open nya
+      //    - value 1, state(OPENED) = opennya udah dicall
+      //    - value 2, state(HEADERS_RECEIVED) = ajax sudah dipanggil(send) dan status nya sudah tersedia
+      //    - vaLUE 3, state(LOADING) = sedang mendownload response dari server
+      //    - value 4, state(DONE) = operasi sudah selesai(responnya sudah selesai, dan data dari ajax sudah  bisa digunakan)
+
+      // READY STATE CHANGE EVENT
+      // Jika kita ingin mendengarkan perubahan yang terjadi pd state, kita bisa menggunakan event readystatechange
+      console.log('selesai');
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PROGRAM ANGKOT ||TAMBAH dan HAPUS PENUMPANG</title>
+</head>
+<body>
+
+<script>
+	// deklarasi variabel array untuk menampung nokursi penumpang
+	var noKursi = [];
+
+	// Tambah penumpang
+	// membuat function expression
+	var tambahPenumpang = function ( namaPenumpang, noKursi){
+
+	// jika angkot kosong 
+	if ( noKursi.length == 0){
+		// tambah penumpang diawal array
+		noKursi.push(namaPenumpang)
+
+		// kembalikan isi array & keluar dari function
+		return noKursi;
+		}
+	else {
+	// else ( kursi sudah ada penumpang )
+	// telusuri
+		for ( var i = 0 ; i < noKursi.length; i++){
+			
+		// jika ada kursi kosong
+		if ( noKursi[i] == undefined){
+			// undifenid direpresentasikan dengan nokursi yang kosong(penumpah sudah turun)
+			// tambah penumpang dikursi tersebut
+			noKursi[i] = namaPenumpang
+
+			// kembalikan isi array & keluar dari function
+			return noKursi;
+			}
+
+		else if ( namaPenumpang == noKursi[i]){
+		// jika terdapat nama penumpang yang sama
+			// tampilkan pesan kesalahan
+			console.log(namaPenumpang + ' sudah ada didalam angkot')
+
+			// kembalikan isi array & keluar dari function
+			return noKursi;
+			}
+		else if ( i == noKursi.length - 1){
+		// jika seluruh kursi terisi ( rumus untuk mengetahui kursi penuh ( jumlah panjang array (elemen) - 1 )
+			// tambah penumpang diakhir array
+			noKursi.push(namaPenumpang);
+
+			// kembalikan isi array & keluar dari function
+			return noKursi;
+			}
+			}
+			}
+	}
+
+// Menghapus penumpang
+var hapusPenumpang = function (namaPenumpang , noKursi){
+	// jika angkot kosong
+	if ( noKursi.length == 0){
+	// tampilkan angkot sedang kosong
+	console.log('Angkot sedang kosong')
+
+	// kembalika nilai array & keluar dari function
+	return noKursi;
+	}else {
+		// telusuri disetiap array noKursi
+		for ( var i = 0 ; i < noKursi.length ; i++){
+			// jika ada penumpang yang namanya sesuai,hapus nama penumpang pada array dengan menset memberi nilai undefined pada nama penumpang
+			if ( noKursi[i] == namaPenumpang){
+				noKursi[i] = undefined;
+				console.log(namaPenumpang + ' Turun dari Angkot');
+				return noKursi;
+
+			// membuat pernyataan bahwa penumpang yang ditambah tida berada diangkot
+			}else if( i == noKursi.length - 1){
+				console.log(namaPenumpang + ' Tidak berada di angkot');
+				return noKursi;
+			}
+
+		}
+	}
+}
+
+console.log(noKursi)
+</script>
+</body>
+</html>

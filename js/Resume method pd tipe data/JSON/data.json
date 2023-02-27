@@ -1,0 +1,23 @@
+[
+  {"mhs1":{
+    "nama":"Angger Nur Amin",
+    "nim":21002029,
+    "umur":21,
+    "alamat":
+      {"kota":"Blitar","desa":"Palulo","kecamatan":"Nglegok"},
+      "nilai":[90,87,99]},
+  "mhs2":
+    {"nama":"Vindi Aprilia Dewi",
+    "nim":262982098,
+    "umur":21,
+    "alamat":
+      {"kota":"Blitar","desa":"Kedawung","kecamatan":"Nglegok"},
+      "nilai":[90,87,99]},
+  "mhs3":
+    {"nama":"Natan nur cahyo",
+    "nim":21002029,
+    "umur":22,
+    "alamat":{"kota":"Malang","desa":"Palulo","kecamatan":"Nglegok"},
+    "nilai":[90,87,99]}
+    }
+]

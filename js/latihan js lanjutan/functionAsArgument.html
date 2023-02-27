@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function As Argument</title>
+</head>
+
+<body>
+  <script>
+    // membuat function getData
+    // dan alamat menerima function callback
+    function getData(name, alamat) {
+      const nama = name;
+      console.log(nama);
+      // const data = alamat()
+      alamat()
+      for (const iterator in alamat()) {
+        // iterator mengembalikan string
+        console.log(iterator);
+      }
+    }
+
+    getData('Angger', function () {
+      return alamat = {
+        jalan: 'sengon',
+        kabupaten: 'Blitar',
+        provinsi: 'Jawa Timur'
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPREAD OPERATOR</title>
+  <style>
+    body {
+      background-color: darkblue;
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 5rem;
+
+    }
+
+    h1 span {
+      /* agar span bisa diberi property transform,ubah default display block menjadi inline-block */
+      display: inline-block;
+      transition: .1s;
+      cursor: pointer;
+    }
+
+    h1 span:hover {
+      color: blue;
+      transform: scale(1.4);
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li class="nilaiUas">75</li>
+    <li class="nilaiUas">90</li>
+    <li class="nilaiUas">89</li>
+    <li class="nilaiUas">80</li>
+    <li class="nilaiUas">95</li>
+    <li class="nilaiUas">78</li>
+
+    <div class="Rata-Rata-Nilai">
+
+    </div>
+  </ul>
+
+  <h1 class="nama">Angger Nur Amin</h1>
+  <script>
+    // Spread Operator [...]
+    //   Adalah memecah(unpack/expand) sebuah iterable menjadi single element,SPREAD MENGEMBALIKAN ARRAY BARRU
+    //   iterable Object
+    //     - Array
+    //     - String
+    //     - Arguments/NodeList
+    //     - Map
+    //     - Set
+    //     - User-defined-iterable
+    //   KAPAN KITA MENGGUNAKAN SPREAD OPERATOR ?
+    // 1. menggabungkan 2 buah array atau lebih
+    //       biasanya kita menggabungkan 2 buah array menggunakan method array yaitu concat
+    //       syntax jika menggunakan looping
+
+    const mhs1 = ['Angger', 'Nur', 'Amin'];
+    const mhs2 = ['Vindi', 'Aprilia', 'Dewi']
+    // jika menggunakan syntax dibawah ini maka akan ada array bercabang(hasilnya tidak bisa)
+    // const mahasiswa = [mhs1, mhs2]
+
+    // jika menggunakan method array(arraynya akan bergabung,tetapi kita tidak b isa menambahka elemen array yg baru pada variabel mahasiswa secara langsung)
+    // const mahasiswa = mhs1.concat(mhs2)
+
+    // jika kita menggunakan spread operator maka kita bisa menggabungka array da menambhakan elemen array langsung pada variabel mahasiswa,dan hasilnya akan otomatis masuk kedalam array
+    const mahasiswa = [...mhs1, 'Natan', ...mhs1]
+    console.log(mahasiswa);
+    // jika mengggunakan syntax diabawah ini artinya kita memecah string pada index ke 0,karenastring adalah iterable object,yang hasilnya setiap character pada string akan dipecah / dipisah
+    console.log(...mhs1[0]);
+
+
+    // 2. Mengcopy isi Array 
+    // mengcopy isi array dengan melooping lalu push elemen array yang lama  keelemen array yang baru
+    const hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+    // const day = hari;
+
+    // console.log(hari);
+    // console.log(day);
+
+    // artinya jika kita mengcopy array langsung menggunakan looping atau asignment kevariabel baru,DAN MENGGANTI ISI ARRAY NYA,MAKA ARRAY BARU AKAN IKUT BERUBAH JIKAKITA MENGUBAH ISI ELEMEN ARRAYNYA
+    // day[0]='Monday';
+
+    // console.log(day);
+    // console.log(hari);
+
+    // menggunakan looping
+    // for (let i = 0; i < hari.length; i++) {
+    //   day.push(hari[i])
+    // }
+    // console.log(day);
+
+    // kita juga bisa menggunakan for .. of karena array adalah iterable object
+    // for (const h of hari) {
+    //   // maka outputnya berupa string,yang sudah dipecah dan dimasukkan kedalam array setiap string index arraynya
+    //   console.log(Array.from(h));
+    // }
+
+    // jika menggunakan spread operator maka JIKA KITA MERUBAH/MENGHAPUS/MENAMBAH ELEMEN ARRAY YANG BARU,ELEMEN ARRAY YANG LAMA TETAP AKAN SAM ISINYA TIDAK MENGALAMI PERUBAHAN
+    const day = [...hari];
+    console.log(hari);
+    console.log(day);
+
+    // jika kita menambahkan elemen array,mengubah isi array,menghapus pada array  yang baru,array yg lama isinya tetap
+
+    day[0] = 'Monday';
+    day.push('January')
+    day.pop()
+    day.pop()
+
+    console.log(hari);
+    console.log(day);
+
+
+    // 3. Mengubah Node list menjadi array menggunakan Spread operator
+    // INGAT NODE LIST MERUPAKAN KEMBALIAN DARI QUERY SELECTOR ALL
+    const nilaiUas = document.querySelectorAll('.nilaiUas');
+    console.log(nilaiUas);
+
+    // ubah nodelist menjadi array Agar kita dapat menggunakan method-method array
+    // bisa mneggunakan array.From()
+    // const rata_rata = Array.from(nilaiUas);
+
+    // gunakan spread operator,Karena nodelist adalah iterable object maka kita dapat mengubah menjadi array denga menggunakan spread operator
+
+    // ubah nalai ke int agar dapat dijumlahkan,karena isi dari nodelist adalah string
+    const rataRata = [...nilaiUas].map(nilai => parseInt(nilai.textContent)).reduce((accumulator, currentValue) => accumulator + currentValue);
+
+    // asign mnode list menjadi spread operator untuk mengetahui length - nya
+    const hitung = rataRata / [...nilaiUas].length
+
+    // console.log(rataRata);
+    // console.log(nilaiUas);
+    // console.log(hitung);
+
+    // membuat function untuk mencetak hasil rata rata ke html
+    function cetak(angka) {
+      return `<h4>Rata - rata nilai : <span>${angka}</span></h4>`
+    }
+
+    const hasil = document.querySelector('.Rata-Rata-Nilai');
+    hasil.innerHTML = cetak(hitung)
+    console.log(cetak(hitung));
+
+
+    // 4. Mengambil isi String dan memanipulasi setiap character yg ada didala string didalam tag html
+    const nama = document.querySelector('.nama');
+    console.log(nama);
+
+    // pastikan dibelakan vaiabel didalm spread operator gunaka.textContent untuk mengambil value dari htmlnya(berlaku jikaisi elemen didalmnya adalah string)
+    const huruf = [...nama.textContent].map(character => `<span>${character}</span>`).join('')
+    console.log(huruf);
+
+    // masukkan variabel hruf yang berisi pecahan dari string nama kedalam variabel nama
+    nama.innerHTML = huruf
+
+
+  </script>
+</body>
+
+</html>

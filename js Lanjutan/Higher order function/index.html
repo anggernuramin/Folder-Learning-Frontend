@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konsep Higher order function</title>
+
+</head>
+
+<body>
+
+  <script>
+    // Higher order function
+    //   Adalah funtion yang beroperasi pada function yang lai,baik itu digunakan dalam arguments ataupun return dari function tersebut(function tidak harus berada dalam function parentnya,boleh membuat function diluar function parentnya)
+    // Javascript memperlakukan function sebagai object,sama halnya dengan string,integer dll
+    //   1. Aalasan kenapa jharus menggunakan higher order function
+    //     a. abstraksi
+    //       Semakin besar sebuah program maka semakin tinggi komplesitasnya,dan semakin membingungkan programmer,maka kita gunakan function untuk menyembunyikan kompleksitasnya.
+    //   syntax membuat higher order function secara umum
+    // - membuat higher order funtion yg mempunyai callback dari function lain
+    function kerjakanTugas(nama, matakuliah) {
+      console.log(nama + ' Cepat kerjakan matakuliah ');
+
+      // menjalankan function matakuliah,dimana ini adalah callback dari function kerjakanTugas
+      matakuliah()
+    };
+
+    // membuat function callback
+    // Artinya function yg digunakan pada argument higher order function
+    function matakuliah() {
+      console.log('Pemrograman Web');
+    }
+
+    // menjalankan higher order function
+      // argument matakuliah harus sama dengan nama function callbacknya
+    kerjakanTugas('Angger', matakuliah)
+    // higher order function adalah function yang memiliki argument / value function lain(callback)
+    // misal:
+    // 1. pada saat membuat closure
+    //           karena function parentnya mereturn inner function(function yg ada didalam function);
+    // 2. pada saat menjalankan event js
+    //           karena pada saat melakukan event js(click dll), ada callback yg berupa function
+    //     3. method js(setInterval, setTimeout dll)
+  
+
+
+
+  </script>
+</body>
+
+</html>

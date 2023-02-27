@@ -1,0 +1,93 @@
+body {
+    margin: 50px;
+    font-family: arial;
+    background-image: linear-gradient(180deg,#eaeaea,#eee);
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+.container {
+    width: 900px;
+    margin: auto;
+}
+
+.card {
+    display: inline-block;
+    width: 220px;
+    padding: 0 80px;
+    height: 80px;
+    font-size: 16px;
+    line-height: 80px;
+    border-radius: 40px;
+    background-color: #fff;
+    margin: 20px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0px 0px 10px grey;
+}
+
+.card img {
+    float: left;
+    margin: 0 10px 0 -80px;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.card .nama, .card .telp{
+	display: block;
+	line-height: 18px;
+	font-size: 18px;
+	
+}
+.card .nama {
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.card .telp {
+    margin-left: 20px;
+    margin-top: 5px;
+    font-size: 16px;
+    color: #aaa;
+}
+
+.card .close {
+    font-size: 24px;
+    font-weight: bold;
+    color: #999;
+    position: absolute;
+    top: 0;
+    right: 30px;
+    cursor: pointer;
+}
+
+.card:hover .close {
+    color: red;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+  	margin: 0;
+	background-image: linear-gradient(180deg,blue,#eee);
+
+  }
+  .container{
+  	width: 100%;
+  }
+  .card {
+  	margin: 10px 100px 10px 5px;
+  	width: 100%;
+  	padding: 0;
+  	b
+  }
+  .card img{
+  	 margin: 0 10px 0 -0px;
+  }
+}
+

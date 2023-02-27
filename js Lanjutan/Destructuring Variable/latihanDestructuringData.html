@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Soal Destructuring Variable </title>
+</head>
+
+
+<body>
+
+  <script>
+    // Misal kita membuat function yg mengembalikan (perkalia,pembagian,tambah,kurang,modulus) dalam bentuk array dan simpan dengan Destructuring variable,
+    // TETAPI JIKA MENGGUNAKAN ARRAY KELEMAHANNYA ADALAH SAAT KITA DESTRUCTURING(PEMBONGKARAN ARRAY) KITA HARUS MENGURUTKAN SESUAI DENGAN INDEXNYA
+    // JIKA TIDK INGIN SESUAI DENGAN INDEXNYA GUNAKAN OBJECT,KARENA OBJECT TIDAK MEMILIKI ARRAY
+    // function operatorMatematic(nilai1, nilai2) {
+
+    //   // setiap index array dipisahkan dengan tanda koma
+    //   return [nilai1 + nilai2, nilai1 - nilai2, nilai1 * nilai2, nilai1 / nilai2, nilai1 % nilai2];
+    // }
+    // const [tambah, kurang, kali, bagi, modulus] = operatorMatematic(10, 2);
+    // console.log(modulus);
+
+
+
+    // PERHITUNGA OPERATOR MATEMATIC DENGAN MERETURN OBJECT
+    // JIKA TIDK INGIN SESUAI DENGAN INDEXNYA GUNAKAN OBJECT,KARENA OBJECT TIDAK MEMILIKI ARRAY,
+
+    // TETAPI PADA OBJECT KITA TIDAK BISA MELEWATI POPERTY, KITA DAPAT MENGAKALI DENGAN MENGUNAKAN PROPERTY PADA OBJECK DIGUNAKAN SEBAGAI NILAI PARAMETER PADA FUNCTION
+    function operatorMatematic(nilai1, nilai2) {
+
+      // setiap index array dipisahkan dengan tanda koma
+      return {
+        tambah: nilai1 + nilai2,
+        kurang: nilai1 - nilai2,
+        kali: nilai1 * nilai2,
+        bagi: nilai1 / nilai2,
+        modulus: nilai1 / nilai2,
+      };
+    }
+
+    const { modulus, tambah, kali, kurang, bagi } = operatorMatematic(10, 3);
+    console.log(modulus);
+
+    // DECTRUCTURING ARGUMENTS
+    // Artinya kita mengambil property pada object dan digunakan untuk memberi arguments pada function
+
+    const mahasiswa = {
+      nama: 'Angger',
+      nim: 21201087,
+      prodi: 'TI',
+      nilai: {
+        tugas: 90,
+        uts: 89,
+        uas: 100,
+      },
+      kodeKelas: {
+        mc: 'karyawan',
+        reg: 'reguler'
+      }
+    }
+
+    // jika kita ingin mengambil beberapa property ini maka gunakan metode function dibawah ini
+    // digunakan tandakurung da memilih property khusus,digunakan untuk mengambil property yang kita butuhkan saja
+    // private property
+    function key({ nim, nama, nilai: { uts }, kodeKelas: { mc } }) {
+      return `nama : ${nama} 
+              nim  : ${nim}
+              nilai: ${uts}
+              kode kelas: ${mc}`
+    }
+
+    // kita panggil object nya,lalu masukkan kedalam argument function
+    // akan didestructuring(dibongkar isi dari object) saat function dibuat()
+    console.log(key(mahasiswa));
+  </script>
+</body>
+
+</html>

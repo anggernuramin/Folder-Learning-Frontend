@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Method pada Number</title>
+</head>
+
+<body>
+  <script>
+    {
+      // 1. TIPE DATA NUMBER
+      // adalah sebuah function yg ada pd js untuk mengkonversi tipe data menjadi angka
+      const input = '1234';
+      // jikabukan data maka aka bernilau nan
+      console.log(Number(input));
+      const angka = Number(input)
+      console.log(typeof angka);
+      console.log(angka);
+
+      // A. Number Static properties 
+      // properties yg dpat kita panggil lngsung
+      console.log(Number.MAX_VALUE);
+      // untuk mendapatkan nilai maximal (+) terbesar
+      console.log(Number.MIN_VALUE);
+      // untuk mendapatkan nilai minimum (-) terkecil pd suatu angka
+      console.log(Number.MAX_SAFE_INTEGER);
+      // sudah dikonversi menjadi angka maximal pd number
+      console.log(Number.MIN_SAFE_INTEGER);
+      // sudah dikonversi menjadi angka minimum pd number
+
+      // B. Number static method
+      // untuk mengecek number adalah nan atau bukan
+      const angka1 = Number('123');
+      // dikataka nan jika isi dari number adalah string(selain angka)
+      console.log(Number.isNaN(angka1));
+      // untuk mengecek apakah number bilangan integer atau buka
+      console.log(Number.isInteger(angka1));
+
+      // 3. Number iNSTANCE method
+      const data = Number('32300000')
+      // untuk mengubah number ke bilanga biner (radix 1 - 36)
+      console.log(data.toString(2));
+      // untuk mengubah local string (pd indonesi akan menggunakan .) (jika pd luar negri maka akan digunakan ,)
+      console.log(data.toLocaleString('id-ID'));
+      // FORMAT ENGLISH
+      console.log(data.toLocaleString('en-US'));
+      // Bisa digunakan untuk Rupiah
+      let jumlah = 5;
+      let harga = Number(5000)
+      harga.toLocaleString('id-ID')
+      let total = jumlah * harga;
+      console.log('Rp ' + total.toLocaleString('id-ID'));
+    }
+  </script>
+</body>
+
+</html>

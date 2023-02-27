@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Filter,Map dan Reduce</title>
+</head>
+
+<body>
+  <!-- latihan menghtiung acumulasi pada video -->
+  <h3>My videos</h3>
+  <ul>
+    <!-- membuat nama attribute sendiri dengan nama data-durasiWaktu dan mempunya isi "menit : detik" -->
+    <li data-duration="15:27">Teknik Pomodoro</li>
+    <li data-duration="11:18">JAVASCRIPT LANJUTAN | Higher order function</li>
+    <li data-duration="21:40">JAVASCRIPT LANJUTAN | This pada arrow function</li>
+    <li data-duration="19:38">Website penipu</li>
+    <li data-duration="12:10">JAVASCRIPT LANJUTAN | Arrow function</li>
+    <li data-duration="20:43">JAVASCRIPT LANJUTAN | Closure</li>
+    <li data-duration="14:30">Tanya pak dika</li>
+    <li data-duration="26:38">JAVASCRIPT LANJUTAN | Execution Context</li>
+    <li data-duration="17:33">JAVASCRIPT LANJUTAN | Prototype</li>
+    <li data-duration="10:39">JAVASCRIPT LANJUTAN | Objec.create</li>
+    <li data-duration="17:31">JAVASCRIPT LANJUTAN | Objeck(revisited)</li>
+    <li data-duration="14:25">Tips bertanya jika ada eror</li>
+  </ul>
+
+  <h3>My Playlist</h3>
+  <ol>
+    <li>
+      <!-- untuk menyimpa hasil dari data-durasiWaktu -->
+      <h4>Javascript Lanjutan</h4>
+      <p>Jumlah video : <span class="jumlah-video"></span></p>
+      <p>Total durasi : <span class="total-durasi"></span></p>
+    </li>
+  </ol>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

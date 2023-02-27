@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Tagged Template Literal</title>
+  <style>
+    .highlight {
+      background-color: orangered;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+    // TAG TEMPLATE LITERAL
+    //   Adalah bentuk yg lebih kompleks dari template literal, Dan memungkinkan kita untuk membaca template literal melalui sebuah function
+
+    // membuat function data nama yg artinya sebelum template literal dijalankan,maka jalankan function dataNama terlebih dahulu
+    function dataNama(string, ...values) {
+      // string adalah parameter default,
+      // yang artinya string yg ada pada template literal (yg mempunyai function dataNama) akan dijadikan sebuah array dan dipisahkan dengan ${expression} dan semua character akan dijadikan nilai pada array (misal character putih/spasi)
+
+      // sedangkan isi dari parameter values adalah
+      //     adalah nilai yg ada pada ${expression} dan dikembalikan dengan tipe data array;
+      // untuk ...values adalah ... artinya adalah restparameter,dalam kontek ini aka menampung seluruh expression yg ada pada template literal
+
+      // misal dalam kasusu ini kita akan mereturn teks yg sama dengan isi template literalnya,tetapi saat mengembalikan expression kita beri style css background color dan disimpan dalam html
+
+      // tahap 1. yang kita gabung adalah isi dari parameter string,yang natinya kita akan gabungkan dengan isi dari parameter values dengan higher order function(reduce)
+      // return string.reduce((result, str, i) => `${result}${str}${values[i] || ''} `,)
+
+
+
+      let result = '';
+      string.forEach((str, i) => {
+        result += `${str} <span class="highlight">${values[i] || ''}</span>`
+      })
+      // jika values yg ke i ada isinya maka tampilkan atau jika tidak maka tampilkan string kosng
+
+      return result;
+    }
+    // syntax
+    const Mhs = {
+      nama: 'Angger',
+      email: 'anggern@gmail.com',
+      umur: 21
+    }
+
+    // const nama = 'Angger';
+    // const email = 'anggern@gamil.com'
+
+    const nama1 = dataNama`Halo, Nama saya ${Mhs.nama}, ini ${Mhs.email} adalah email saya, dan umur saya ${Mhs.umur} tahun`;
+    console.log(nama1);
+    document.body.innerHTML = nama1;
+    //  untuk menjalankan sebauh tagged literal template,maka kita harus menuliskan nama function sebelum template literal,
+    //  pada contoh kali ini nama function kita beri nama dataNama
+
+
+
+
+  </script>
+
+</body>
+
+</html>

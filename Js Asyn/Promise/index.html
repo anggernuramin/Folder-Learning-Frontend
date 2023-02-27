@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .box {
+    margin: 40px 50px 20px 50px;
+  }
+
+  input {
+    margin: auto;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+  }
+</style>
+
+<body>
+  <div class="box">
+    <input type="text" placeholder="Search here..." id="text">
+    <input type="button" id="btnSearch" value="Searching Product">
+    <ol id="listProduct"></ol>
+  </div>
+  <script>
+    // PROMISE TDK MENGGANTIKAN AJAX,TETAPI MENGGANTIKAN CALLBACK
+    // PROMISE BUTUH DIRETURN
+    function displayProduct(data) {
+      const li = document.createElement('li');
+      li.textContent = data.name;
+      const list = document.getElementById('listProduct');
+      list.appendChild(li)
+    }
+
+    function geturl(keyword) {
+      return `https://www.blibli.com/backend/search/products?searchTerm=${keyword}`
+    }
+    function getDataProduct(keyword) {
+      const url = geturl(keyword);
+
+      // code asyn
+      const promise = new Promise(function (resolve, reject) {
+        const ajax = new XMLHttpRequest();
+
+        ajax.onload = function () {
+          const response = JSON.parse(ajax.responseText)
+          if (ajax.status === 200) {
+            resolve(response)
+          } else {
+            reject(ajax.status)
+          }
+        }
+        ajax.open('GET', url)
+        ajax.send()
+      })
+      return promise;
+    }
+    function clearProduct() {
+      const list = document.getElementById('listProduct');
+      list.textContent = ""
+    }
+
+    const btn = document.getElementById('btnSearch');
+    btn.addEventListener('click', function () {
+      console.log('start')
+      const promise = getDataProduct(document.getElementById('text').value);
+      console.log(promise)
+      // Buat method promise (then,catch,finally)
+      promise
+        .then(function (value) {
+          const product = value.data.products;
+          return product;
+        })
+        .then(function (product) {
+          clearProduct()
+          product.forEach(element => displayProduct(element))
+        })
+        .catch(function (error) {
+          // akan menampilka pesan error dengan ajax.status sesuai dengan argument yg dikirim
+          alert("terdapat error dengan status:" + error)
+          // akan menampilkan error sesuai dengan error pd console (pesan error)
+          // alert("terdapat error dengan status:" + error.message)
+        })
+        .finally(() => console.log('proses Promise selesai'))
+
+      console.log('selesai')
+      console.log(promise)
+    })
+
+  </script>
+</body>
+
+</html>

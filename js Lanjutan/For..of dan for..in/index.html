@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For..of & for..in</title>
+</head>
+<ul>
+  <li class="dftrNama">Angger</li>
+  <li class="dftrNama">Vindi</li>
+  <li class="dftrNama">Amin</li>
+  <li class="dftrNama">Dewi</li>
+</ul>
+
+<body>
+  <script>
+    // for..of da for..in 
+    //   Adalah syntax looping yang ada pada js yg lebih modern(es6)
+    // A. for..of
+    //   Adalah sebuah looping yang bisa mengulang/menelusuri object-object yg iterable
+    // yang termasuk OBJECT iterable
+    // 1. ARRAY
+    // 2. STRING
+    // 3. ARGUMENTS/NodeList
+    //     ARGUMENTS adalah sebuah nilai yang dikirim kan saat pemanggilan function()
+    //     NodeList adalah nilai yg dikembalikan oleh DOM (queryselectorAll)
+    // 4. Map
+    // 5. set
+    // 6. user-defined-iterable
+
+    // 1. syntax untuk mengambil array dengan menggunakan for .. of (array adalah object iterable)
+
+    // const mhs = ['Angger', 'Nur', 'Amin'];
+    // syntax jika mengambil value pada array tdk menggunakan for .. of melainkan menggunakan for biasa dan meggunakan method pada array (forEach)
+
+    // for (let i = 0; i < mhs.length; i++) {
+    //   console.log(mhs[i]);
+    // }
+    // mhs.forEach((nama, i) => {
+    //   console.log('nama ' + nama + ' adalah mahasiswa ke ' + i);
+    // })
+
+    // nama akan merepresentasikan isi dari array mhs
+    // bisa disimpan dalam variabel atau langsung menuliskan nya 
+    // for (nama of mhs) {
+    //   console.log(nama);
+    // }
+
+    // for ( const nama of mhs) {
+    //   console.log(nama);
+    // }
+
+
+    // 2. looping pada STRING
+    //     yang mana ini tidak bisa dilakukan denga menggunakan for,while dan method pada ARRAY
+    let nama = 'Angger nur ';
+    for (huruf of nama) {
+      console.log(huruf);
+      // outputnya berupa character yg ada didalm variabel nama,termasuk character putih (spasi)
+    }
+
+    //pada dasarnya syntax pada for.. of tidak bisa mengakses index pada array,tetapi kita dapat menmanfaatka method pada array .entries() yang berfungsi untuk mengambil nilai dan index pada sebuah array da mengembalikan dengan arrray baru.Maka lakukan dengan destructuring untuk memecah arraynya
+    const mhs = ['Angger', 'Nur', 'Amin'];
+    for ([index, namaMhs] of mhs.entries()) {
+      // method entris akan memecah index dan isivaluenya pada setiap indexnya
+      console.log(`${namaMhs} adalah mahasiswa ke ${index + 1}  `);
+    }
+
+    // 3. ARGUMENTS
+    //     adalah suatu object yg menyimpan argument pada function
+    // misal pada kasus ini adalah kita akan menerima argument pada function tambhaNilai dan menjumlahkannya tanpa menampung argument ke parameter,argument akan berisi sesuai dengan user menginputkannya ,dan argumen akan disimpan kedalam arguments
+
+    // untuk melooping pada arguments kita tdk bisa menggunakan syntax looping selain menggunakan for ..of (karena argument merupakan bukan suatu array,dll)
+    function tambahNilai() {
+      let jumlah = 0;
+      for (angka of arguments) {
+        // maka angka akan merepresentasikan apapun yang ada didalam  arguments
+        // jika pada arguments terdapat string dan number maka keduanya akan menjadi variable yang tidak bisa diaritmatika
+        jumlah += angka;
+      }
+      return jumlah
+    }
+    console.log(tambahNilai(1, 2, 3, 4, 5, 1.5));
+
+    // 4. NodeList
+    //     adalah suatu kembalian yg dihasilkan oleh DOM dengan queryselectorAll
+    const li = document.querySelectorAll('.dftrNama');
+    // for (nama of li) {
+    //   // nama akan menampung nilai dari setiap elemne node list
+    //   // dan innerHTML / innerText akan mengambil isinya
+    //   console.log(nama);
+    // }
+
+    // 5. jika ingin mengubah setiap node list menjadi array yang alngsung memiliki index dan valuenya pada setiap elemen index maka bisa menggunakan method entries()
+    // for ([indexs, nama] of li.entries()) {
+    //   console.log(`${nama.innerText} adalah mahasiswa ke ${indexs + 1}  `);
+    // }
+
+
+
+    // B.for..in
+    //   Adalah sebuah looping yg bisa menelusuri PROPERTY PADA OBJECT(enumarable)
+    const siswa = {
+      namaSiswa: 'Afifah',
+      kelas: '3 SMP',
+      nilai: {
+        uts: 78,
+        uas: 90
+      }
+    }
+
+    for (dataSiswa in siswa) {
+      // dataSiswa akan merepresentasikan property pada objeck, muncul yg property saja
+      console.log(dataSiswa);
+
+      // jika ingin mengambil value dari property maka kita bisa merubah dataSiswa menjadi array yg akan merepresentasikan indexnya
+      console.log(siswa[dataSiswa]);
+
+      // dan jikakita ingin mengambil property cuma satu bisa mneggunakann percabngan
+      // if (dataSiswa === 'kelas') {
+      //   console.log(siswa[dataSiswa]);
+      // }
+    }
+
+
+    // Destructuring object dengan parameter
+    // function cetakNilai({ namaSiswa, nilai: { uas, uts } }) {
+    //   // return `nilai uts : ${uts} nilai uas : ${uas}`
+    //   return `nama saya : ${nama}
+    //   nilai uts : ${uts}
+    //   nilai uas : ${uas}`
+    // }
+    // console.log(cetakNilai(siswa));
+
+
+
+
+
+  </script>
+</body>
+
+</html>

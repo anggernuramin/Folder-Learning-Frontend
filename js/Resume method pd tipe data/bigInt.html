@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIGINT</title>
+</head>
+
+<body>
+  <script>
+    // BIGINT
+    // a BigInt merupakan tipe data number,yg bisa mencakup data angka lebih dari NUMBER.MAX_SAFE_INTEGER
+    // Untuk kasus number yang  lebih dari itu,sangat disarankan  menggunaka tipe data BigInt
+    // Cara penggunaan BigInt sama saja dengan penggunaan Number dan juga opertornya
+
+    // misal kita menjumlhankan angka dimana angka tersebut sudah melampui batas dari NILAI MAX NUMBER
+    const a = BigInt(Number('32378297349848793268079342098560942'))
+    console.log(typeof a);
+    const b = BigInt(Number('32378297349848793268079342098560942'))
+    const hasil = a + b;
+    console.log(typeof hasil);
+    console.log(hasil);
+    console.log(hasil.toLocaleString('id-ID'));
+
+    // Mengapa harus menggunakan BigInt,karena jika hasil dari operator melebih dari max number,maka dibelakangnya akan menampilkan bilangan lain
+
+    // jikamenggunakan BigInt hasil akan tetap menjadi hasil yang sesuai
+  </script>
+</body>
+
+</html>

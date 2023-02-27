@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desttructuring Variable / Destructuring Assignment pada ARRAY</title>
+</head>
+
+<body>
+  <script>
+    // Destructuring(perusakan) Variable 
+    //   Adalah syntax pada javascript yg membuat kita dapat 'MEMBONGKAR NILAI PADA ARRAY ATAU PROPERTY PADA OBJECT KE DALAM VARIABLE YANG BARU' tanpa assignment satu persatu
+
+    // syntax umum untuk mengambil isi dari Array dan disimpan kedalam variabel lain
+    // const Alamat = ['JawaTimur', 'Blitar', 'Nglegok', 'Palulo'];
+
+    // // syntax umum =TIDAK MENGGUNAKAN DESCTEUCTURING VARIABLE
+    // const provinsi = Alamat[0];
+    // const kecamatan = Alamat[2];
+    // console.log(provinsi);
+    // console.log(kecamatan);
+
+    // MERANGKAI ISI ARRAY SECARA UMUM
+    // const Rangkai = Alamat.reduce((acc, cur) => acc + ' ' + cur);
+    // console.log(typeof Rangkai);
+
+    // 1.Destructuring pada ARRAY
+    // A.Untuk mengambil isi array dan simpan kedalam variable baru
+
+    // const Alamat = ['JawaTimur', 'Blitar', 'Nglegok', 'Palulo'];
+    // const [provinsi, kota, kecamatan, desa] = Alamat;
+
+    // // Arei dari syntax diatas adalah isi array pada Aalamat akan dipecah/dibongkar dan disimpan(assign) ke variable baru ,contoh (isi array JawaTimur) disimpan kedalam variable provinsi dan pastikan Array yg dituju sudah benar;
+
+    // console.log(kota);
+    // console.log(desa);
+
+    // console.log(kota[5]);
+
+    // jika kita memberi index ke variabel kota ,maka index akan mengambil urutan charcter pada Blitar dengan urutan dimulai dengan index 0,
+
+    // 2. Cara Skipping items
+    //     Artinya adalah menskip(melewati) isi elemen array yang tidak mau kita ambil dengan tanda (,) 
+    const Alamat = ['JawaTimur', 'Blitar', 'Nglegok', 'Palulo'];
+    const [provinsi, , , desa] = Alamat;
+    // Arti syntax diatas adalah kita melewatkan isi array index ke 1(Blitar) dan 2(Nglegok) dengan cara tidak menyimpan isi elemen array ke dalam variable
+    console.log(desa);
+
+    // 3. Swap items(Menukar isi dari array)
+    let a = 'Angger';
+    let b = 'vindi';
+    // artinya menukar isi variable a ke b dan b ke a
+    [a, b] = [b, a];
+
+    console.log(b);
+    console.log(a);
+
+    // let a = 1;
+    // let b = 2;
+    // let temp = '';
+
+    // // dgn syntax biasa, yang diterjemahka artinya:
+
+    // // temp akan menyimpan variable value dr variable a agar value a bisa digunkan kembali,
+    // temp = a;
+    // //   a diassign dengan isi value dari variable b
+    // a = b;
+    // console.log(a);
+    // // temp yg masih menyimpan variable a = assign ke variable b;
+    // b = temp;
+    // console.log(b);
+    // console.log(a);
+
+    // 4. Melakukan return pada function,Dan elemen array yg direturn pada function disimpan dalam  Destructuring Variable
+    function mhs() {
+      return ['Angger', '21201087', 'TI']
+    }
+
+    // mengambil return pada function dan menyimpan kedalam desctructuring variable PERHATIKAN SAAT MENGAMBIL ISI ARRAY,PASTIKA URUTANNYA SESUAI
+    const [nama, nim, prodi] = mhs();
+    console.log('nim : ' + nim);
+    // // jika menggunakan syntax biasa
+    // function Mhs() {
+    //   return ['Andi', 'Dahlan', 'Dimas'];
+    // }
+    // // jika kita mengambil indexnya maka kita harus menyertakan indeks ke- untuk memanggil elemennya
+    // const mhs1 = Mhs()[0];
+    // console.log(Mhs()[1])
+    // console.log(Mhs()[2])
+
+    // 5. Rest Parameter
+    //     Artinya parameter yg menyimpa arguments lebih dari satu dengan keywoard(...namaVariable)
+    const dataPelanggan = ['Arim', 'topik', 'Kevin', 'usman', 'kukuh', 'amin'];
+    // problemnya kalo menggunakan metode ini,kita harus membuat variable destructuring sesuai dengan banyaknya isi elemen pda array
+    // const [nama1, nama2, nama3, nama4, nama5, nama6] = dataPelanggan;
+    // console.log(nama6);
+
+    const [nama1, ...value] = dataPelanggan;
+    console.log(value);
+    // variable value akan mengembalikan array baru,dan dimulai dengan index ke 0 lagi
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

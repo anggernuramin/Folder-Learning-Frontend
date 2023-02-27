@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asynchronous Callback</title>
+  <style>
+    ul {
+      list-style-type: none;
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="nama">
+
+  </div>
+  <!-- CDN JQUERY
+      Pastikan copas yg minifed / uncompressed KARENA YANG slim , slim minifedtdk memiliki ajax -->
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script>
+    // ASYNCHRONOUS CALLBACKS
+    //   Adalah function yg dikirm sebagai parameter function lain,Dengan ini maka konsep code yg menggunakan callback akan menjadi non - blocking, keluar dari konsep js(blocking)
+
+    // syntax SYNCHRNOUS
+    // function kali(a, b) {
+    //   return a * b
+    // }
+    // function perkalianDuaAngka(number) {
+    //   return kali(number, number)
+    // }
+
+    // function perkalian(angka) {
+    //   // parameter harus sama namanya,jika kita ingin mengambil argumnet dari parameter yang lain
+
+    //   // pastikan jika kita mmebuat function didalam function jika kita menginkan nilai pada parameter yang ke satu dan dibuat nilainya kedala functionkedua .nama parameter harus sama
+    //   const hasil = perkalianDuaAngka(angka)
+    //   console.log(hasil);
+    // }
+
+    // perkalian(5);
+
+    // Contoh kasus jika kita mengambil data json menggunakan asynchronos callbacks agar non-blocking
+
+    // MENGGUNAKAN VANILLA JS
+    // kita membuat function yang jika function kita jalankan maka akan merequest ajax
+    // dimana kita akan mengakses folder yg didalmnya ada file.json (simulasi/kita ibaratka file tersebut diambil dari API)
+
+    function getDataMhs(url, success, error) {
+      // url merepresentasikan url API
+      // parameter succes dan error adalah callback (function callback)
+
+      // buat variabel untuk menampung object ajax dan membuat object ajax
+      let xhr = new XMLHttpRequest();
+
+      // artinya jika state nya udah siap maka jalankan function
+      xhr.onreadystatechange = function () {
+
+        // melakukan request ajax secara asychronous 
+        // dan angka 4 merepresentasikan,sudah readt state
+        // state dimulai dari 0 - 4,dan 4 artinya state udah siap
+        if (xhr.readyState === 4) {
+
+          // artinya status oke (bisa mengakses file json)
+          if (xhr.status === 200) {
+            // maka jalankan funtion succes
+            // xhr.response berisi data yg ada didalam url
+            success(xhr.response)
+
+            // artinya jika status 404 yg artinya (page not found) maka file json tdk didapat(gagal request)
+          } else if (xhr.status === 404) {
+            // maka jalankan function error
+            error();
+          }
+        }
+      }
+
+      // untuk menjalanka ajax
+      // terdapat dua method pada open (action , url data yg dituju)
+      xhr.open('get', url);
+
+      xhr.send()
+    }
+
+    // membuat function callback menggunakan function dexlaration 
+    function success(result) {
+      // data yg diperoleh dari parameter result masih berupa file.json yg artiny didala file json isinya adalah text
+      // untuk mengubah menjadi Array of object maka kita perlu memparsing resulnya ,dengan menggunakan method JSON.Parse()
+      const data = JSON.parse(result);
+      console.log(data);
+      // maka data kita bisa beri method array
+      console.log('mulai');
+
+      // menampilkan data yang mempunyai prodi TI
+      // KITA BUNGKUS KEDALAM method setTimeout agar asynchronous berjalan,untuk menghindari konsep blocking
+      setTimeout(function () {
+        const tampil = `<div class="wrapper-daftar-barang">
+                            <h2>Daftar Siswa prodi TI</h2>
+                            ${data.map(item => `<ul>
+                            <li>id : ${(item.prodi == 'TI' ? item.idMhs : '')}</li>
+                            <li>nama : ${(item.prodi == 'TI' ? item.nama : '')}</li>
+                            </ul>`).sort().join('')}
+                      </div>`
+        document.body.innerHTML = tampil;
+        console.log(tampil);
+      }, 0)
+
+      console.log('selesai');
+    }
+
+    function error(e) {
+
+    }
+
+    // MEMAMNGGIL FUNCTION 
+    getDataMhs('../json/data mhs.json', success, error);
+
+
+    //MENGAMBIL DATA JSON MENGGUNAKAN BANTUAN JQUERY
+    // 1. memanggil method ajax
+    // 2. artinya jquery(disimbolkan dengan tanda $)
+    // 3. jquery jalankan method ajax yg parameternya object
+
+    $.ajax({
+      // 4. yang propertynya ada
+      url: '../json/data mhs.json',
+
+      // kalau succes maka akan menjalanka function (sama seperti saat memanggil ajax dengan vanilla js)
+      // KITA DAPAT MENGGUNAKAN ARROW FUNCTION
+      // 5. jika succes maka function succces AKAN MENERIMA HASIL DATANYA DARI URL 
+      success: (mhs) => {
+        // 6. YANG DIKEMBALIKAN hasil sudah berupa json(object) maka kita tidak perlu memparsingnya
+        // 7. da hasilnya adalah sudah synchronous
+        mhs.forEach(element => console.log(element.nama));
+      },
+
+      error: (e) => {
+        // 8. maka jika terjadi eror saat saat pemanggilan json, maka akan mendapat response eror berupa text
+        e.responseText;
+      }
+    })
+
+  </script>
+</body>
+
+</html>

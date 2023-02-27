@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container-dua {
+      display: flex;
+    }
+
+    .layanan {
+      width: 40px;
+     
+    }
+
+    /* cara baca classnya adalah div yang ada clas.satu didalam class.layananan */
+    .layanan {
+      padding: 20px;
+      /* agar tidak merubah ukuran kotaknya */
+      box-sizing: border-box;
+      width: 210px;
+      font-weight: bold;
+      font-size: 1.5rem;
+      background-color: rgb(112, 112, 241);
+    }
+    .layanan ul {
+      list-style: none;
+      
+    }
+    .layanan ul li {
+      font-size: 1.2rem;
+      font-weight: 400;
+      
+    }
+   
+    header img {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+    }
+    header a {
+      color: white;
+      font-size: 1.6rem;
+      display: inline-block;
+      text-decoration: none;
+      transform: translateY(-15px);
+    }
+    
+    .layanan input {
+      border: 1px solid blue;
+      /* border-radius: 20px; */
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-dua">
+    <div class="layanan ">
+      <h3>Meet Chef</h3>
+     <ul>
+      <li>vindi</li>
+      <li>aprilia</li>
+      <li>dewi</li>
+     </ul>
+    </div>
+    <div class="layanan ">
+      <h3>Meet Chef</h3>
+     <ul>
+      <li>vindi</li>
+      <li>aprilia</li>
+      <li>dewi</li>
+     </ul>
+    </div>
+    <div class="layanan ">
+      <h3>Sosial Media</h3>
+      <header>
+        <img src="img/instagram.jpg" alt="">
+        <a href="">twiter</a>
+         <img src="img/twitter.jpg" alt="">
+        <a href="">twiter</a>
+      </header>
+    </div>
+    <div class="layanan ">
+      <h3>Contact Us</h3>
+      <div class="form">
+        <input type="text" placeholder="Your name*">
+        <hr>
+        <input type="">
+
+      </div>
+    </div>
+  
+    </div>
+    <footer>
+      <p>copyright @2022</p>
+     </footer>
+  </div>
+</body>
+
+</html>

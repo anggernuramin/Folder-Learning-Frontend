@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konsep Asynchronous</title>
+</head>
+
+<body>
+  <script>
+    // ASYNCHRONOUS pada Javascript
+    //   Artinya js melakukan secara ASYNCHRONOUS, pada konsep asynchronous.Code aka dieksekusi tanpa mengganggu code lain(artinya tdk akan menunggu proses sebelumnya,dan proses dibawahnya tidak akan menunggu proses asynchronous) selesai,sehingga seakan-akan dieksekusi secara bersamaan
+
+    // pada dasarnya konsep pada js melakukan Blocking,single-thread
+    // Single-thread 
+    //   Adalah urutan eksekusi kode yg dilakukan baris-perbaris dari atas kebawah dan menyelesaikannya
+    // Blocking
+
+    // pada contoh dibawah ini code akan dieksekusi langsung melalui stack(v8)
+    // sebenarnya tidak ada masalah menggunakan blocking,tetapi jika console.log('2') isinya adalah pengambilan api diserver orang lain,jika apinya masih proses dieksekusi maka code console.log('tiga') tidak akan dieksekusi sebelum code sebelumnya selesai.
+    // ini akan bermasalah jika web kita request ke server da kita menangkap datanya (memakan waktu yang lama) maka web kita akan secara otomatis code diabawhnya tidak dijalankan sehingga website kayak terjadi bug/hang
+    console.log('satu');
+    console.log('dua');
+    console.log('tiga');
+
+    // kita bisa gunakan asynchronous callback untuk menjadikan code ke 2 menjadi non-blocking agar disimpan kedalam web api dan dimasukka ke callback queue dan dimasukkan ke stack melalui event loop
+    // agar event loop berjalan.maka pastikan pada stack  dalam keadaan kosong
+    // Method yag merupakan ASYNCHRONOUS CALLBACK
+    // 1. DOM(click, change, dll)
+    // 2. ajax(XMLHttpRequest)(penga, bila data dari server da mereturn hasil datanya)
+    // 3. setInterval
+    // 4. setTimeout
+    // 5. dll
+    console.log('mulai');
+
+    // pada code ini ,terjadi non-bloking,artinya syntax dibawahnya akan dieksekusi terlebih dahulu,ini bisa dimanfaatkan jika kita menggunakan ajax agar code dibawah setTimeout tidak menunggu waktu eksekusinya
+
+    // maka yg terjadi pada output,console.log('tunggu') akan dieksekusi terakhir,walaupun waktu tunggunya adalah 0
+    // karena pada setTimeout terdapat callback,itu mennadakan bahwa code dibawah ini adalah asynchronous callback ,dimana konsep asynchronous adalah code menjadi non-bloking yang artinya code dibawahnya tidak akan menunggu proses asynchronous callback selesai
+    setTimeout(function tunguu() {
+      console.log('Tunggu');
+    }, 0)
+
+    console.log('selesai');
+
+
+
+
+  </script>
+</body>
+
+</html>

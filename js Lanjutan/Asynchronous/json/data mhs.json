@@ -1,0 +1,64 @@
+
+[
+  {
+    "nama": "Angger nur amin",
+    "nim" : "212010986",
+    "prodi": "TI",
+    "email": "Angger@gmail.com",
+    "idMhs": 2
+  },
+  {
+    "nama": "Putra Tegar",
+    "nim" : "220101281",
+    "prodi": "TI",
+    "email": "tegar@gmail.com",
+    "idMhs": 1
+  },
+  {
+    "nama": "Yayak Zabara",
+    "nim" : "210989761",
+    "prodi": "DKV",
+    "email": "Yayak@gmail.com",
+    "idMhs": 1
+  },
+  
+  {
+    "nama": "Muchammad Risky",
+    "nim" : "218967341",
+    "prodi": "TI",
+    "email": "Risky@gmail.com",
+    "idMhs": 3
+  },
+  
+  {
+    "nama": "Kevin Athallah",
+    "nim" : "220101281",
+    "prodi": "DKV",
+    "email": "Kevin@gmail.com",
+    "idMhs": 2
+  },
+  
+  {
+    "nama": "Taricha",
+    "nim" : "132908162",
+    "prodi": "TI",
+    "email": "Icha@gmail.com",
+    "idMhs": 4
+  },
+  
+  {
+    "nama": "Nurul ulum",
+    "nim" : "23451632",
+    "prodi": "TI",
+    "email": "Ulum@gmail.com",
+    "idMhs": 5
+  },
+  
+  {
+    "nama": "Vindi Aprilia Dewi",
+    "nim" : "2109089",
+    "prodi": "TI",
+    "email": "Munik@gmail.com",
+    "idMhs": 6
+  }
+]

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rest parameter</title>
+</head>
+
+<body>
+  <script>
+    // Rest parameter
+    //   Merepresentasikan argument pada function denga jumlah yg tdk terbatas menjadi sebuah function
+    //MENGEMBALIKAN SEBUAH ARRAY
+    //   Dan juga digunakan untuk Destrucruring object dan Array
+    //   Rest parameter hanya bisa digunakan diakhir parameter
+
+    // 1. Menjadi parameter pada function yg menyimpan semua parameter tak terbatas dan mengembalika dalam bentuk array
+    function hitungTotalBelanja(...values) {
+      const diskon = 10;
+      console.log(values);
+      // for (let i = 0; i < values.length; i++) {
+      //   total += values[i]
+      // }
+
+      // kita bisa langsung menggunaka method array
+      let total = values.reduce((acc, cur) => acc + cur)
+
+      console.log('bayar : ' + total);
+
+      return total - (diskon / 100);
+    }
+
+    console.log(hitungTotalBelanja(100, 100, 100, 100, 100));
+
+    // 2. Destructuring Array
+    const mhs = ['Angger', 'Vindi', 'Nur', 'Aprilia', 'Dewi']
+
+    const [ketua, wakil, ...anggota] = mhs;
+    console.log(ketua);
+    console.log(anggota);
+
+    // 3. Destructuring Object
+    const team = {
+      pm: 'Vindi',
+      frontend: 'Angger',
+      bakend: 'Kafi',
+      devops: 'Cholis'
+    }
+
+    const { pm, ...grup } = team;
+    console.log(grup);
+
+    // 4. Filtering pada parameter yang menampilkan data sesuai dengan parameter yg pertama sesuai dengan patokan
+
+    // parameter typeData akan menjadi patokan filter data untuk membandingan kan denga tipe data yang ada pada rest parameter (value)
+    function filterData(typeData, ...value) {
+      // syntax dibawah ini artinya,akan mereturn data yang merepresentasikan isi dari rest parameter (value) dan mengambil tipe datanya apakah sam dengan parameter typeData yang isinya adalah 'string'
+      return value.filter(data => typeof data === typeData)
+    }
+
+    console.log(filterData('number', 2, 10, 20, true, 'Angger,', 1, 'Nur', 12, 'Amin', false));
+
+  </script>
+</body>
+
+</html>

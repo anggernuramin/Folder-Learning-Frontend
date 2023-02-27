@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Penerapan Higher order function</title>
+</head>
+
+<body>
+  <script>
+    // Pada proses ini artinya function harus memiliki callback
+    // misal pada penerapan method array MAP ,FILTER ,REDUCE
+    // 1.filter
+    //     adalah method array yang digunakan unruk memfilter sebuah array dan mengembalikan sebuah array baru
+
+    //     misal memfilter angka random dengan angka yg >=5
+    // jika dicari dengan coding manual/tanpa menggunakan method
+    const angka = [2, 4, 9, -2, 0, -2, 10, 6];
+    // agar hasilnya tetap array gunakan method .push array yg disimpan dalam array
+    // const angkaBaru = [];
+    // for (let i = 0; i < angka.length; i++) {
+    //   if (angka[i] >= 5) {
+    //     angkaBaru.push(angka[i])
+    //   }
+    // }
+    // console.log(angkaBaru);
+
+    // Menggunakan method filter dan membuat dengan arrow function  
+    // a berguna untuk merepresentasikan dengan array yg ada didalam avariabel angka
+    // sedangkan pada arrow function,jika parameternya 1 tdk perlu menggunakan tanda kurung,dan jika callbacknya hanya return maka tidak perlu menuliskan return didepannya,DIDALM CONTEKS INI CALLBACKNYA ADALAH MENGEMBALIKA ARRAY ANGKABARU DENGAN ARRAY YG >= 5
+    const angkaBaru = angka.filter(a => a >= 5)
+    console.log(angkaBaru);
+
+    // 2.map (mempetakkan)
+    //   method .map pada array akan mempetakkan sebuah index array yg lama dan mengembalikan array yang baru
+    // misal mempetakkan
+
+    // 3.reduce
+    // Reduce adalah method array yang berfungsi menggabungkan semua elemen array dan mengembalikan SATU NILAI, sehingga nilai yg dihasilkan merupakan gabungan dari nilai - nilai yg ada pada array
+    // MISAL menggabungkan hasil dari sorting array dan menjumlahkan
+    const angkarandom = [9, 5, 1, 2, 4, 3, 8, 5, 6, 7, 10];
+    // a-b mencompare dan hasinya ascending(kecil ke besar);
+    angkarandom.sort((a, b) => a - b);
+
+    console.log(angkarandom);
+    // artinya adalah = accumulator merepresentasikan hasil dari prosesnya
+    // sedangkan currentvalue adalah index array sedang dilooping
+    let hasilReduce = angkarandom.reduce((accumulator, currentValue) => 
+      // dalam kontek ini arrayrandom akan dijumlahkan semua indexnya
+       accumulator + currentValue,0
+      // pada saat mereturn mmethod reduce,sebenarnya yg terjadi adalah ada 3 parameter
+      // return accumulator + currentValue , 10
+      //  nilai 0 adalah nilai defaultnya,
+      // kita dapat mengganti sesuai dgn kebutuhan,nilai 0 ini akan diberikan dinilai awal array yg akan direduce;
+    );
+    // mengecek tipe data 
+    console.log(typeof hasilReduce);
+    console.log(hasilReduce);
+    // 4. metode chaining
+    //     Adalah menggabungkan dari beberapa method yg ada diarray dengan dipisah tanda (.) antara method 1 dgn method lainnya
+    //   misal dengan kasus menfilter suatu angka yg <=10 yang mempetakkan dengan map dgn callback dikalikan dgn 2 dan humlahkan dengan method reduce
+    const hasil = angka.filter(angkaFilter => angkaFilter<=10)
+                        .map(angkaMap => angkaMap*2)
+                        .reduce((acc,curr) => acc + curr
+                        );
+    console.log(hasil);                   
+
+  </script>
+</body>
+
+</html>
