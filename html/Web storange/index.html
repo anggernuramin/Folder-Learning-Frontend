@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web storange pada browser</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .dark-mode {
+    background-color: #222;
+    color: white;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .box-nama {
+    width: 280px;
+    font-size: 1.2rem;
+    margin: 10px;
+    background-color: darkblue;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  input,
+  label,
+  h1 {
+    display: block;
+    margin: 10px;
+  }
+
+  button {
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    font-weight: 600;
+    margin: 3px;
+    cursor: pointer;
+  }
+</style>
+
+<body>
+  <!-- WEB STORANGE
+      Adalah web api yg menyediakan mekanisme untuk menyimpan nilai (key/value)  yang lebih intuitif dari pada cookie
+  Ada dua tipe pada web local storane
+1. local storange 
+    data yang dimasukkan ke local storange tidak akan hilang walau browser ditutup atau tab diclose,data akan hilang jika dihapus secara manual atau codingan 
+2. sessionStorange
+    data yang dimasukkan akan hilang secara otomatis jika tab diclose atau browser ditutup
+  
+  Atribut localStorange dan sessionStorange
+1. setItem(key,value)
+    Digunakan untuk menyimpan data dari pasangan key (kata kunci) dan value
+  key harus bersifat uniq
+2. getItem(key)
+  Digunakan untuk mengambil data/value berdasarkan nama key
+3. removeItem(key)
+  Digunakan untuk menghapus nilai pasangan key/value
+4. clear()
+  Digunakan untuk menghapus semua item (key dan value) pada web storange
+5. key(index)
+    Mengambil nilai key berdasarkan inde menggunakan atribut getItem()
+6. length
+  Mengetahui jumlah nilai yang ada didalam web storange-->
+  <form action="" autocomplete="off">
+    <div class="box-nama">
+      <label for="nama">Masukkan nama : </label>
+      <input type="text" id="nama" name="nama" autofocus required>
+
+      <label for="password">Masukkan password : </label>
+      <input type="password" id="password" name="password" minlength="2" maxlength="10">
+
+      <button class="kirim" type="submit">Kirim</button>
+
+      <!-- bersihkan local storange -->
+      <button class="clear" type="submit">Bersihkan</button>
+
+      <button class="tema" type="submit">Dark mode</button>
+
+      <h1 class="login"></h1>
+
+    </div>
+  </form>
+
+
+
+  <script>
+    // seleksi nama
+    let nama = document.querySelector('#nama');
+    let password = document.querySelector('#password');
+    const login = document.querySelector('.login');
+    const kirim = document.querySelector('.kirim');
+    const clear = document.querySelector('.clear');
+
+    // jika menggunakan bantuan prompt
+    // let nama = localStorage.getItem('nama')
+    // let password = localStorage.getItem('password');
+    // if (!nama && !password) {
+    //   nama = prompt('masukkan nama :');
+
+    //   localStorage.setItem('nama', nama)
+    //   password = prompt('masukkan password :');
+    //   localStorage.setItem('password', password)
+    // }
+
+    // login.innerHTML = ('hallo' + nama);
+
+
+
+
+
+    // event button kirim
+    kirim.addEventListener('click', function (e) {
+      // MENYIMPAN DALAML LOCAL STORANGE
+      // nama = prompt('masukkan nama :');
+      // localStorage.setItem('nama', nama)
+      // password = prompt('masukkan password :');
+      // localStorage.setItem('password', password)
+
+      localStorage.setItem("nama", nama.value);
+      localStorage.setItem("password", password.value)
+
+      if (nama.value == "admin" && password.value == "admin123") {
+        login.innerHTML = ("Anda login sebagai Admin");
+      } else {
+        login.innerHTML = ("Anda login sebagai User");
+      }
+
+
+
+      // harus hentikan event default yg dimiliki oleh tag button
+      e.preventDefault();
+
+    });
+
+    localStorage.getItem('nama');
+
+    // event button clear
+    clear.addEventListener('click', function (e) {
+      window.location.reload();
+      login.style.display = "none";
+
+      localStorage.removeItem("nama")
+      localStorage.removeItem("password")
+
+      // untuk membersihkan semua data dilocalStorange
+      // localStorage.clear();
+      e.preventDefault();
+    })
+
+
+
+
+    // membuat tema dengan local storange
+    const ubah = document.querySelector('.tema');
+    console.log(ubah)
+
+    // mengecek pada local storange apakah ada key tema,menggunakan let karena,nanti akan ditimpa 
+    let tema = localStorage.getItem('tema');
+
+    // jika tidak ada maka setting temanya memiliki value lightmode
+    if (!tema) {
+      localStorage.setItem('tema', 'lightmode')
+    }
+
+    // function untuk darkmode
+    const darkmode = function darkmode() {
+      document.body.classList.add('dark-mode');
+
+      // menimpa localstorange
+      localStorage.setItem('tema', 'darkmode');
+      ubah.innerHTML = 'Light mode';
+
+    }
+
+    // mengecek jika halaman saat pertama kali,jika value pada key tema darkblue maka jalankan function darkmode
+    if (tema === 'darkmode') {
+      darkmode();
+    }
+
+    const lightmode = function () {
+      document.body.classList.remove('dark-mode');
+      // menimpa localstorange
+      localStorage.setItem('tema', 'lightmode');
+      ubah.innerHTML = 'Dark mode';
+
+    }
+
+    // event untuk mengubah tema
+    ubah.addEventListener('click', function (e) {
+      // mengambil key dari variabel tema
+      tema = localStorage.getItem('tema');
+
+      if (tema === 'lightmode') {
+        darkmode();
+      } else {
+        lightmode();
+      }
+
+      e.preventDefault();
+      e.stopPropagation();
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MEDIA ELEMENTS</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			width: 80%;
+			margin: 50px auto;
+			min-height: 100vh;
+			font-size: 1.1rem;
+			
+			display: flex;
+
+		}
+
+		.box-hero{
+			margin: auto;
+			display: grid;
+			color: #333;
+			width: 1000px;
+			align-items: center;
+			grid-gap: 2rem;
+		}
+
+
+		.hero-img img{
+			max-width: 100%;
+			height: auto;
+		}
+
+/*		responsive dilebar 960px keatas*/
+		@media (min-width: 960px){
+			.box-hero{
+				grid-template-columns: repeat(2, 1fr);
+
+			}
+
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+		1. figure
+				merupakan tag elmen html 5 yg bisa berdiri sendiri,biasanya tag ini digunakan untuk gambar dan artikel,yg dibawahnya dpat memuat caption yg ditulis didalam tag figcaption
+		2. picture
+			- bertujuan untuk optimasi halaman agar menghemat bandwith dan memepercepat load time saat halaman web diload
+			- bisa digunakan sebagai art direction,untuk menampilkan gambar yg berbeda pada display/tampilan device yg berbeda
+			- didalmnya menggunakan tag source media untuk menuliskan media query nya
+
+	 -->
+	<div class="box-hero">
+		<div class="hero-text">
+			<h1>Image Computer</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+		<div class="hero-img">
+			<!-- dibungkus dengan tag picture -->
+			<!-- <source media="(min-width: 960px)" srcset="image/computer-large.png" sizes="50vw">
+			<source media="(min-width: 600px)" srcset="image/computer-medium.png"> -->
+
+			<img src="image/computer-medium.png" alt="Computer" srcset="image/computer-small.png 500w,image/computer-medium.png 700w,image/computer-large.png 1000w" sizes="(min-width:1000px) 50vw" >
+		</div>	
+	</div>
+
+
+</body>
+</html>

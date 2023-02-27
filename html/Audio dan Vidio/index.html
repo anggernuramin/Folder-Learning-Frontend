@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MEDIA ELEMENT || AUDIO & VIDIO</title>
+	<!-- 1. Audio
+	- Elemen audio merepresentasikan suara atau aliran audio
+	- Digunakan untuk menjalankan file audio
+	- file yang didukung
+		MP3, WAV , OGG
+	-Bisa dimasukkan dalam tag figure 
+		ATRIBUT YG ADA PADA TAG AUDIO
+	- src 
+		source file audio disimpan
+	- controls
+		Agar userbisa mengendalikan audionya
+	- preload
+		Audionya akan diload sebelum dijalankan
+	- autoplay
+		menjalankan audio secara otomatis
+	-loop
+		mengulang audio secara otomatis
+	- muted
+		agar audio tdk ada suaranya
+
+	2. Video
+	- Elemen yg digunakan untuk menampilkan video,film,ataupun video
+	Atribut yang ada pada tag video
+	- src
+	- controls
+	- poster = " tempat folder img-nya"
+		Untuk menampilkan sebuah gambar,jika elemen videonya tdk bisa diputar
+	- preload
+	- autoplay
+	- loop
+	-muted
+	- width
+	- height
+
+	-file yang didukung
+		MP4 , WEBM
+
+
+	3. track
+	- Elemen yg digunakan untuk memberi keterangan sepanjang video saat diputar
+	Atribut yang ada pada tag track
+	- src
+		file pada track harus berekstensi .vtt
+	- kind
+		- subtittle
+			Akan menampilkan teks percakapan
+		- caption	
+			Akana memberi penjelasan terkait semuanya(walaupun isinya lagu maka akan diterjemahkan)
+		- capture
+			Akan memeberi keterangan didetik/menit tertentu
+		- deskription
+	- title
+			Judul saat penulisan caption di tombol pengaturan
+	- srclang
+			Kode bahasa yang digunakan (misal id untuk indonesia)
+	- -->
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+
+		body {
+			/*display: flex;
+			justify-content: center;
+			align-items: center;*/
+		}
+
+		.hero {
+			width: 100%;
+			position: relative;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			z-index: 1;
+			overflow: hidden;
+		}
+
+		h1 {
+			color: rgba(255, 2555, 255, .7);
+			position: absolute;
+			z-index: 5;
+			font-weight: bold;
+			font-size: 4rem;
+			text-align: center;
+			line-height: center;
+		}
+
+		.box-video {
+			position: absolute;
+			background-color: rgba(0, 0, 0, .5);
+			min-height: 100%;
+			min-width: 100%;
+			left: 0;
+			bottom: 0;
+		}
+
+		.video {
+			min-height: 100%;
+			min-width: 100%;
+			position: absolute;
+			z-index: -1;
+		}
+	</style>
+
+</head>
+
+<body>
+	<!-- 1. penulisan audio
+	<audio src="audio/Asereje.mp3" controls muted><code>audio</code>tdk bisa diputar</audio>
+	<br>
+	<audio src="audio/Asereje.mp3" controls ><code>audio</code>tdk bisa diputar</audio> -->
+
+	<!-- 2. penulisan vidio -->
+	<!-- <figure>
+		<figcaption>"Opening background animation"</figcaption>
+		<video controls width="400" loop autoplay muted>
+			<source src="vidio/background animation.mp4" type="video/mp4">
+			<source src="vidio/background-animation.webm" type="video/webm">
+		</video>
+	</figure> -->
+
+
+	<!-- <figure>
+		<figcaption>"Opening Sandhika Galih html 5"</figcaption>
+		<video controls width="400" loop autoplay>
+			<source src="vidio/Belajar HTML5.mp4" type="video/mp4">
+			
+		</video>
+	</figure> -->
+
+	<!-- Contoh background menggunakan vidio -->
+	<!-- <div class="hero">
+		<h1>WELCOME TO MY WEBSIE</h1>
+		<div class="box-video">
+			<video class="video" autoplay muted>
+				<source src="vidio/background animation.mp4" type="video/mp4">
+			</video>
+		</div>
+	</div> -->
+
+
+
+	<!-- 3.track -->
+	<figure>
+		<figcaption>"Playlist HTML 5" Apa itu html ?</figcaption>
+		<video controls width="400" >
+			<source src="vidio/Belajar HTML5.mp4" type="video/mp4">
+			<track src="cpt1.vtt" kind="subtitles" srclang="id" label="Bahasa Indonesia">
+			<track src="cpt1.vtt" kind="subtitles" srclang="en" label="Bahasa English">
+		</video>
+	</figure>
+
+</body>
+
+</html>

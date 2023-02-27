@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accesbility</title>
+  <!-- ACCESBILITY
+          Adalah cara untuk membuatwebsite kita bsa digunakan oleh sebnayanyak mungkin user  -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #eaeaea;
+      font-weight: 500;
+      height: 100vh;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .box-input {
+      margin: 10px 10px 10px 0;
+    }
+
+    .box-input:last-of-type {
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      cursor: pointer;
+      margin: 10px 10px 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <form action="" method="post" required>
+      <div class="box-input">
+        <label for="x">Masukkan nilai X: </label>
+        <input type="number" name="x" id="x" placeholder="Masukkan nilai x" autofocus step="5">
+      </div>
+      <div class="box-input">
+        <label for="y">Masukkan nilai Y : </label>
+        <input type="number" name="y" id="y" placeholder="Masukkan nilai y" step="5">
+      </div>
+      <button type="submit" class="kirim">kirim</button>
+    </form>
+    <h2 class="sapa">Hasil </h2>
+    <h2 class="button1" tabindex="0" role="button">Button 1</h2>
+
+    <label for="name"> Masukkan nama :</label>
+    <input type="text" name="nama" id="nama">
+
+    <button type="submit" id="simpanNama">Simpan</button>
+    <h2 class="tampilkanNama" tabindex="0"></h2>
+
+    <h2 class="sapa" tabindex="0">Button 3</h2>
+
+    <figure>
+      <figcaption>Video Learn HTML 5</figcaption>
+      <video poster="family.jpg" width="300px" controls src="vidio/Belajar HTML5.mp4"></video>
+    </figure>
+
+
+
+    <picture>
+      <img id="gambar" role="button" tabindex="0" width="300" src="family.jpg" alt="Family picture"
+        onclick="alert('hayy')">
+    </picture>
+
+  </div>
+
+  <script>
+    // membuat local storange untuk menampung nilai perkalian 
+    const x = document.querySelector('#x');
+    const y = document.querySelector('#y');
+    const notifikasiHasil = document.querySelector('.sapa');
+
+    // dideklarasikan diluar fungction,agar dikenali variabel hasil
+    let hasil;
+    const kirim = document.querySelector('.kirim');
+    kirim.addEventListener('click', function (e) {
+
+      localStorage.setItem('nilaiX', x.value);
+      localStorage.setItem('nilaiY', y.value);
+
+      hasil = x.value * y.value;
+      notifikasiHasil.innerHTML = ("Hasil : " + hasil)
+
+      localStorage.setItem('hasilPerkalian', hasil)
+
+      e.preventDefault()
+    })
+
+
+    // mengubah gambar menjadi elemen yang interaktif dengan keyboard
+
+    const button = document.querySelector('.button1');
+    console.log(button)
+
+    const klik = function () {
+      button.addEventListener('click', function () {
+        alert('okey siip');
+
+      })
+    }
+
+
+    klik();
+
+    button.addEventListener('keyup', function (e) {
+      if (e.keyCode == 32 || e.keyCode == 13) {
+        alert('heyoooo');
+      }
+    })
+
+
+    // menyimpan nama di local storange
+    const nama = document.querySelector('#nama');
+    const simpanNama = document.querySelector('#simpanNama');
+    const tampilkanNama = document.querySelector('.tampilkanNama');
+
+
+    // menampilkan nama saat pertama kali halaman diload
+    tampilkanNama.innerHTML = ("Hallo " + localStorage.getItem('nama') + " !");
+
+    simpanNama.addEventListener('click', function (e) {
+      localStorage.setItem('nama', nama.value);
+
+      e.preventDefault();
+      tampilkanNama.innerHTML = ("Hallo " + localStorage.getItem('nama') + " !");
+    });
+
+
+
+
+
+  </script>
+</body>
+
+</html>

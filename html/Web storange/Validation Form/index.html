@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation</title>
+  <!-- Maksudnya adalah sebuah cara kita untuk memvalidasi pada inputan yg akan kita kirimkan melalui form, misal validasi form login, form registrasi , form contact atau form pembayaran.
+  
+  Form validation dari sisi client side,maksudnya sebelum data dikirim ke server alangkah baikya dari sisi client side divalidasi,dapat menggunakan 2 cara dalam memvalidasi form
+  1. Menggunakan html 5
+  2. menggunakan javascript
+
+1. Memvalidasi menggunakan tag input types
+  1. email
+      Untuk melakukan validasi terhadap email
+  2. tel
+      untuk nomor telpon
+  3. url
+      digunakan untuk melakukan/memasukkan alamat website secara benar
+  4. number
+      untuk validasi angka
+  5. range
+      untuk membuat semacam slider
+  6. date
+      format tanggal,tahun,bulan,hari
+  7. month
+      untuk emilih bulan
+  8. week
+    untuk memilih minggu
+  9. time
+    untuk jam
+  10. color
+    untuk memilih warna
+
+
+  Atribut Input
+  1. autocomplete = "off"
+      Untuk menghilangkan hitory dari nilai-nilai yg sudah pernah kita inputkan pada elemen input,misal text,email . 
+        bisa diletakkan dalam 1 tag input atau dituliskan didalam tag form agar semua otomatis akan autocomplete.
+  2. autofocus
+      Digunakan untuk membuat cursor secara otomatis akan masuk ke dalam tag input yg diberi atribuy autofocus,dalam 1 form hanya boleh ada satu tag input yg memiliki atribut autofocus
+  3. required
+      Agar elemen input harus diisi,jika tidak maka akan eror saat data form dikirim
+  4. minLength ="" dan maxLength=""
+      Untuk menentukan angka pada elemen input 
+    misal : dalam pengisian usernama ,user hanya bisa mengirimkan maxLength = "12" (12 artinya 12 karakter)
+  5. min="" dan max=""
+        Untuk menentukan angka pada elemen input, angka minimal dan maximal
+  6. pattern
+        Digunakan untuk mengisi elemen dengan spesifiksai tertentu( menggunakan kode regex ( regular expression))
+  7. step
+      Untuk menentukan angka kelipatan 
+    misal : step ="5", maka elemen setelahnya da;ah angka kelipatam dari 5
+  8   .value
+    Untuk mengambil nilai pd saat ini yg dimiliki elemen tag,biasanya digunakan untuk mengambil nilai dari input range
+
+Pseudo-class 
+Javacsript custom validation
+  -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      height: 100vh;
+    }
+
+    form {
+      /* transform: translate(-50%, -50%); */
+      width: 400px;
+      margin: 50% auto;
+      padding: 30px;
+      background-color: #eaeaea;
+      font-size: 1.1rem;
+      font-family: Georgia, 'Times New Roman', Times, serif Courier, monospace;
+    }
+
+    h1 {
+      text-align: center;
+      text-transform: capitalize;
+    }
+
+
+
+    label {
+      display: inline-block;
+    }
+
+    div {
+      padding: 5px;
+    }
+
+    button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 5px;
+      font-size: 1.2rem;
+      background-color: darkblue;
+      color: white;
+      border: none;
+    }
+
+    /* CSS VALIDATION pada css
+      Menggunakan psudo-class */
+    input:invalid,
+    input:required:invalid {
+      border: none;
+      outline: 2px solid red;
+    }
+
+    /* ditimpa input:required agar style normal dan input yang invalid tdk langsung menampilkan style invalidnya */
+    input:valid,
+    input:required {
+      border: 1px solid black;
+      outline: inherit;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- memvalidasi agar history pengisian sebelumnya,tdk muncul lagi -->
+  <form action="" method="post" autocomplete="off">
+    <h1>form validation</h1>
+
+    <!-- memvalidasi nama yg diiput minimal 2 character, dan maxima; 6 karakter,jika lebih dari maxlength maka otomatis tdk bisa menampilkan character berikutnya -->
+    <div>
+      <label for="nama">Masukkan nama :</label>
+      <input type="text" name="nama" id="nama" minlength="2" maxlength="6" autofocus>
+    </div>
+
+    <!-- jAVASCRIPT VALIDATION
+        akan mengubah pesan eror yg tampil dengan bahasa kita sendiri -->
+    <div>
+      <!-- email yang valid (angger@gmail.com / angger@gmail) -->
+      <label for="email">Masukkan email :</label>
+      <input type="email" name="email" id="email"
+        oninvalid="this.setCustomValidity('Format email yang anda masukkan salah')"
+        oninput="this.setCustomValidity('')">
+    </div>
+
+
+    <!-- memvalidasi dengan required
+        agar jika telfon tidak diisi maka data pd form tdk bisa disubmit -->
+    <div>
+      <label for="telpon">Masukkan telpon :</label>
+      <input type="tel" name="telpon" id="telpon">
+    </div>
+
+    <!-- memvalidasi dengan min max
+      dengan ketentuan angka yang bisa dimasukkan hanya angka 1 sampai 100, dan menentukan nilai awal dan step ,artinya angka yg ditampilkan adalah kelipatannya-->
+      <!-- atribut step akan menampilkan pilihan jika html diload pada web server -->
+    <div>
+      <label for="number">Masukkan number :</label>
+      <input type="number" name="number" id="number" min="0" max="100" step="5">
+    </div>
+
+
+    <div>
+      <!-- url yang valid ( http://angger.com) harus diawali dengan protocol -->
+      <label for="url">Masukkan url :</label>
+      <input type="url" name="url" id="url">
+    </div>
+
+
+    <!-- validasi dengan menggunakan event pada js,  -->
+    <div>
+      <label for="slider"> slider : </label>
+
+      <span class="nilaiAwal"></span>
+      <input type="range" name="slider" id="slider" min="0" max="100">
+
+      <span class="nilaiAkhir"></span>
+    </div>
+
+    <div>
+      <label for="date">Masukkan date :</label>
+      <input type="date" name="date" id="date">
+    </div>
+
+    <div>
+      <label for="month">Masukkan month :</label>
+      <input type="month" name="month" id="month">
+    </div>
+
+    <div>
+      <label for="week">Masukkan week :</label>
+      <input type="week" name="week" id="week">
+    </div>
+
+    <div>
+      <label for="time">Masukkan time :</label>
+      <input type="time" name="time" id="time">
+    </div>
+
+    <div>
+      <label for="color">Masukkan color :</label>
+      <input type="color" name="color" id="color">
+      <span class="hexa"></span>
+    </div>
+
+    <button type="submit">Kirim</button>
+
+  </form>
+
+
+
+
+  <script>
+    // membuat agar slider menampilkan angka yang sedang dipilih dan menambahkan atribut step untuk pilihan angka nya dengan kelipatan 5
+    const slider = document.querySelector('#slider');
+    const nilaiAwal = document.querySelector('.nilaiAwal');
+    const nilaiAkhir = document.querySelector('.nilaiAkhir');
+
+    // menentukan nilai awal dan akhir
+    nilaiAwal.innerHTML = slider.min;
+    nilaiAkhir.innerHTML = slider.value;
+
+    // membuat event jika slider digeser
+    slider.addEventListener('input', function () {
+      nilaiAkhir.innerHTML = slider.value;
+    })
+
+
+    // membuat keterangan hexadecimal pada color
+    const warna = document.querySelector('#color');
+    const hexa = document.querySelector('.hexa');
+
+    // default warna
+    hexa.innerHTML = warna.value;
+    warna.addEventListener('input', function () {
+      hexa.innerHTML = warna.value;
+      hexa.style.color = warna.value;
+    })
+
+
+  </script>
+</body>
+
+</html>

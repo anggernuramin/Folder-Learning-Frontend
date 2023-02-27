@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>FORM HTML</title>
+</head>
+<body>
+	<!-- form html adalah elemen yang digunakan untuk mengelola data
+		dari input yang dilakukan oleh user -->
+
+	<form>
+		<!-- tag label digunakan untuk penanda suatu text -->
+		<!-- atribut for sama id penamaan harus sama,karena kedua tersebut berfungsi sama yaitu identitas atau penanda --><label for="username"> username : </label>
+		<input type="username" id="username" >
+
+		<br><br>
+
+		<label for="password">password : </label>
+		<input type="password" id="password">
+		<!-- output password berupa character -->
+
+		<br><br>
+		<!-- radio button digunakan untuk memilih satu pilihan --><input type="radio"  name="jeniskelamin"><label for="pria">pria</label>
+		<input type="radio"  name="jeniskelamin"><label for="wanita">wanita</label>
+		<!-- atribut name harus diisi agar user dapat memilih satu pilihan -->
+
+		<br>
+
+		<h2>Hobi saya : </h2>
+
+		<!-- check box digunakan jika user dapat memilih piliha lebih dari satu -->
+		<input type="checkbox" name="menyanyi"><label for="menyanyi">menyayi</label>
+		<input type="checkbox" name="olahraga"><label for="olahraga">olahraga</label>
+		<input type="checkbox" name="ngoding"><label for="ngoding">ngoding</label>
+
+		<br>
+
+		<!-- text area digunakan untuk menginput text yang berjumlah banyak -->
+		<textarea>
+			
+		</textarea>
+
+		<br>
+
+		<!-- tag select digunakan untuk combo box atau dorop down 
+		yaitu pilihan menu yang yang tampil kebawah -->
+		<select>
+			<option>Bandung</option>
+			<option>Blitar</option>
+			<option>Malang</option>
+		</select>
+
+		<br>
+
+		<!-- tag button digunakan untuk tombol kirim data -->
+		<button type="button">kirim!</button>
+
+	</form>
+
+</body>
+</html>
